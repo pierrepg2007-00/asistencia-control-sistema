@@ -15,3 +15,10 @@ Se dejaron pendientes las funciones de registro, búsqueda y actualización para
 
 - `cargar_estudiantes()`: lee `data/estudiantes.json`, crea el archivo con una lista vacía si no existe, devuelve una lista vacía si está vacío o si ocurre un error de lectura.
 - `guardar_estudiantes(estudiantes)`: guarda la lista recibida en `data/estudiantes.json` con sangría para mantener el JSON legible.
+
+## Validaciones implementadas
+
+- `validar_dni(dni)`: verifica que el DNI sea un texto de exactamente ocho dígitos numéricos.
+- `validar_correo(correo)`: verifica de forma básica que el correo incluya `@` y un punto en el dominio.
+- `dni_repetido(dni)`: revisa los estudiantes guardados y devuelve `True` si encuentra el DNI.
+- `estudiante_existe(codigo)`: revisa los estudiantes guardados y devuelve `True` si encuentra el código.

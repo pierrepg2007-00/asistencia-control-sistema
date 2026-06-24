@@ -70,15 +70,31 @@ def validar_dni(dni):
 
 
 def validar_correo(correo):
-    """Valida de manera básica el formato de un correo electrónico."""
-    return isinstance(correo, str) and "@" in correo and "." in correo.rsplit("@", 1)[-1]
+    """Valida que el correo tenga @ y un punto después de ella."""
+    if not isinstance(correo, str) or "@" not in correo:
+        return False
+
+    dominio = correo.split("@", 1)[1]
+    return "." in dominio
 
 
 def dni_repetido(dni):
-    """Indica si un DNI ya está registrado."""
-    return any(estudiante.get("dni") == dni for estudiante in cargar_estudiantes())
+    """Devuelve True cuando el DNI ya está registrado."""
+    estudiantes = cargar_estudiantes()
+
+    for estudiante in estudiantes:
+        if estudiante.get("dni") == dni:
+            return True
+
+    return False
 
 
 def estudiante_existe(codigo):
-    """Indica si existe un estudiante con el código indicado."""
-    return any(estudiante.get("codigo") == codigo for estudiante in cargar_estudiantes())
+    """Devuelve True cuando existe un estudiante con el código indicado."""
+    estudiantes = cargar_estudiantes()
+
+    for estudiante in estudiantes:
+        if estudiante.get("codigo") == codigo:
+            return True
+
+    return False
