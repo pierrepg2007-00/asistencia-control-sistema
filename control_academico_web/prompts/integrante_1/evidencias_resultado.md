@@ -10,3 +10,8 @@ Archivos creados:
 - `static/estudiantes.js`: contiene el punto de partida para la interacción con JavaScript.
 
 Se dejaron pendientes las funciones de registro, búsqueda y actualización para completarlas en una siguiente etapa.
+
+## Funciones JSON listas
+
+- `cargar_estudiantes()`: lee `data/estudiantes.json`, crea el archivo con una lista vacía si no existe, devuelve una lista vacía si está vacío o si ocurre un error de lectura.
+- `guardar_estudiantes(estudiantes)`: guarda la lista recibida en `data/estudiantes.json` con sangría para mantener el JSON legible.

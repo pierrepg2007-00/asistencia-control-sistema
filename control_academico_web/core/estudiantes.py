@@ -1,25 +1,42 @@
 """Funciones base para la gestión de estudiantes."""
 
 import json
-from pathlib import Path
 
 
-ARCHIVO_ESTUDIANTES = Path(__file__).resolve().parent.parent / "data" / "estudiantes.json"
+ARCHIVO_ESTUDIANTES = "data/estudiantes.json"
 
 
 def cargar_estudiantes():
     """Carga y devuelve la lista de estudiantes guardada en JSON."""
-    if not ARCHIVO_ESTUDIANTES.exists():
+    try:
+        with open(ARCHIVO_ESTUDIANTES, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+    except FileNotFoundError:
+        try:
+            guardar_estudiantes([])
+        except OSError:
+            pass
+        return []
+    except OSError:
         return []
 
-    with ARCHIVO_ESTUDIANTES.open("r", encoding="utf-8") as archivo:
-        return json.load(archivo)
+    if not contenido:
+        return []
+
+    try:
+        estudiantes = json.loads(contenido)
+        if isinstance(estudiantes, list):
+            return estudiantes
+    except (json.JSONDecodeError, OSError):
+        pass
+
+    return []
 
 
 def guardar_estudiantes(estudiantes):
     """Guarda la lista de estudiantes en el archivo JSON."""
-    with ARCHIVO_ESTUDIANTES.open("w", encoding="utf-8") as archivo:
-        json.dump(estudiantes, archivo, ensure_ascii=False, indent=2)
+    with open(ARCHIVO_ESTUDIANTES, "w", encoding="utf-8") as archivo:
+        json.dump(estudiantes, archivo, ensure_ascii=False, indent=4)
 
 
 def generar_codigo_estudiante():
