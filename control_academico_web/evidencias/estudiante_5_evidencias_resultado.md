@@ -12,6 +12,7 @@
 | 1 | Preparar estructura de prompts y evidencias | Se revisaron los archivos existentes y se actualizó la estructura | Ninguno | prompts/estudiante_5_prompts.md, evidencias/estudiante_5_evidencias_resultado.md | Estructura lista para registrar avances |
 | 2 | Crear base de matriculas y reportes | Se crearon 7 archivos base con funciones borrador | Ninguno | data/matriculas.json, core/matriculas.py, core/reportes.py, web/matriculas.html, web/reportes.html, static/matriculas.js, static/reportes.js | Archivos base listos para desarrollar funciones completas |
 | 3 | Agregar lectura y guardado de matriculas | Se implementaron cargar_matriculas() y guardar_matriculas() con manejo robusto de archivos | Ninguno | core/matriculas.py | Funciones listas siguiendo el patrón de estudiantes.py |
+| 4 | Agregar validaciones de matriculas | Se implementaron 4 validaciones consultando JSON de otros módulos | Ninguno | core/matriculas.py | Validaciones listas: estudiante, materia, periodo y duplicados |
 
 ## Conversación o resumen de interacción con IA
 
@@ -39,3 +40,12 @@
 - Se implementó guardar_matriculas() que crea la carpeta data/ si no existe y guarda con indent=4.
 - Se usaron solo json y os (librerías estándar).
 - El patrón sigue el mismo estilo de estudiantes.py.
+
+### Actividad 4: Agregar validaciones de matriculas
+
+- Se implementó validar_estudiante_para_matricula(): lee estudiantes.json, verifica existencia y estado activo.
+- Se implementó validar_materia_para_matricula(): lee materias.json, verifica existencia y estado activo.
+- Se implementó validar_periodo_para_matricula(): lee periodos.json, verifica existencia y estado activo.
+- Se implementó matricula_existe(): verifica si ya existe una matrícula con los mismos datos.
+- Todas las funciones consultan directamente los archivos JSON sin modificar los módulos de otros integrantes.
+- Las funciones devuelven diccionarios con resultado y mensaje claro.

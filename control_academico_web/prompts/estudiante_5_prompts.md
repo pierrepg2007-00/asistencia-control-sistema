@@ -214,3 +214,14 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+---
+
+### Prompt 4 - Agregar validaciones de matriculas
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Matrículas
+**Objetivo:** Implementar validaciones de estudiante, materia, periodo y duplicados
+
+```text
+[Prompt 4 registrado - validaciones de matriculas]
+```

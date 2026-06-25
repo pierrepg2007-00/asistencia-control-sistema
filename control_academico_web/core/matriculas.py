@@ -48,21 +48,107 @@ def guardar_matriculas(matriculas):
 
 def validar_estudiante_para_matricula(codigo_estudiante):
     """Verifica que el estudiante exista y este activo."""
-    return {"resultado": False, "mensaje": "Funcion pendiente de desarrollo."}
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+
+    if not codigo_estudiante:
+        return {"resultado": False, "mensaje": "El codigo del estudiante no puede estar vacio."}
+
+    try:
+        with open(ARCHIVO_ESTUDIANTES, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+    except (FileNotFoundError, OSError):
+        return {"resultado": False, "mensaje": "No se pudo leer el archivo de estudiantes."}
+
+    if not contenido:
+        return {"resultado": False, "mensaje": "No hay estudiantes registrados."}
+
+    try:
+        estudiantes = json.loads(contenido)
+    except (json.JSONDecodeError, OSError):
+        return {"resultado": False, "mensaje": "Error al leer los datos de estudiantes."}
+
+    for estudiante in estudiantes:
+        if estudiante.get("codigo") == codigo_estudiante:
+            if estudiante.get("estado") == "activo":
+                return {"resultado": True, "mensaje": "Estudiante apto para matricula."}
+            else:
+                return {"resultado": False, "mensaje": "El estudiante no esta activo."}
+
+    return {"resultado": False, "mensaje": "El estudiante no existe."}
 
 
 def validar_materia_para_matricula(codigo_materia):
     """Verifica que la materia exista y este activa."""
-    return {"resultado": False, "mensaje": "Funcion pendiente de desarrollo."}
+    codigo_materia = (codigo_materia or "").strip().upper()
+
+    if not codigo_materia:
+        return {"resultado": False, "mensaje": "El codigo de la materia no puede estar vacio."}
+
+    try:
+        with open(ARCHIVO_MATERIAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+    except (FileNotFoundError, OSError):
+        return {"resultado": False, "mensaje": "No se pudo leer el archivo de materias."}
+
+    if not contenido:
+        return {"resultado": False, "mensaje": "No hay materias registradas."}
+
+    try:
+        materias = json.loads(contenido)
+    except (json.JSONDecodeError, OSError):
+        return {"resultado": False, "mensaje": "Error al leer los datos de materias."}
+
+    for materia in materias:
+        if materia.get("codigo_materia") == codigo_materia:
+            if materia.get("estado") == "activo":
+                return {"resultado": True, "mensaje": "Materia apta para matricula."}
+            else:
+                return {"resultado": False, "mensaje": "La materia no esta activa."}
+
+    return {"resultado": False, "mensaje": "La materia no existe."}
 
 
 def validar_periodo_para_matricula(codigo_periodo):
     """Verifica que el periodo exista y este activo."""
-    return {"resultado": False, "mensaje": "Funcion pendiente de desarrollo."}
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+
+    if not codigo_periodo:
+        return {"resultado": False, "mensaje": "El codigo del periodo no puede estar vacio."}
+
+    try:
+        with open(ARCHIVO_PERIODOS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+    except (FileNotFoundError, OSError):
+        return {"resultado": False, "mensaje": "No se pudo leer el archivo de periodos."}
+
+    if not contenido:
+        return {"resultado": False, "mensaje": "No hay periodos registrados."}
+
+    try:
+        periodos = json.loads(contenido)
+    except (json.JSONDecodeError, OSError):
+        return {"resultado": False, "mensaje": "Error al leer los datos de periodos."}
+
+    for periodo in periodos:
+        if periodo.get("codigo_periodo") == codigo_periodo:
+            if periodo.get("estado") == "activo":
+                return {"resultado": True, "mensaje": "Periodo apto para matricula."}
+            else:
+                return {"resultado": False, "mensaje": "El periodo no esta activo."}
+
+    return {"resultado": False, "mensaje": "El periodo no existe."}
 
 
 def matricula_existe(codigo_estudiante, codigo_materia, codigo_periodo):
     """Verifica si ya existe una matricula con esos datos."""
+    matriculas = cargar_matriculas()
+
+    for matricula in matriculas:
+        if (matricula.get("codigo_estudiante") == codigo_estudiante
+                and matricula.get("codigo_materia") == codigo_materia
+                and matricula.get("codigo_periodo") == codigo_periodo):
+            return True
+
     return False
 
 
