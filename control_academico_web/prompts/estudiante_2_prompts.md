@@ -403,3 +403,68 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 7 - Buscar y actualizar materias
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** desarrollar búsqueda y actualización segura de materias  
+
+```text
+Continúa con el módulo materias y periodos.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+
+Desarrolla en core/materias.py estas funciones:
+
+- buscar_materia(codigo_materia)
+- actualizar_materia(codigo_materia, nuevos_datos)
+
+buscar_materia(codigo_materia):
+- debe buscar una materia por su código
+- si la encuentra, debe devolver sus datos
+- si no existe, debe devolver un mensaje claro
+
+actualizar_materia(codigo_materia, nuevos_datos):
+- debe buscar la materia por su código
+- debe permitir actualizar solo:
+  - nombre_materia
+  - docente
+  - ciclo
+  - estado
+
+No debe permitir modificar:
+- codigo_materia
+
+Validaciones:
+- la materia debe existir
+- nombre_materia no debe quedar vacío
+- docente no debe quedar vacío
+- ciclo debe ser un número entero mayor que cero
+- estado solo puede ser activo o inactivo
+
+Después de actualizar, debe guardar los cambios en data/materias.json.
+
+La función debe devolver:
+- resultado
+- mensaje
+- materia actualizada, si corresponde
+
+No modifiques otros módulos.
+Mantén el código simple y fácil de defender.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué campos permite modificar
+- qué campos protege
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

@@ -122,13 +122,90 @@ def listar_materias():
 
 
 def buscar_materia(codigo_materia):
-    """Busca una materia por código. Pendiente de completar."""
-    pass
+    """Busca una materia por su código."""
+    codigo_materia = (codigo_materia or "").strip().upper()
+
+    for materia in cargar_materias():
+        if materia.get("codigo_materia") == codigo_materia:
+            return {
+                "resultado": True,
+                "mensaje": "Materia encontrada.",
+                "datos": materia,
+            }
+
+    return {
+        "resultado": False,
+        "mensaje": "No existe una materia con ese código.",
+        "datos": None,
+    }
 
 
 def actualizar_materia(codigo_materia, nuevos_datos):
-    """Actualiza una materia. Pendiente de completar."""
-    pass
+    """Actualiza datos permitidos de una materia."""
+    codigo_materia = (codigo_materia or "").strip().upper()
+    nuevos_datos = nuevos_datos or {}
+    materias = cargar_materias()
+
+    for materia in materias:
+        if materia.get("codigo_materia") == codigo_materia:
+            nombre_materia = nuevos_datos.get(
+                "nombre_materia",
+                materia.get("nombre_materia", ""),
+            )
+            docente = nuevos_datos.get("docente", materia.get("docente", ""))
+            ciclo = nuevos_datos.get("ciclo", materia.get("ciclo", ""))
+            estado = nuevos_datos.get("estado", materia.get("estado", ""))
+
+            nombre_materia = (nombre_materia or "").strip()
+            docente = (docente or "").strip()
+            estado = (estado or "").strip().lower()
+
+            if not nombre_materia:
+                return {
+                    "resultado": False,
+                    "mensaje": "El nombre de la materia no puede quedar vacío.",
+                    "datos": None,
+                }
+
+            if not docente:
+                return {
+                    "resultado": False,
+                    "mensaje": "El docente no puede quedar vacío.",
+                    "datos": None,
+                }
+
+            if not validar_ciclo(ciclo):
+                return {
+                    "resultado": False,
+                    "mensaje": "El ciclo debe ser un número entero mayor que cero.",
+                    "datos": None,
+                }
+
+            if not validar_estado_materia(estado):
+                return {
+                    "resultado": False,
+                    "mensaje": "El estado debe ser activo o inactivo.",
+                    "datos": None,
+                }
+
+            materia["nombre_materia"] = nombre_materia
+            materia["docente"] = docente
+            materia["ciclo"] = int(ciclo)
+            materia["estado"] = estado
+
+            guardar_materias(materias)
+
+            return {
+                "resultado": True,
+                "mensaje": "Materia actualizada correctamente.",
+                "datos": materia,
+            }
+
+    return {
+        "resultado": False,
+        "mensaje": "No existe una materia con ese código.",
+        "datos": None,
+    }
 
 
 def validar_ciclo(ciclo):
