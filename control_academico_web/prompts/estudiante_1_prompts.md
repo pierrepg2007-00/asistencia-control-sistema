@@ -266,3 +266,61 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 7 - Registrar estudiantes con validaciones
+
+**Estudiante asociado:** Integrante 1  
+**Módulo trabajado:** Estudiantes  
+**Objetivo:** desarrollar el registro de estudiantes aplicando validaciones básicas  
+
+```text
+Continúa con el módulo estudiantes.
+
+Este trabajo corresponde al Integrante 1.
+Módulo principal: Estudiantes.
+
+Desarrolla la función registrar_estudiante(nombres, apellidos, dni, correo, estado) en core/estudiantes.py.
+
+La función debe:
+
+- generar automáticamente el código del estudiante
+- validar que nombres no esté vacío
+- validar que apellidos no esté vacío
+- validar que el DNI tenga 8 dígitos
+- validar que el DNI no esté repetido
+- validar el correo de forma básica
+- validar que el estado sea activo o inactivo
+- guardar el estudiante en data/estudiantes.json
+- devolver un diccionario con resultado, mensaje y datos del estudiante registrado
+
+El estudiante debe guardarse con esta estructura:
+
+{
+  "codigo": "EST001",
+  "nombres": "Juan",
+  "apellidos": "Pérez",
+  "dni": "12345678",
+  "correo": "juan@gmail.com",
+  "estado": "activo"
+}
+
+Si hay error, la función debe devolver un mensaje claro y no guardar datos.
+
+No uses clases.
+No uses código avanzado.
+Usa las funciones ya existentes en el módulo.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_1_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_1_evidencias_resultado.md
+
+Indicando:
+- qué función se desarrolló
+- qué validaciones se aplicaron
+- qué archivo fue modificado
+- cómo se guarda un estudiante
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

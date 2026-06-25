@@ -27,3 +27,11 @@
 - La función revisa los códigos ya guardados y evita repetirlos.
 - Se ajustó la ruta del archivo JSON para que apunte a `control_academico_web/data/estudiantes.json`.
 - Archivo modificado: `core/estudiantes.py`.
+
+## Registro de estudiantes
+
+- Se desarrolló `registrar_estudiante(nombres, apellidos, dni, correo, estado)`.
+- Se validan nombres, apellidos, DNI, DNI repetido, correo y estado.
+- El estudiante se guarda con código, nombres, apellidos, DNI, correo y estado.
+- La función devuelve resultado, mensaje y datos del estudiante registrado.
+- Archivo modificado: `core/estudiantes.py`.

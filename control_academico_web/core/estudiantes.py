@@ -63,8 +63,74 @@ def generar_codigo_estudiante():
 
 
 def registrar_estudiante(nombres, apellidos, dni, correo, estado):
-    """Registra un estudiante. La lógica detallada se completará después."""
-    pass
+    """Registra un estudiante nuevo con validaciones básicas."""
+    nombres = (nombres or "").strip()
+    apellidos = (apellidos or "").strip()
+    dni = (dni or "").strip()
+    correo = (correo or "").strip()
+    estado = (estado or "").strip().lower()
+
+    if not nombres:
+        return {
+            "resultado": False,
+            "mensaje": "Los nombres no pueden estar vacíos.",
+            "datos": None,
+        }
+
+    if not apellidos:
+        return {
+            "resultado": False,
+            "mensaje": "Los apellidos no pueden estar vacíos.",
+            "datos": None,
+        }
+
+    if not validar_dni(dni):
+        return {
+            "resultado": False,
+            "mensaje": "El DNI debe tener exactamente 8 dígitos.",
+            "datos": None,
+        }
+
+    if dni_repetido(dni):
+        return {
+            "resultado": False,
+            "mensaje": "El DNI ya está registrado.",
+            "datos": None,
+        }
+
+    if not validar_correo(correo):
+        return {
+            "resultado": False,
+            "mensaje": "El correo no tiene un formato válido.",
+            "datos": None,
+        }
+
+    if estado not in ["activo", "inactivo"]:
+        return {
+            "resultado": False,
+            "mensaje": "El estado debe ser activo o inactivo.",
+            "datos": None,
+        }
+
+    estudiantes = cargar_estudiantes()
+
+    estudiante = {
+        "codigo": generar_codigo_estudiante(),
+        "nombres": nombres,
+        "apellidos": apellidos,
+        "dni": dni,
+        "correo": correo,
+        "estado": estado,
+    }
+
+    estudiantes.append(estudiante)
+    guardar_estudiantes(estudiantes)
+
+    return {
+        "resultado": True,
+        "mensaje": "Estudiante registrado correctamente.",
+        "datos": estudiante,
+    }
 
 
 def listar_estudiantes():
