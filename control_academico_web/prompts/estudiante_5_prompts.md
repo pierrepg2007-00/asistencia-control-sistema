@@ -355,3 +355,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 17 registrado - crear pagina principal]
 ```
+
+
+### Prompt 18 - Agregar servidor web simple
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Integración
+**Objetivo:** Crear server.py para servir el sistema en localhost
+
+```text
+[Prompt 18 registrado - agregar servidor web]
+```
