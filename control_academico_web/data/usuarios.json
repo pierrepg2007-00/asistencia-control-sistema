@@ -1,0 +1,10 @@
+[
+    {
+        "usuario": "admin",
+        "nombre": "Administrador",
+        "password_hash": "5157147be1f6c87d0c2d74ac7ecefa9b328225faef93481f4cb0b2cf195e6fdf",
+        "salt": "8d69cc1413c1e7c761bae9736575eb72",
+        "rol": "administrador",
+        "estado": "activo"
+    }
+]

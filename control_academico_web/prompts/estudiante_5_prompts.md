@@ -768,3 +768,488 @@ Primero deja el repositorio limpio y confirma qué archivos fueron modificados.
 ```text
 [Prompt 21 registrado - revisar entrega final]
 ```
+
+---
+
+### Prompt de mejora - Login, rutas protegidas y rediseño visual
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Integración / Seguridad / Interfaz
+**Objetivo:** Agregar login real con hash, proteger rutas, agregar logout, rediseñar la interfaz y documentar evidencias
+
+```text
+Necesito agregar autenticación al proyecto control_academico_web y cambiar la parte visual del sistema.
+
+Esta tarea debe ser realizada por el usuario/integrante que tenga menos commits en el repositorio.
+
+Primero revisa el historial de commits con:
+
+git shortlog -sn --all
+git log --format='%an <%ae>' | sort | uniq -c | sort -n
+
+Identifica cuál integrante o usuario tiene menos commits.
+
+IMPORTANTE:
+- No borres archivos existentes.
+- No reemplaces módulos completos si solo necesitas corregir algo.
+- No modifiques users-tokens.txt.
+- No subas users-tokens.txt.
+- No muestres tokens en pantalla.
+- No rompas los módulos ya desarrollados.
+- Mantén el proyecto con Python, HTML, CSS, JavaScript básico y JSON.
+- No uses frameworks.
+- El código debe ser entendible para estudiantes principiantes.
+
+La tarea consiste en:
+
+1. Crear login con usuarios guardados en JSON.
+2. Guardar las contraseñas usando hash.
+3. Proteger las rutas del sistema.
+4. Cambiar el diseño visual para que no se parezca al diseño anterior.
+5. Registrar prompts y evidencias del integrante que tenga menos commits.
+6. Hacer un commit final.
+
+------------------------------------------------------------
+1. IDENTIFICAR AL INTEGRANTE CON MENOS COMMITS
+------------------------------------------------------------
+
+Después de revisar los commits, identifica el integrante con menos commits.
+
+Luego usa sus archivos de prompts y evidencias:
+
+Si es Integrante 1:
+- prompts/estudiante_1_prompts.md
+- evidencias/estudiante_1_evidencias_resultado.md
+
+Si es Integrante 2:
+- prompts/estudiante_2_prompts.md
+- evidencias/estudiante_2_evidencias_resultado.md
+
+Si es Integrante 3:
+- prompts/estudiante_3_prompts.md
+- evidencias/estudiante_3_evidencias_resultado.md
+
+Si es Integrante 4:
+- prompts/estudiante_4_prompts.md
+- evidencias/estudiante_4_evidencias_resultado.md
+
+Si es Integrante 5:
+- prompts/estudiante_5_prompts.md
+- evidencias/estudiante_5_evidencias_resultado.md
+
+No inventes otro archivo de evidencia.
+
+------------------------------------------------------------
+2. CREAR ARCHIVO JSON DE USUARIOS
+------------------------------------------------------------
+
+Crea el archivo:
+
+data/usuarios.json
+
+Este archivo debe guardar usuarios del sistema.
+
+No guardes contraseñas en texto plano.
+
+Debe tener una estructura parecida a esta:
+
+[
+  {
+    "usuario": "admin",
+    "nombre": "Administrador",
+    "password_hash": "...",
+    "salt": "...",
+    "rol": "administrador",
+    "estado": "activo"
+  }
+]
+
+Crea un usuario inicial:
+
+usuario: admin
+contraseña inicial: admin123
+nombre: Administrador
+rol: administrador
+estado: activo
+
+La contraseña admin123 debe guardarse con hash, no como texto plano.
+
+Usa hashlib de Python.
+
+Preferencia:
+Usa hashlib.pbkdf2_hmac con salt.
+
+Si eso se complica, usa hashlib.sha256 con salt, pero explica en comentarios que es una implementación académica básica.
+
+------------------------------------------------------------
+3. CREAR MÓDULO DE AUTENTICACIÓN
+------------------------------------------------------------
+
+Crea el archivo:
+
+core/auth.py
+
+Debe tener funciones simples:
+
+- cargar_usuarios()
+- guardar_usuarios(usuarios)
+- generar_salt()
+- generar_hash_password(password, salt)
+- verificar_password(password, salt, password_hash)
+- buscar_usuario(usuario)
+- autenticar_usuario(usuario, password)
+- crear_usuario(usuario, nombre, password, rol="usuario", estado="activo")
+
+Reglas:
+
+cargar_usuarios():
+- debe leer data/usuarios.json
+- si no existe, debe crearlo con el usuario admin por defecto
+- si está vacío, debe crear el usuario admin por defecto
+
+generar_salt():
+- debe generar un salt seguro usando librerías estándar
+
+generar_hash_password():
+- debe generar el hash de la contraseña usando salt
+
+verificar_password():
+- debe comparar la contraseña ingresada con el hash guardado
+
+autenticar_usuario():
+- debe verificar que el usuario exista
+- debe verificar que el estado sea activo
+- debe validar la contraseña usando hash
+- debe devolver un diccionario con resultado, mensaje y datos básicos del usuario sin mostrar password_hash ni salt
+
+crear_usuario():
+- debe permitir crear un usuario nuevo
+- debe evitar usuarios repetidos
+- debe guardar password_hash y salt
+- no debe guardar password en texto plano
+
+No uses clases.
+No uses base de datos.
+No uses frameworks.
+
+------------------------------------------------------------
+4. CREAR PÁGINA DE LOGIN
+------------------------------------------------------------
+
+Crea la página:
+
+web/login.html
+
+Debe tener:
+
+- título del sistema
+- formulario de inicio de sesión
+- campo usuario
+- campo contraseña
+- botón Ingresar
+- zona para mensajes de error
+- texto breve indicando que es un sistema académico
+
+Debe usar el CSS general del proyecto.
+
+No debe tener la misma apariencia que las páginas antiguas.
+Debe verse como una pantalla de acceso moderna, simple y limpia.
+
+También crea o actualiza:
+
+static/login.js
+
+Debe tener funciones:
+
+- obtenerDatosLogin()
+- validarLogin(datos)
+- mostrarMensajeLogin(mensaje, tipo)
+- iniciarSesion()
+
+La función iniciarSesion() debe enviar usuario y contraseña a server.py usando fetch.
+
+------------------------------------------------------------
+5. MODIFICAR SERVER.PY PARA LOGIN Y SESIONES
+------------------------------------------------------------
+
+Actualiza server.py para manejar autenticación básica.
+
+Debe permitir estas rutas públicas:
+
+- /login
+- /api/login
+- /static/...
+- archivos CSS y JS necesarios para login
+
+Debe proteger estas rutas:
+
+- /
+- /index
+- /estudiantes
+- /materias
+- /matriculas
+- /notas
+- /asistencia
+- /reportes
+
+Si el usuario no está logueado, debe redirigir a:
+
+/login
+
+Agrega rutas API:
+
+POST /api/login
+- recibe usuario y password en JSON
+- llama a core/auth.py
+- si las credenciales son correctas, crea una sesión
+- devuelve respuesta JSON positiva
+- guarda una cookie de sesión
+
+POST /api/logout
+- elimina la sesión del usuario
+- borra o invalida la cookie
+- devuelve respuesta JSON positiva
+
+GET /api/session
+- indica si el usuario está logueado
+- devuelve datos básicos del usuario si hay sesión activa
+
+Implementa sesiones simples usando cookies.
+
+Puedes usar:
+- http.cookies
+- uuid
+- json
+- urllib.parse si hace falta
+
+Puedes mantener sesiones en memoria con un diccionario simple en server.py.
+
+Ejemplo conceptual:
+
+SESIONES = {
+  "session_id": {
+    "usuario": "admin",
+    "nombre": "Administrador",
+    "rol": "administrador"
+  }
+}
+
+No muestres password_hash ni salt en respuestas al navegador.
+
+------------------------------------------------------------
+6. AGREGAR BOTÓN DE CERRAR SESIÓN
+------------------------------------------------------------
+
+Agrega en todas las páginas internas una barra superior con:
+
+- nombre del sistema
+- enlaces de navegación
+- botón Cerrar sesión
+
+El botón Cerrar sesión debe llamar a /api/logout usando fetch y luego redirigir a /login.
+
+Debe estar en:
+
+- index.html
+- estudiantes.html
+- materias.html
+- matriculas.html
+- notas.html
+- asistencia.html
+- reportes.html
+
+No debe aparecer en login.html.
+
+------------------------------------------------------------
+7. PROTEGER TAMBIÉN DESDE JAVASCRIPT
+------------------------------------------------------------
+
+Crea o actualiza una función general en static/app.js o en cada JS si no existe app.js:
+
+- verificarSesion()
+- cerrarSesion()
+
+verificarSesion():
+- debe consultar /api/session
+- si no hay sesión, debe redirigir a /login
+
+cerrarSesion():
+- debe llamar /api/logout
+- luego redirigir a /login
+
+Incluye verificarSesion() al cargar cada página interna.
+
+Esto no reemplaza la protección en server.py, solo la refuerza visualmente.
+
+------------------------------------------------------------
+8. CAMBIAR EL DISEÑO VISUAL DEL SISTEMA
+------------------------------------------------------------
+
+La parte visual actual se parece mucho a otro proyecto anterior, así que debes cambiarla.
+
+Actualiza static/styles.css con un diseño diferente.
+
+Nuevo estilo recomendado:
+
+- diseño académico tipo panel administrativo
+- barra lateral o barra superior más marcada
+- colores diferentes al diseño anterior
+- tarjetas con bordes suaves
+- formularios más ordenados
+- tablas más limpias
+- botones con estilos diferenciados
+- mensajes de éxito y error más visibles
+- mejor separación entre secciones
+
+No uses librerías externas.
+No uses Bootstrap.
+No uses frameworks.
+
+La interfaz debe verse distinta, pero seguir siendo simple y entendible.
+
+Aplica el nuevo diseño a:
+
+- login.html
+- index.html
+- estudiantes.html
+- materias.html
+- matriculas.html
+- notas.html
+- asistencia.html
+- reportes.html
+
+------------------------------------------------------------
+9. REORGANIZAR VISUALMENTE PÁGINAS CON FUNCIONES COMPARTIDAS
+------------------------------------------------------------
+
+Revisa especialmente estas páginas:
+
+- materias.html
+- matriculas.html
+- notas.html
+- asistencia.html
+- reportes.html
+
+Deben tener secciones separadas con títulos claros.
+
+materias.html:
+- sección Materias
+- sección Periodos
+
+matriculas.html:
+- sección Registrar matrícula
+- sección Consultar matrículas
+- sección Cambiar estado
+
+notas.html:
+- sección Registrar notas
+- sección Consultar notas
+- sección Actualizar notas
+
+asistencia.html:
+- sección Registrar asistencia
+- sección Consultar asistencia
+- sección Indicadores de asistencia
+
+reportes.html:
+- sección Reportes académicos
+- sección Estudiantes en riesgo
+- sección Exportar reporte
+
+Cada acción debe tener su propio botón claro.
+No mezcles varias acciones en un solo botón.
+
+------------------------------------------------------------
+10. VERIFICAR FUNCIONAMIENTO
+------------------------------------------------------------
+
+Realiza pruebas manuales:
+
+1. Abrir http://localhost:8000
+Resultado esperado:
+- redirige a /login si no hay sesión.
+
+2. Ingresar con:
+usuario: admin
+contraseña: admin123
+
+Resultado esperado:
+- ingresa al sistema.
+
+3. Intentar entrar a /estudiantes sin login.
+Resultado esperado:
+- redirige a /login.
+
+4. Ingresar con contraseña incorrecta.
+Resultado esperado:
+- muestra error y no ingresa.
+
+5. Cerrar sesión.
+Resultado esperado:
+- vuelve a /login y no permite entrar a rutas internas.
+
+6. Guardar un estudiante.
+Resultado esperado:
+- se guarda en data/estudiantes.json.
+
+7. Guardar materia, periodo, matrícula, nota y asistencia.
+Resultado esperado:
+- se guardan en sus JSON correspondientes.
+
+8. Revisar que el diseño visual cambió y no se parece al anterior.
+
+------------------------------------------------------------
+11. ACTUALIZAR EVIDENCIAS
+------------------------------------------------------------
+
+Actualiza el archivo de prompts del integrante con menos commits.
+
+Agrega este prompt completo con este título:
+
+### Prompt de mejora - Login, rutas protegidas y rediseño visual
+
+También actualiza su archivo de evidencias indicando:
+
+- qué integrante realizó la mejora
+- qué archivos se crearon
+- qué archivos se modificaron
+- cómo se implementó el hash de contraseña
+- cómo se protegieron las rutas
+- cómo funciona el login
+- cómo funciona el logout
+- qué cambios visuales se hicieron
+- qué pruebas manuales se realizaron
+
+También actualiza:
+
+evidencias/casos_prueba_generales.md
+
+Agrega casos de prueba sobre:
+
+- login correcto
+- login incorrecto
+- ruta protegida sin sesión
+- cierre de sesión
+- persistencia de datos en JSON
+- cambio visual del sistema
+
+------------------------------------------------------------
+12. COMMIT
+------------------------------------------------------------
+
+Antes de hacer commit, revisa:
+
+git status
+
+Asegúrate de no agregar:
+
+users-tokens.txt
+
+Luego haz commit con este mensaje:
+
+git add .
+git reset users-tokens.txt
+git commit -m "feat: agregar login rutas protegidas y rediseño visual"
+
+No hagas push todavía.
+Primero confirma qué archivos fueron modificados y que el repositorio quedó sin archivos sensibles agregados.
+```

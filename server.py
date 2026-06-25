@@ -5,10 +5,13 @@
 import json
 import mimetypes
 import os
+import uuid
+from http import cookies
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 
 from control_academico_web.core import asistencia
+from control_academico_web.core import auth
 from control_academico_web.core import estudiantes
 from control_academico_web.core import materias
 from control_academico_web.core import matriculas
@@ -21,6 +24,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WEB_DIR = os.path.join(BASE_DIR, "control_academico_web", "web")
 STATIC_DIR = os.path.join(BASE_DIR, "control_academico_web", "static")
 PUERTO = 8000
+SESIONES = {}
+NOMBRE_COOKIE_SESION = "control_academico_session"
 
 PAGINAS = {
     "/": "index.html",
@@ -33,6 +38,9 @@ PAGINAS = {
     "/reportes": "reportes.html",
 }
 
+RUTAS_PUBLICAS_GET = ["/login"]
+RUTAS_PUBLICAS_POST = ["/api/login", "/api/logout"]
+
 
 def respuesta_ok(datos=None, mensaje="Operacion realizada correctamente."):
     return {"resultado": True, "mensaje": mensaje, "datos": datos}
@@ -42,7 +50,25 @@ class ManejadorControlAcademico(BaseHTTPRequestHandler):
     def do_GET(self):
         ruta = urlparse(self.path).path
 
+        if ruta == "/login":
+            if self.obtener_usuario_sesion():
+                self.redirigir("/")
+                return
+            self.enviar_archivo(os.path.join(WEB_DIR, "login.html"))
+            return
+
+        if ruta == "/api/session":
+            usuario_sesion = self.obtener_usuario_sesion()
+            if usuario_sesion:
+                self.enviar_json(respuesta_ok(usuario_sesion, "Sesion activa."))
+            else:
+                self.enviar_json({"resultado": False, "mensaje": "No hay sesion activa.", "datos": None}, 401)
+            return
+
         if ruta in PAGINAS:
+            if not self.obtener_usuario_sesion():
+                self.redirigir("/login")
+                return
             self.enviar_archivo(os.path.join(WEB_DIR, PAGINAS[ruta]))
             return
 
@@ -63,6 +89,32 @@ class ManejadorControlAcademico(BaseHTTPRequestHandler):
         datos = self.leer_json()
 
         try:
+            if ruta == "/api/login":
+                respuesta = auth.autenticar_usuario(datos.get("usuario"), datos.get("password"))
+                encabezados = {}
+
+                if respuesta.get("resultado"):
+                    session_id = str(uuid.uuid4())
+                    SESIONES[session_id] = respuesta.get("datos")
+                    encabezados["Set-Cookie"] = self.crear_cookie_sesion(session_id)
+
+                self.enviar_json(respuesta, encabezados=encabezados)
+                return
+
+            if ruta == "/api/logout":
+                session_id = self.obtener_session_id()
+                if session_id in SESIONES:
+                    del SESIONES[session_id]
+                self.enviar_json(
+                    respuesta_ok(None, "Sesion cerrada correctamente."),
+                    encabezados={"Set-Cookie": self.crear_cookie_sesion("", expirar=True)},
+                )
+                return
+
+            if ruta not in RUTAS_PUBLICAS_POST and not self.obtener_usuario_sesion():
+                self.enviar_json({"resultado": False, "mensaje": "Sesion no iniciada.", "datos": None}, 401)
+                return
+
             respuesta = self.procesar_api(ruta, datos)
             self.enviar_json(respuesta)
         except Exception as error:
@@ -86,13 +138,54 @@ class ManejadorControlAcademico(BaseHTTPRequestHandler):
 
         return {}
 
-    def enviar_json(self, datos, estado=200):
+    def enviar_json(self, datos, estado=200, encabezados=None):
         contenido = json.dumps(datos, ensure_ascii=False).encode("utf-8")
         self.send_response(estado)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(contenido)))
+        for nombre, valor in (encabezados or {}).items():
+            self.send_header(nombre, valor)
         self.end_headers()
         self.wfile.write(contenido)
+
+    def redirigir(self, ruta):
+        self.send_response(302)
+        self.send_header("Location", ruta)
+        self.end_headers()
+
+    def obtener_session_id(self):
+        encabezado_cookie = self.headers.get("Cookie", "")
+        if not encabezado_cookie:
+            return ""
+
+        cookie = cookies.SimpleCookie()
+        try:
+            cookie.load(encabezado_cookie)
+        except cookies.CookieError:
+            return ""
+
+        if NOMBRE_COOKIE_SESION not in cookie:
+            return ""
+
+        return cookie[NOMBRE_COOKIE_SESION].value
+
+    def obtener_usuario_sesion(self):
+        session_id = self.obtener_session_id()
+        if not session_id:
+            return None
+        return SESIONES.get(session_id)
+
+    def crear_cookie_sesion(self, session_id, expirar=False):
+        cookie = cookies.SimpleCookie()
+        cookie[NOMBRE_COOKIE_SESION] = session_id
+        cookie[NOMBRE_COOKIE_SESION]["path"] = "/"
+        cookie[NOMBRE_COOKIE_SESION]["httponly"] = True
+        cookie[NOMBRE_COOKIE_SESION]["samesite"] = "Lax"
+
+        if expirar:
+            cookie[NOMBRE_COOKIE_SESION]["max-age"] = 0
+
+        return cookie.output(header="").strip()
 
     def enviar_archivo(self, ruta_archivo):
         if not os.path.isfile(ruta_archivo):

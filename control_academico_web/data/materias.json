@@ -5,5 +5,12 @@
         "docente": "Docente Prueba",
         "ciclo": 1,
         "estado": "activo"
+    },
+    {
+        "codigo_materia": "MAT002",
+        "nombre_materia": "Seguridad Web",
+        "docente": "Docente Login",
+        "ciclo": 2,
+        "estado": "activo"
     }
 ]

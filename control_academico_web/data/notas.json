@@ -8,5 +8,15 @@
         "nota3": 16.0,
         "promedio": 15.0,
         "estado_final": "aprobado"
+    },
+    {
+        "codigo_estudiante": "EST003",
+        "codigo_materia": "MAT002",
+        "codigo_periodo": "2026-LOGIN",
+        "nota1": 13.0,
+        "nota2": 14.0,
+        "nota3": 15.0,
+        "promedio": 14.0,
+        "estado_final": "aprobado"
     }
 ]

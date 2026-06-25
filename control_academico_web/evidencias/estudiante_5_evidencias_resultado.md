@@ -31,6 +31,7 @@
 | 20 | Documentar pruebas | 30 casos de prueba | Ninguno | evidencias/casos_prueba_matriculas_reportes_integracion.md | Matriculas, reportes e integracion |
 | 21 | Revision final del integrante 5 | Verificacion de archivos y correcciones | Correccion de evidencias | evidencias/estudiante_5_evidencias_resultado.md | Trabajo listo para entrega |
 | 22 | Corregir integracion general | Se corrigieron rutas, navegacion, API JSON, frontend con fetch, interfaz y pruebas | Ninguno | server.py, web/*.html, static/*.js, static/styles.css, core/notas.py, core/asistencia.py, core/reportes.py | Integracion funcional con guardado real en JSON |
+| 23 | Agregar login, rutas protegidas y rediseño visual | Se agrego autenticacion con hash, sesiones por cookie, rutas protegidas, logout y nuevo diseño | Ninguno | server.py, core/auth.py, data/usuarios.json, web/login.html, static/login.js, static/app.js, static/styles.css, web/*.html | Mejora asignada al usuario con menos commits: erivero96 |
 
 ## Conversación o resumen de interacción con IA
 
@@ -209,3 +210,28 @@
   - Se registro una asistencia y se verifico `data/asistencias.json`.
   - Se generaron reportes de estudiantes, notas, asistencia y riesgo.
   - Se exporto un reporte TXT en `reportes_generados/`.
+
+### Actividad 23: Login, rutas protegidas y rediseño visual
+
+- Se reviso el historial con `git shortlog -sn --all` y `git log --format='%an <%ae>' | sort | uniq -c | sort -n`.
+- El usuario con menos commits fue `erivero96`; la mejora se documento en los archivos del Integrante 5.
+- Se creo `data/usuarios.json` con el usuario inicial `admin`, rol administrador y estado activo.
+- Se creo `core/auth.py` con funciones para cargar/guardar usuarios, generar salt, generar hash, verificar password, autenticar y crear usuarios.
+- La contrasena se guarda con `hashlib.pbkdf2_hmac` y salt; no se guarda texto plano.
+- Se creo `web/login.html` y `static/login.js` para el formulario de inicio de sesion.
+- Se actualizo `server.py` para manejar `/login`, `/api/login`, `/api/logout` y `/api/session`.
+- Se implementaron sesiones simples en memoria usando un diccionario y cookie `HttpOnly`.
+- Se protegieron las rutas internas: `/`, `/index`, `/estudiantes`, `/materias`, `/matriculas`, `/notas`, `/asistencia` y `/reportes`.
+- Se creo `static/app.js` con `verificarSesion()` y `cerrarSesion()`.
+- Se agrego boton Cerrar sesion en todas las paginas internas.
+- Se rediseño `static/styles.css` con una apariencia distinta: barra superior oscura, acento dorado, paneles administrativos, botones diferenciados, tablas limpias y login moderno.
+- Se mantuvieron separadas las secciones de materias/periodos, matriculas, notas, asistencia y reportes.
+- Pruebas manuales realizadas:
+  - Abrir `/` sin sesion redirige a `/login`.
+  - Login correcto con `admin` / `admin123` crea sesion.
+  - Login incorrecto muestra error.
+  - Rutas internas responden solo con cookie de sesion.
+  - Logout invalida la sesion y las APIs protegidas responden 401.
+  - Se guardaron estudiante, materia, periodo, matricula, nota y asistencia con sesion iniciada.
+  - Se verifico persistencia en los JSON correspondientes.
+  - Se genero reporte de notas por materia.

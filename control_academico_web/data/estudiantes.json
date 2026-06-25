@@ -6,5 +6,21 @@
         "dni": "12345678",
         "correo": "prueba.integracion@example.com",
         "estado": "activo"
+    },
+    {
+        "codigo": "EST002",
+        "nombres": "ds",
+        "apellidos": "sdd",
+        "dni": "72685420",
+        "correo": "ri@a.com",
+        "estado": "activo"
+    },
+    {
+        "codigo": "EST003",
+        "nombres": "Login",
+        "apellidos": "Prueba",
+        "dni": "87654321",
+        "correo": "login.prueba@example.com",
+        "estado": "activo"
     }
 ]

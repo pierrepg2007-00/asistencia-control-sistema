@@ -5,5 +5,12 @@
         "codigo_periodo": "2026-I",
         "fecha": "2026-06-25",
         "estado_asistencia": "presente"
+    },
+    {
+        "codigo_estudiante": "EST003",
+        "codigo_materia": "MAT002",
+        "codigo_periodo": "2026-LOGIN",
+        "fecha": "2026-06-25",
+        "estado_asistencia": "presente"
     }
 ]

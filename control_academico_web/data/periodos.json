@@ -3,6 +3,12 @@
         "codigo_periodo": "2026-I",
         "anio": 2026,
         "nombre": "Periodo Integracion",
+        "estado": "cerrado"
+    },
+    {
+        "codigo_periodo": "2026-LOGIN",
+        "anio": 2026,
+        "nombre": "Periodo Login",
         "estado": "activo"
     }
 ]

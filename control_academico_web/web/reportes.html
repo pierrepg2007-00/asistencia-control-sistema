@@ -18,6 +18,10 @@
       <a href="/asistencia">Asistencia</a>
       <a href="/reportes">Reportes</a>
     </nav>
+    <div class="sesion-superior">
+      <span id="usuario-sesion"></span>
+      <button type="button" id="btn-cerrar-sesion" class="btn-salida">Cerrar sesion</button>
+    </div>
   </header>
 
   <main class="contenedor">
@@ -43,12 +47,12 @@
     </section>
 
     <section class="panel">
-      <h2>Alertas</h2>
+      <h2>Estudiantes en riesgo</h2>
       <button type="button" id="btn-reporte-riesgo">Estudiantes en riesgo</button>
     </section>
 
     <section class="panel">
-      <h2>Exportacion</h2>
+      <h2>Exportar reporte</h2>
       <label for="nombre-reporte">Nombre del reporte</label>
       <input type="text" id="nombre-reporte" placeholder="Ej: reporte_integracion">
       <button type="button" id="btn-exportar">Exportar reporte TXT</button>
@@ -64,6 +68,7 @@
     </section>
   </main>
 
+  <script src="/static/app.js"></script>
   <script src="/static/reportes.js"></script>
 </body>
 </html>

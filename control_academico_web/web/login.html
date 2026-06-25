@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingreso - Control Academico</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="pagina-login">
+  <main class="login-contenedor">
+    <section class="login-panel">
+      <div class="login-presentacion">
+        <p class="etiqueta-login">Sistema academico</p>
+        <h1>Control Academico Web</h1>
+        <p>Acceso seguro para gestionar estudiantes, materias, matriculas, notas, asistencia y reportes.</p>
+      </div>
+
+      <form id="form-login" class="login-formulario">
+        <h2>Iniciar sesion</h2>
+
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" autocomplete="username" placeholder="admin">
+
+        <label for="password">Contrasena</label>
+        <input type="password" id="password" autocomplete="current-password" placeholder="admin123">
+
+        <button type="submit" id="btn-login">Ingresar</button>
+        <div id="mensaje-login" class="mensaje-login"></div>
+      </form>
+    </section>
+  </main>
+
+  <script src="/static/login.js"></script>
+</body>
+</html>

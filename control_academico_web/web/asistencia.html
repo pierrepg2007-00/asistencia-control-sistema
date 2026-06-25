@@ -18,6 +18,10 @@
       <a href="/asistencia">Asistencia</a>
       <a href="/reportes">Reportes</a>
     </nav>
+    <div class="sesion-superior">
+      <span id="usuario-sesion"></span>
+      <button type="button" id="btn-cerrar-sesion" class="btn-salida">Cerrar sesion</button>
+    </div>
   </header>
 
   <main class="contenedor">
@@ -51,7 +55,7 @@
     </section>
 
     <section class="panel">
-      <h2>Consultas</h2>
+      <h2>Consultar asistencia</h2>
       <div class="grid-formulario">
         <div>
           <label for="filtro-codigo-estudiante">Codigo de estudiante</label>
@@ -78,7 +82,7 @@
     </section>
 
     <section class="panel">
-      <h2>Indicadores</h2>
+      <h2>Indicadores de asistencia</h2>
       <div class="grid-formulario">
         <div>
           <label for="calc-codigo-estudiante">Codigo de estudiante</label>
@@ -118,6 +122,7 @@
     </section>
   </main>
 
+  <script src="/static/app.js"></script>
   <script src="/static/asistencia.js"></script>
 </body>
 </html>
