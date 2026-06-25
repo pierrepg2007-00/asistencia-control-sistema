@@ -165,3 +165,56 @@ Usa este formato:
 Pega aquí este prompt completo.
 ```
 ````
+
+### Prompt 2 - Organizar prompts y evidencias por estudiante
+
+**Estudiante asociado:** Integrante 1  
+**Módulo trabajado:** Estudiantes  
+**Objetivo:** organizar los archivos de prompts y evidencias del equipo  
+
+```text
+Continúa con el proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 1.
+Módulo principal: Estudiantes.
+
+Ahora organiza correctamente los archivos de prompts y evidencias por estudiante.
+
+Dentro de prompts/ deben existir:
+
+- estudiante_1_prompts.md
+- estudiante_2_prompts.md
+- estudiante_3_prompts.md
+- estudiante_4_prompts.md
+- estudiante_5_prompts.md
+
+Cada archivo debe tener una estructura para guardar los prompts usados por ese estudiante.
+
+Dentro de evidencias/ deben existir:
+
+- estudiante_1_evidencias_resultado.md
+- estudiante_2_evidencias_resultado.md
+- estudiante_3_evidencias_resultado.md
+- estudiante_4_evidencias_resultado.md
+- estudiante_5_evidencias_resultado.md
+- matriz_roles.md
+- bitacora_equipo.md
+- casos_prueba_generales.md
+- declaracion_uso_ia.md
+
+No borres contenido existente.
+Si ya hay archivos anteriores como prompts/integrante_1/prompts_utilizados.md, conserva la información y pásala también a prompts/estudiante_1_prompts.md.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_1_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_1_evidencias_resultado.md
+
+Indicando:
+- qué archivos de prompts se crearon
+- qué archivos de evidencias se crearon
+- cómo quedó organizada la evidencia del Integrante 1
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

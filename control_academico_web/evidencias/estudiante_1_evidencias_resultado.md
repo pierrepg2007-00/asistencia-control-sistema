@@ -12,3 +12,10 @@
 - Completar la lógica del módulo estudiantes.
 - Organizar evidencias y prompts por estudiante.
 - Agregar pruebas documentadas del módulo estudiantes.
+
+## Organización de prompts y evidencias
+
+- Se creó la estructura de archivos `prompts/estudiante_1_prompts.md` hasta `prompts/estudiante_5_prompts.md`.
+- Se crearon evidencias por estudiante en la carpeta `evidencias/`.
+- Se agregaron archivos generales de apoyo: `matriz_roles.md`, `bitacora_equipo.md`, `casos_prueba_generales.md` y `declaracion_uso_ia.md`.
+- La evidencia del Integrante 1 queda centralizada en `evidencias/estudiante_1_evidencias_resultado.md`.
