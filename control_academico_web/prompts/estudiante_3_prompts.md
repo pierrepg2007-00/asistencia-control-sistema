@@ -317,3 +317,37 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 7 - Registrar notas con validaciones
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** registrar notas validando matrícula, duplicados y promedio  
+
+```text
+Continúa con el módulo notas.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+
+Desarrolla la función registrar_nota(codigo_estudiante, codigo_materia, codigo_periodo, nota1, nota2, nota3) en core/notas.py.
+
+La función debe validar códigos obligatorios, verificar matrícula, validar notas entre 0 y 20, evitar duplicados, calcular promedio, determinar estado final, guardar en data/notas.json y devolver resultado, mensaje y datos.
+
+No modifiques otros módulos.
+No uses código avanzado.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué función se desarrolló
+- qué validaciones aplica
+- cómo calcula el promedio
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

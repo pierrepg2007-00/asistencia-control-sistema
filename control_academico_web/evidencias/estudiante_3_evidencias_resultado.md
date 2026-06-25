@@ -16,6 +16,7 @@
 | 4 | Agregar validaciones y promedio de notas | Se desarrollaron validación de notas, cálculo de promedio y estado final. | No aplica. | `core/notas.py` | Se validan notas entre 0 y 20. |
 | 5 | Validar matrícula antes de registrar notas | Se creó `verificar_matricula_para_nota()`. | No aplica. | `core/notas.py` | Consulta `data/matriculas.json` y acepta matrículas activas. |
 | 6 | Evitar notas duplicadas por matrícula | Se desarrolló `nota_existe()`. | No aplica. | `core/notas.py` | Evita duplicar notas del mismo estudiante, materia y periodo. |
+| 7 | Registrar notas con validaciones | Se desarrolló `registrar_nota()`. | No aplica. | `core/notas.py` | Valida matrícula, notas, duplicados, promedio y estado final. |
 
 ## Conversación o resumen de interacción con IA
 
@@ -28,3 +29,4 @@
 - Se implementó validación de notas, promedio y estado final.
 - Se agregó validación de matrícula activa antes de registrar notas.
 - Se agregó verificación para evitar notas duplicadas.
+- Se completó el registro de notas con validaciones principales.

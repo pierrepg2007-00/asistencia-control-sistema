@@ -154,8 +154,58 @@ def nota_existe(codigo_estudiante, codigo_materia, codigo_periodo):
 
 
 def registrar_nota(codigo_estudiante, codigo_materia, codigo_periodo, nota1, nota2, nota3):
-    """Registra una nota. Pendiente de completar."""
-    pass
+    """Registra notas de un estudiante matriculado."""
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+
+    if not codigo_estudiante:
+        return {"resultado": False, "mensaje": "El código de estudiante no puede estar vacío.", "datos": None}
+
+    if not codigo_materia:
+        return {"resultado": False, "mensaje": "El código de materia no puede estar vacío.", "datos": None}
+
+    if not codigo_periodo:
+        return {"resultado": False, "mensaje": "El código de periodo no puede estar vacío.", "datos": None}
+
+    resultado_matricula = verificar_matricula_para_nota(
+        codigo_estudiante,
+        codigo_materia,
+        codigo_periodo,
+    )
+
+    if not resultado_matricula["resultado"]:
+        return {"resultado": False, "mensaje": resultado_matricula["mensaje"], "datos": None}
+
+    if not validar_nota(nota1) or not validar_nota(nota2) or not validar_nota(nota3):
+        return {"resultado": False, "mensaje": "Las notas deben ser números entre 0 y 20.", "datos": None}
+
+    if nota_existe(codigo_estudiante, codigo_materia, codigo_periodo):
+        return {"resultado": False, "mensaje": "Ya existe una nota registrada para esa matrícula.", "datos": None}
+
+    promedio = calcular_promedio(nota1, nota2, nota3)
+    estado_final = determinar_estado_final(promedio)
+    notas = cargar_notas()
+
+    registro = {
+        "codigo_estudiante": codigo_estudiante,
+        "codigo_materia": codigo_materia,
+        "codigo_periodo": codigo_periodo,
+        "nota1": float(nota1),
+        "nota2": float(nota2),
+        "nota3": float(nota3),
+        "promedio": promedio,
+        "estado_final": estado_final,
+    }
+
+    notas.append(registro)
+    guardar_notas(notas)
+
+    return {
+        "resultado": True,
+        "mensaje": "Nota registrada correctamente.",
+        "datos": registro,
+    }
 
 
 def listar_notas():
