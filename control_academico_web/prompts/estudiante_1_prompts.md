@@ -613,3 +613,54 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 13 - Revisar entrega del integrante 1
+
+**Estudiante asociado:** Integrante 1  
+**Módulo trabajado:** Estudiantes / estructura inicial  
+**Objetivo:** revisar la entrega final del Integrante 1 y registrar el cierre  
+
+```text
+Haz una revisión final del trabajo del Integrante 1 en el proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 1.
+Módulo principal: Estudiantes.
+Responsabilidad adicional: estructura inicial del proyecto.
+
+Revisa que existan y estén ordenados estos elementos:
+
+- AGENTS.md
+- README.md
+- data/estudiantes.json
+- core/estudiantes.py
+- web/estudiantes.html
+- static/estudiantes.js
+- prompts/estudiante_1_prompts.md
+- evidencias/estudiante_1_evidencias_resultado.md
+- evidencias/casos_prueba_estudiantes.md
+
+Verifica que:
+- los prompts del Integrante 1 estén guardados en prompts/estudiante_1_prompts.md
+- las evidencias del resultado estén registradas
+- el módulo estudiantes tenga funciones claras
+- no se hayan desarrollado módulos que correspondan a otros integrantes
+- no se hayan borrado archivos existentes
+- el código sea entendible para estudiantes principiantes
+
+Si encuentras detalles pequeños, corrígelos.
+No hagas cambios grandes.
+No agregues funcionalidades nuevas.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_1_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_1_evidencias_resultado.md
+
+Indicando:
+- qué se revisó
+- qué correcciones menores se hicieron
+- si el trabajo del Integrante 1 quedó listo
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
