@@ -63,12 +63,61 @@ def generar_codigo_materia():
 
 
 def registrar_materia(nombre_materia, docente, ciclo, estado):
-    """Registra una materia. Pendiente de completar."""
-    pass
+    """Registra una materia nueva con validaciones básicas."""
+    nombre_materia = (nombre_materia or "").strip()
+    docente = (docente or "").strip()
+    estado = (estado or "").strip().lower()
+
+    if not nombre_materia:
+        return {
+            "resultado": False,
+            "mensaje": "El nombre de la materia no puede estar vacío.",
+            "datos": None,
+        }
+
+    if not docente:
+        return {
+            "resultado": False,
+            "mensaje": "El docente no puede estar vacío.",
+            "datos": None,
+        }
+
+    if not validar_ciclo(ciclo):
+        return {
+            "resultado": False,
+            "mensaje": "El ciclo debe ser un número entero mayor que cero.",
+            "datos": None,
+        }
+
+    if not validar_estado_materia(estado):
+        return {
+            "resultado": False,
+            "mensaje": "El estado debe ser activo o inactivo.",
+            "datos": None,
+        }
+
+    materias = cargar_materias()
+
+    materia = {
+        "codigo_materia": generar_codigo_materia(),
+        "nombre_materia": nombre_materia,
+        "docente": docente,
+        "ciclo": int(ciclo),
+        "estado": estado,
+    }
+
+    materias.append(materia)
+    guardar_materias(materias)
+
+    return {
+        "resultado": True,
+        "mensaje": "Materia registrada correctamente.",
+        "datos": materia,
+    }
 
 
 def listar_materias():
-    """Lista las materias registradas. Pendiente de completar."""
+    """Devuelve todas las materias registradas."""
     return cargar_materias()
 
 

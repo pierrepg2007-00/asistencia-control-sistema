@@ -15,6 +15,7 @@
 | 3 | Agregar lectura y guardado JSON | Se desarrollaron funciones para cargar y guardar materias y periodos. | No aplica. | `core/materias.py`, `core/periodos.py` | Los JSON se crean vacíos si no existen y se guardan legibles. |
 | 4 | Agregar validaciones de materias | Se implementaron validaciones de ciclo, estado y existencia de materia. | No aplica. | `core/materias.py` | Se recomienda probar ciclos vacíos, inválidos y códigos existentes. |
 | 5 | Generar código automático de materia | Se desarrolló `generar_codigo_materia()` con formato `MAT001`. | No aplica. | `core/materias.py` | La función evita repetir códigos existentes. |
+| 6 | Registrar y listar materias | Se desarrollaron `registrar_materia()` y `listar_materias()`. | No aplica. | `core/materias.py` | El registro valida campos obligatorios, ciclo y estado. |
 
 ## Conversación o resumen de interacción con IA
 
@@ -26,3 +27,4 @@
 - Se implementaron funciones de lectura y escritura JSON para materias y periodos.
 - Se implementaron validaciones básicas para materias.
 - Se agregó generación automática de códigos de materia.
+- Se completó el registro y listado básico de materias.

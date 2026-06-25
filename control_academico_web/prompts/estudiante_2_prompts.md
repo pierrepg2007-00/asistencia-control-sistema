@@ -343,3 +343,63 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 6 - Registrar y listar materias
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** desarrollar el registro y listado de materias  
+
+```text
+Continúa con el módulo materias y periodos.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+
+Desarrolla la función registrar_materia(nombre_materia, docente, ciclo, estado) en core/materias.py.
+
+La función debe:
+
+- generar automáticamente el código de materia
+- validar que nombre_materia no esté vacío
+- validar que docente no esté vacío
+- validar que ciclo sea un número entero mayor que cero
+- validar que estado solo sea activo o inactivo
+- guardar la materia en data/materias.json
+- devolver un diccionario con resultado, mensaje y datos de la materia registrada
+
+La materia debe guardarse con esta estructura:
+
+{
+  "codigo_materia": "MAT001",
+  "nombre_materia": "Matemática",
+  "docente": "Juan Pérez",
+  "ciclo": 1,
+  "estado": "activo"
+}
+
+Si hay error, la función debe devolver un mensaje claro y no guardar datos.
+
+También desarrolla listar_materias().
+
+listar_materias():
+- debe leer data/materias.json
+- debe devolver todas las materias registradas
+- si no hay materias, debe devolver una lista vacía
+
+No uses clases.
+No modifiques otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué validaciones se aplicaron
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
