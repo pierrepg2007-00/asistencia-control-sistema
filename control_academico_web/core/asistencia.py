@@ -299,4 +299,35 @@ def calcular_porcentaje_asistencia(codigo_estudiante, codigo_materia, codigo_per
 
 def listar_matriculados_para_asistencia(codigo_materia, codigo_periodo):
     """Devuelve los estudiantes matriculados en una materia y periodo para tomar asistencia."""
-    pass
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    matriculas = cargar_lista_json(ARCHIVO_MATRICULAS)
+    estudiantes = cargar_lista_json(ARCHIVO_ESTUDIANTES)
+    matriculados = []
+
+    for matricula in matriculas:
+        misma_materia_periodo = (
+            matricula.get("codigo_materia") == codigo_materia
+            and matricula.get("codigo_periodo") == codigo_periodo
+        )
+        estado = matricula.get("estado", "activo").strip().lower()
+
+        if misma_materia_periodo and estado == "activo":
+            codigo_estudiante = matricula.get("codigo_estudiante")
+            matriculado = {
+                "codigo_estudiante": codigo_estudiante,
+                "codigo_materia": codigo_materia,
+                "codigo_periodo": codigo_periodo,
+                "estado_matricula": estado,
+            }
+
+            for estudiante in estudiantes:
+                if estudiante.get("codigo") == codigo_estudiante:
+                    matriculado["nombres"] = estudiante.get("nombres", "")
+                    matriculado["apellidos"] = estudiante.get("apellidos", "")
+                    matriculado["dni"] = estudiante.get("dni", "")
+                    break
+
+            matriculados.append(matriculado)
+
+    return matriculados

@@ -19,6 +19,7 @@
 | 7 | Registrar asistencia con validaciones | Se desarrollo `registrar_asistencia()`. | No aplica. | `core/asistencia.py` | Valida matricula, duplicados, campos obligatorios, fecha y estado. |
 | 8 | Listar asistencia por estudiante y materia | Se desarrollaron `listar_asistencias()`, `listar_asistencia_por_estudiante()` y `listar_asistencia_por_materia()`. | No aplica. | `core/asistencia.py` | Filtros por estudiante y por materia/periodo con fecha opcional. |
 | 9 | Calcular porcentaje de asistencia | Se desarrollo `calcular_porcentaje_asistencia()`. | No aplica. | `core/asistencia.py` | Presente, tarde y justificado cuentan como asistencia. Falta cuenta como falta. |
+| 10 | Listar matriculados para asistencia | Se creo `listar_matriculados_para_asistencia()`. | No aplica. | `core/asistencia.py` | Consulta `data/matriculas.json` y `data/estudiantes.json`. Apoyo para tomar asistencia. |
 
 ## Conversación o resumen de interacción con IA
 

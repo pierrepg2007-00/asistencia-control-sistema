@@ -537,3 +537,56 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 10 - Listar matriculados para asistencia
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** obtener estudiantes matriculados antes de tomar asistencia
+
+```text
+Continúa con el proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Desarrolla en core/asistencia.py la función:
+
+- listar_matriculados_para_asistencia(codigo_materia, codigo_periodo)
+
+Esta función debe servir para obtener los estudiantes matriculados antes de tomar asistencia.
+
+Reglas:
+
+- debe leer data/matriculas.json
+- si existe data/estudiantes.json, debe usarlo para mostrar nombres y DNI del estudiante
+- debe buscar estudiantes matriculados en la materia y periodo indicados
+- si el registro de matrícula tiene campo estado, debe mostrar solo matrículas activas
+- debe devolver una lista de estudiantes matriculados
+- cada registro debe incluir:
+  - codigo_estudiante
+  - nombres y apellidos, si están disponibles
+  - DNI, si está disponible
+  - codigo_materia
+  - codigo_periodo
+  - estado de matrícula, si existe
+
+No desarrolles el módulo completo de matrículas.
+No modifiques otros módulos.
+Esta función solo será apoyo para tomar asistencia.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué función de apoyo se creó
+- qué archivos consulta
+- qué problema ayuda a resolver
+- qué falta integrar después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
