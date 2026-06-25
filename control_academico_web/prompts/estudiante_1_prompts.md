@@ -499,3 +499,55 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 11 - Agregar lógica visual de estudiantes
+
+**Estudiante asociado:** Integrante 1  
+**Módulo trabajado:** Estudiantes  
+**Objetivo:** crear funciones JavaScript para manejar la pantalla de estudiantes  
+
+```text
+Continúa con el módulo estudiantes.
+
+Este trabajo corresponde al Integrante 1.
+Módulo principal: Estudiantes.
+
+Desarrolla static/estudiantes.js para manejar la página web/estudiantes.html.
+
+El JavaScript debe tener funciones para:
+
+- capturar los datos del formulario
+- validar campos vacíos antes de enviar
+- mostrar mensajes en pantalla
+- limpiar el formulario
+- llenar la tabla de estudiantes
+- buscar un estudiante por código o DNI
+- preparar la actualización de un estudiante
+
+Usa estos nombres de funciones:
+
+- obtenerDatosFormulario()
+- validarFormularioEstudiante(datos)
+- mostrarMensajeEstudiantes(mensaje, tipo)
+- limpiarFormularioEstudiante()
+- renderizarTablaEstudiantes(estudiantes)
+- buscarEstudianteEnTabla(valor)
+
+Como la integración completa con Python se hará después, deja funciones separadas y claras para conectarlas con el servidor.
+
+No mezcles este archivo con otros módulos.
+No desarrolles código de materias, notas, asistencia, matrículas ni reportes.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_1_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_1_evidencias_resultado.md
+
+Indicando:
+- qué funciones JavaScript se crearon
+- qué parte de la pantalla controlan
+- qué falta integrar después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

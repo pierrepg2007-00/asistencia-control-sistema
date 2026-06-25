@@ -57,3 +57,10 @@
 - La página contiene título, formulario de registro, sección de búsqueda, tabla de estudiantes y zona de mensajes.
 - Se usaron identificadores claros para conectar luego con `static/estudiantes.js`.
 - Falta integrar la página con el servidor Python.
+
+## Lógica visual de estudiantes
+
+- Se desarrolló `static/estudiantes.js`.
+- Se crearon funciones para capturar datos, validar formulario, mostrar mensajes, limpiar campos, llenar la tabla y buscar estudiantes.
+- Se agregó una función para preparar la actualización visual de un estudiante.
+- Falta integrar estas funciones con las funciones Python del módulo.
