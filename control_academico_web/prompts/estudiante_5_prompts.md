@@ -365,3 +365,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 18 registrado - agregar servidor web]
 ```
+
+
+### Prompt 19 - Agregar estilos generales del sistema
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Integración
+**Objetivo:** Completar static/styles.css con estilos uniformes para todas las páginas
+
+```text
+[Prompt 19 registrado - agregar estilos generales]
+```

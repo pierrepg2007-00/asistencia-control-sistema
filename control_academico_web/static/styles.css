@@ -168,7 +168,120 @@ th {
   background: #edf2f7;
 }
 
-@media (max-width: 720px) {
+/* ----- Estilos para secciones y campos ----- */
+
+.seccion {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.campo {
+  margin-bottom: 0.85rem;
+}
+
+/* ----- Estilos para mensajes ----- */
+
+.error {
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.exito {
+  color: #15803d;
+  background: #dcfce7;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.info {
+  color: #1e40af;
+  background: #dbeafe;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+/* ----- Estilos para página principal ----- */
+
+.menu-navegacion ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.menu-navegacion li {
+  margin: 0;
+}
+
+.menu-navegacion a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.menu-navegacion a:hover {
+  background: var(--primary-strong);
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tarjeta {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--surface), var(--surface-alt));
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+}
+
+.tarjeta a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.tarjeta a:hover {
+  background: var(--primary-strong);
+}
+
+.descripcion {
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.aviso {
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* ----- Responsive ----- */
   main,
   .contenedor {
     width: min(100% - 1rem, 1100px);
