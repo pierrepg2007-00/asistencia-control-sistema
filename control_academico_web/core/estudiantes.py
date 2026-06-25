@@ -1,9 +1,11 @@
 """Funciones base para la gestión de estudiantes."""
 
 import json
+import os
 
 
-ARCHIVO_ESTUDIANTES = "data/estudiantes.json"
+CARPETA_BASE = os.path.dirname(os.path.dirname(__file__))
+ARCHIVO_ESTUDIANTES = os.path.join(CARPETA_BASE, "data", "estudiantes.json")
 
 
 def cargar_estudiantes():
@@ -35,13 +37,29 @@ def cargar_estudiantes():
 
 def guardar_estudiantes(estudiantes):
     """Guarda la lista de estudiantes en el archivo JSON."""
+    os.makedirs(os.path.dirname(ARCHIVO_ESTUDIANTES), exist_ok=True)
+
     with open(ARCHIVO_ESTUDIANTES, "w", encoding="utf-8") as archivo:
         json.dump(estudiantes, archivo, ensure_ascii=False, indent=4)
 
 
 def generar_codigo_estudiante():
     """Genera el siguiente código consecutivo para un estudiante."""
-    return f"EST-{len(cargar_estudiantes()) + 1:03d}"
+    estudiantes = cargar_estudiantes()
+    codigos_usados = []
+
+    for estudiante in estudiantes:
+        codigo = estudiante.get("codigo", "")
+
+        if codigo.startswith("EST") and codigo[3:].isdigit():
+            codigos_usados.append(int(codigo[3:]))
+
+    numero = 1
+
+    while numero in codigos_usados:
+        numero += 1
+
+    return f"EST{numero:03d}"
 
 
 def registrar_estudiante(nombres, apellidos, dni, correo, estado):

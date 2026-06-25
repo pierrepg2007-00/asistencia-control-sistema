@@ -218,3 +218,51 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 6 - Generar código automático de estudiante
+
+**Estudiante asociado:** Integrante 1  
+**Módulo trabajado:** Estudiantes  
+**Objetivo:** desarrollar la función que genera códigos únicos de estudiantes  
+
+```text
+Continúa con el módulo estudiantes.
+
+Este trabajo corresponde al Integrante 1.
+Módulo principal: Estudiantes.
+
+Desarrolla la función generar_codigo_estudiante() en core/estudiantes.py.
+
+El código debe tener este formato:
+
+EST001
+EST002
+EST003
+
+Reglas:
+
+- debe leer los estudiantes guardados en data/estudiantes.json
+- si no hay estudiantes, debe devolver EST001
+- si ya hay estudiantes, debe generar el siguiente código disponible
+- no debe repetir códigos
+- debe funcionar aunque existan varios registros
+
+Ejemplo:
+Si existen EST001 y EST002, debe generar EST003.
+
+Usa las funciones cargar_estudiantes() y guardar_estudiantes() si corresponde.
+No uses código avanzado.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_1_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_1_evidencias_resultado.md
+
+Indicando:
+- qué función se desarrolló
+- qué problema resuelve
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
