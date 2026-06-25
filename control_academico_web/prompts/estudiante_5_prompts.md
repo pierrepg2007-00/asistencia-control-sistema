@@ -265,3 +265,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 8 registrado - reportar estudiantes por materia]
 ```
+
+
+### Prompt 9 - Reportar notas por materia
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Reportes
+**Objetivo:** Implementar reporte_notas_por_materia() con cálculos de aprobados, desaprobados y promedio
+
+```text
+[Prompt 9 registrado - reportar notas por materia]
+```

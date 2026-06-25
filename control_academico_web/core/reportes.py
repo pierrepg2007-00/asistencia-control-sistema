@@ -86,7 +86,83 @@ def reporte_estudiantes_por_materia(codigo_materia, codigo_periodo):
 
 def reporte_notas_por_materia(codigo_materia, codigo_periodo):
     """Devuelve el detalle de notas de cada estudiante en una materia y periodo."""
-    return {"detalle": [], "total_estudiantes": 0, "aprobados": 0, "desaprobados": 0, "promedio_general": 0}
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    detalle = []
+
+    # Cargar notas
+    notas = []
+    try:
+        with open(ARCHIVO_NOTAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            notas = json.loads(contenido)
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    # Cargar estudiantes
+    datos_estudiantes = {}
+    try:
+        with open(ARCHIVO_ESTUDIANTES, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            estudiantes = json.loads(contenido)
+            for estudiante in estudiantes:
+                datos_estudiantes[estudiante.get("codigo")] = estudiante
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    # Cargar materias
+    nombre_materia = ""
+    try:
+        with open(ARCHIVO_MATERIAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            materias = json.loads(contenido)
+            for materia in materias:
+                if materia.get("codigo_materia") == codigo_materia:
+                    nombre_materia = materia.get("nombre_materia", "")
+                    break
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    for nota in notas:
+        if (nota.get("codigo_materia") == codigo_materia
+                and nota.get("codigo_periodo") == codigo_periodo):
+            cod_est = nota.get("codigo_estudiante", "")
+            info = datos_estudiantes.get(cod_est, {})
+
+            entrada = {
+                "codigo_estudiante": cod_est,
+                "nombres": info.get("nombres", ""),
+                "apellidos": info.get("apellidos", ""),
+                "codigo_materia": codigo_materia,
+                "nombre_materia": nombre_materia,
+                "codigo_periodo": codigo_periodo,
+                "nota1": nota.get("nota1"),
+                "nota2": nota.get("nota2"),
+                "nota3": nota.get("nota3"),
+                "promedio": nota.get("promedio"),
+                "estado_final": nota.get("estado_final"),
+            }
+            detalle.append(entrada)
+
+    total_estudiantes = len(detalle)
+    aprobados = sum(1 for d in detalle if d.get("estado_final") == "aprobado")
+    desaprobados = sum(1 for d in detalle if d.get("estado_final") == "desaprobado")
+
+    promedio_general = 0
+    promedios = [d.get("promedio") for d in detalle if d.get("promedio") is not None]
+    if promedios:
+        promedio_general = round(sum(promedios) / len(promedios), 2)
+
+    return {
+        "detalle": detalle,
+        "total_estudiantes": total_estudiantes,
+        "aprobados": aprobados,
+        "desaprobados": desaprobados,
+        "promedio_general": promedio_general,
+    }
 
 
 def reporte_asistencia_por_materia(codigo_materia, codigo_periodo):
