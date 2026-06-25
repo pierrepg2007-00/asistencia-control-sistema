@@ -3,12 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notas</title>
+  <title>Gestión de notas</title>
 </head>
 <body>
   <main>
-    <h1>Módulo de notas</h1>
-    <p>Espacio inicial para gestionar notas académicas.</p>
+    <h1>Gestión de notas</h1>
+
+    <section>
+      <h2>Registrar nota</h2>
+
+      <form id="formulario-nota">
+        <label for="codigo-estudiante">Código de estudiante</label>
+        <input type="text" id="codigo-estudiante" name="codigo_estudiante">
+
+        <label for="codigo-materia">Código de materia</label>
+        <input type="text" id="codigo-materia" name="codigo_materia">
+
+        <label for="codigo-periodo">Código de periodo</label>
+        <input type="text" id="codigo-periodo" name="codigo_periodo">
+
+        <label for="nota1">Nota 1</label>
+        <input type="number" id="nota1" name="nota1" min="0" max="20" step="0.01">
+
+        <label for="nota2">Nota 2</label>
+        <input type="number" id="nota2" name="nota2" min="0" max="20" step="0.01">
+
+        <label for="nota3">Nota 3</label>
+        <input type="number" id="nota3" name="nota3" min="0" max="20" step="0.01">
+
+        <button type="submit" id="btn-guardar-nota">Guardar nota</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Buscar o listar notas</h2>
+
+      <label for="buscar-estudiante-notas">Código de estudiante</label>
+      <input type="text" id="buscar-estudiante-notas">
+      <button type="button" id="btn-listar-notas-estudiante">Listar notas por estudiante</button>
+
+      <label for="buscar-materia-notas">Código de materia</label>
+      <input type="text" id="buscar-materia-notas">
+
+      <label for="buscar-periodo-notas">Código de periodo</label>
+      <input type="text" id="buscar-periodo-notas">
+      <button type="button" id="btn-listar-notas-materia">Listar notas por materia</button>
+    </section>
+
+    <section id="mensaje-notas"></section>
+
+    <section>
+      <h2>Lista de notas</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Código de estudiante</th>
+            <th>Código de materia</th>
+            <th>Periodo</th>
+            <th>Nota 1</th>
+            <th>Nota 2</th>
+            <th>Nota 3</th>
+            <th>Promedio</th>
+            <th>Estado final</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-notas">
+        </tbody>
+      </table>
+    </section>
   </main>
 
   <script src="../static/notas.js"></script>

@@ -460,3 +460,40 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 11 - Crear interfaz web de notas
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** crear la página HTML del módulo Notas  
+
+```text
+Continúa con el módulo notas.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+
+Desarrolla la página web/notas.html con título, formulario de registro, sección para listar por estudiante o materia, tabla de notas y zona de mensajes.
+
+Usa HTML simple.
+No hagas diseño complejo.
+Usa ids claros para conectar con JavaScript.
+
+El archivo debe quedar listo para trabajar con static/notas.js.
+
+No conectes todavía con otros módulos.
+No modifiques las páginas de estudiantes ni materias.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué página se creó
+- qué elementos contiene
+- qué falta conectar después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
