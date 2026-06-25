@@ -10,6 +10,27 @@ ARCHIVO_MATRICULAS = os.path.join(CARPETA_BASE, "data", "matriculas.json")
 ARCHIVO_ESTUDIANTES = os.path.join(CARPETA_BASE, "data", "estudiantes.json")
 
 
+def cargar_lista_json(ruta_archivo):
+    """Carga una lista desde un archivo JSON, devolviendo [] ante errores."""
+    try:
+        with open(ruta_archivo, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+    except (FileNotFoundError, OSError):
+        return []
+
+    if not contenido:
+        return []
+
+    try:
+        datos = json.loads(contenido)
+        if isinstance(datos, list):
+            return datos
+    except json.JSONDecodeError:
+        pass
+
+    return []
+
+
 def cargar_notas():
     """Carga y devuelve la lista de notas guardada en JSON."""
     try:
@@ -79,8 +100,40 @@ def determinar_estado_final(promedio):
 
 
 def verificar_matricula_para_nota(codigo_estudiante, codigo_materia, codigo_periodo):
-    """Verifica si existe matrícula para registrar nota. Pendiente de completar."""
-    pass
+    """Verifica que exista una matrícula activa antes de registrar nota."""
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    matriculas = cargar_lista_json(ARCHIVO_MATRICULAS)
+
+    for matricula in matriculas:
+        misma_matricula = (
+            matricula.get("codigo_estudiante") == codigo_estudiante
+            and matricula.get("codigo_materia") == codigo_materia
+            and matricula.get("codigo_periodo") == codigo_periodo
+        )
+
+        if misma_matricula:
+            estado = matricula.get("estado", "activo").strip().lower()
+
+            if estado == "activo":
+                return {
+                    "resultado": True,
+                    "mensaje": "Matrícula activa encontrada.",
+                    "datos": matricula,
+                }
+
+            return {
+                "resultado": False,
+                "mensaje": "La matrícula existe, pero no está activa.",
+                "datos": matricula,
+            }
+
+    return {
+        "resultado": False,
+        "mensaje": "El estudiante no está matriculado en esa materia y periodo.",
+        "datos": None,
+    }
 
 
 def nota_existe(codigo_estudiante, codigo_materia, codigo_periodo):

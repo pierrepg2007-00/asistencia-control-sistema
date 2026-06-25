@@ -242,3 +242,41 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 5 - Validar matrícula antes de registrar notas
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** validar que el estudiante esté matriculado antes de registrar notas  
+
+```text
+Continúa con el módulo notas.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Desarrolla en core/notas.py la función:
+
+- verificar_matricula_para_nota(codigo_estudiante, codigo_materia, codigo_periodo)
+
+Esta función debe revisar data/matriculas.json, buscar una matrícula que coincida con estudiante, materia y periodo, aceptar solo matrículas activas si existe campo estado y devolver un mensaje claro si no está matriculado.
+
+No desarrolles el módulo completo de matrículas.
+No crees funciones de registro de matrícula.
+Solo crea esta validación de apoyo para notas.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué función de apoyo a matrículas se creó
+- qué valida
+- qué archivo fue modificado
+- cómo se usará antes de registrar notas
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
