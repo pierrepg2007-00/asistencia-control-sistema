@@ -20,8 +20,16 @@
 | 9 | Reportar notas por materia | Se implementó reporte_notas_por_materia() con cálculos estadísticos | Ninguno | core/reportes.py | Calcula aprobados, desaprobados y promedio general |
 | 10 | Reportar asistencia por materia | Se implementó reporte_asistencia_por_materia() con agrupación y porcentaje | Ninguno | core/reportes.py | Cuenta asistencias, faltas y porcentaje por estudiante |
 | 11 | Reportar estudiantes en riesgo | Se implementó reporte_estudiantes_en_riesgo() con cruce de notas y asistencia | Ninguno | core/reportes.py | Identifica nota baja (<11) y asistencia (<70%) |
-| 12 | Exportar reportes en texto | Se implementó exportar_reporte_txt() con formato de archivo | Ninguno | core/reportes.py | Genera .txt en reportes_generados/ con fecha y datos |
-| 13 | Crear interfaz web de matriculas | Se creó web/matriculas.html con formularios y tabla | Ninguno | web/matriculas.html | Pendiente conectar con JavaScript |
+| 12 | Exportar reportes en texto | Se implementó exportar_reporte_txt() | Ninguno | core/reportes.py | Genera .txt con fecha y datos |
+| 13 | Crear interfaz web de matriculas | HTML con formularios y tabla | Ninguno | web/matriculas.html | IDs listos para JS |
+| 14 | Agregar logica visual de matriculas | Se implementaron 8 funciones JS | Ninguno | static/matriculas.js | Pendiente conectar con Python |
+| 15 | Crear interfaz web de reportes | HTML con secciones de reportes | Ninguno | web/reportes.html | IDs listos para JS |
+| 16 | Agregar logica visual de reportes | Se implementaron 6 funciones JS | Ninguno | static/reportes.js | Pendiente conectar con Python |
+| 17 | Crear pagina principal del sistema | HTML con menu y tarjetas | Ninguno | web/index.html | Enlaces a 6 modulos |
+| 18 | Agregar servidor web simple | server.py con http.server | Ninguno | server.py | Puerto 8000, sirve estaticos |
+| 19 | Agregar estilos generales | CSS con secciones, mensajes, tarjetas | Ninguno | static/styles.css | Diseno uniforme para todas las paginas |
+| 20 | Documentar pruebas | 30 casos de prueba | Ninguno | evidencias/casos_prueba_matriculas_reportes_integracion.md | Matriculas, reportes e integracion |
+| 21 | Revision final del integrante 5 | Verificacion de archivos y correcciones | Correccion de evidencias | evidencias/estudiante_5_evidencias_resultado.md | Trabajo listo para entrega |
 
 ## Conversación o resumen de interacción con IA
 
@@ -127,13 +135,54 @@
 - Zona de mensajes para errores y confirmaciones.
 - Pendiente: conectar con static/matriculas.js.
 
-| 12 | Exportar reportes en texto | Se implementó exportar_reporte_txt() | Ninguno | core/reportes.py | Genera .txt con fecha y datos |
-| 13 | Crear interfaz web de matriculas | Se creó formularios y tabla HTML | Ninguno | web/matriculas.html | Pendiente conectar con JS |
-| 14 | Agregar logica visual de matriculas | Se implementaron 8 funciones JS | Ninguno | static/matriculas.js | Pendiente conectar con Python |
-
 ### Actividad 14: Agregar lógica visual de matriculas
 
 - Se implementaron todas las funciones JavaScript para matrículas: obtener datos, validar, mostrar mensajes, limpiar, renderizar tabla, filtrar por estudiante, filtrar por materia y preparar cambio de estado.
 - La tabla muestra columnas: código estudiante, materia, periodo, estado y botón de acciones.
 - Las funciones siguen el patrón de notas.js para mantener consistencia.
 - Pendiente: conectar con el backend Python.
+
+### Actividad 15: Crear interfaz web de reportes
+
+- Se creó web/reportes.html con 5 secciones: estudiantes por materia, notas por materia, asistencia por materia, riesgo y exportar.
+- IDs claros para conectar con JavaScript.
+- Pendiente: conectar con static/reportes.js.
+
+### Actividad 16: Agregar lógica visual de reportes
+
+- Se implementaron funciones JS para reportes: obtener parámetros, validar, mostrar mensajes, limpiar y renderizar resultados.
+- Renderiza resultados en tabla dinámica a partir de los datos del reporte.
+- Pendiente: conectar con el backend Python.
+
+### Actividad 17: Crear página principal del sistema
+
+- Se creó web/index.html con menú de navegación y tarjetas para los 6 módulos.
+- Incluye enlaces a estudiantes, materias, matrículas, notas, asistencia y reportes.
+- Aviso sobre almacenamiento en JSON.
+
+### Actividad 18: Agregar servidor web simple
+
+- Se creó server.py en la raíz del proyecto usando http.server.
+- Sirve archivos desde control_academico_web/ en el puerto 8000.
+- Abre automáticamente el navegador en la página principal.
+
+### Actividad 19: Agregar estilos generales del sistema
+
+- Se actualizó static/styles.css con estilos para: secciones, campos, mensajes (error, exito, info), navegación, tarjetas, descripción y aviso.
+- Diseño uniforme para todas las páginas: index, estudiantes, materias, matrículas, notas, asistencia, reportes.
+
+### Actividad 20: Documentar pruebas
+
+- Se creó evidencias/casos_prueba_matriculas_reportes_integracion.md con 30 casos de prueba.
+- Cubre matrículas (15 casos), reportes (6 casos) e integración (9 casos).
+- Incluye conclusión del módulo indicando estado de avance.
+
+### Actividad 21: Revisión final del integrante 5
+
+- Se verificó que todos los archivos existen y están ordenados.
+- Se confirmó que no se borraron archivos de otros integrantes.
+- Se corrigieron duplicados en el archivo de evidencias.
+- Se verificó que matriculas.py y reportes.py tienen funciones claras y separadas.
+- Se confirmó que existe página principal con enlaces a los 6 módulos.
+- Se verificó que existe servidor simple para abrir el sistema.
+- El trabajo del Integrante 5 quedó listo para entrega.

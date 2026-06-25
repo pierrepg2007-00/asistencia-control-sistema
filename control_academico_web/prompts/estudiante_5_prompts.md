@@ -385,3 +385,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 20 registrado - documentar pruebas]
 ```
+
+
+### Prompt 21 - Revisar entrega del integrante 5
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Reportes / Integración / Matrículas
+**Objetivo:** Revisión final de todos los archivos y correcciones menores
+
+```text
+[Prompt 21 registrado - revisar entrega final]
+```
