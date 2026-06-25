@@ -266,6 +266,56 @@ Indicando:
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
 
+### Prompt 5 - Validar matricula antes de registrar asistencia
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** validar matricula activa antes de registrar asistencia
+
+```text
+Continúa con el módulo asistencia.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Desarrolla en core/asistencia.py la función:
+
+- verificar_matricula_para_asistencia(codigo_estudiante, codigo_materia, codigo_periodo)
+
+Esta función debe servir para validar que un estudiante esté matriculado antes de registrar asistencia.
+
+Reglas:
+
+- debe revisar el archivo data/matriculas.json
+- si data/matriculas.json no existe, debe tratarlo como una lista vacía
+- debe buscar una matrícula que coincida con:
+  - codigo_estudiante
+  - codigo_materia
+  - codigo_periodo
+- solo debe permitir registrar asistencia si la matrícula existe
+- si el registro de matrícula tiene campo estado, debe aceptar solo matrículas activas
+- si el estudiante no está matriculado, debe devolver un mensaje claro
+
+No desarrolles el módulo completo de matrículas.
+No crees funciones de registro de matrícula.
+Solo crea esta validación de apoyo para asistencia.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué función de apoyo a matrículas se creó
+- qué valida
+- qué archivo fue modificado
+- cómo se usará antes de registrar asistencia
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
+
 **Estudiante asociado:** Integrante 4
 **Módulo trabajado:** Asistencia
 **Objetivo:** desarrollar funciones para cargar y guardar asistencias en JSON

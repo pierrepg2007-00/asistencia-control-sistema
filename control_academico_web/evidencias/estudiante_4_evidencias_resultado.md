@@ -14,6 +14,7 @@
 | 2 | Crear base del modulo Asistencia | Se crearon archivos JSON, Python, HTML y JavaScript iniciales. | No aplica. | `data/asistencias.json`, `core/asistencia.py`, `web/asistencia.html`, `static/asistencia.js` | Funciones preparadas como borradores para desarrollo posterior. |
 | 3 | Agregar lectura y guardado de asistencias | Se desarrollaron `cargar_asistencias()` y `guardar_asistencias()`. | No aplica. | `core/asistencia.py` | El JSON se crea vacio si no existe y se guarda legible con indentacion. |
 | 4 | Agregar validaciones de asistencia | Se desarrollaron `validar_estado_asistencia()` y `validar_fecha()`. | No aplica. | `core/asistencia.py` | Valida estados presente/tarde/falta/justificado y fecha YYYY-MM-DD. |
+| 5 | Validar matricula antes de registrar asistencia | Se creo `verificar_matricula_para_asistencia()`. | No aplica. | `core/asistencia.py` | Consulta `data/matriculas.json` y acepta solo matriculas activas. |
 
 ## Conversación o resumen de interacción con IA
 

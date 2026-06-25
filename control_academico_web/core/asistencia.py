@@ -96,7 +96,39 @@ def validar_fecha(fecha):
 
 def verificar_matricula_para_asistencia(codigo_estudiante, codigo_materia, codigo_periodo):
     """Verifica que el estudiante este matriculado antes de registrar asistencia."""
-    pass
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    matriculas = cargar_lista_json(ARCHIVO_MATRICULAS)
+
+    for matricula in matriculas:
+        misma_matricula = (
+            matricula.get("codigo_estudiante") == codigo_estudiante
+            and matricula.get("codigo_materia") == codigo_materia
+            and matricula.get("codigo_periodo") == codigo_periodo
+        )
+
+        if misma_matricula:
+            estado = matricula.get("estado", "activo").strip().lower()
+
+            if estado == "activo":
+                return {
+                    "resultado": True,
+                    "mensaje": "Matricula activa encontrada.",
+                    "datos": matricula,
+                }
+
+            return {
+                "resultado": False,
+                "mensaje": "La matricula existe, pero no esta activa.",
+                "datos": matricula,
+            }
+
+    return {
+        "resultado": False,
+        "mensaje": "El estudiante no esta matriculado en esa materia y periodo.",
+        "datos": None,
+    }
 
 
 def asistencia_duplicada(codigo_estudiante, codigo_materia, codigo_periodo, fecha):
