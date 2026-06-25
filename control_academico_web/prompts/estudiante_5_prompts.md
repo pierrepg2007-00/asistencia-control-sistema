@@ -275,3 +275,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 9 registrado - reportar notas por materia]
 ```
+
+
+### Prompt 10 - Reportar asistencia por materia
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Reportes
+**Objetivo:** Implementar reporte_asistencia_por_materia() con conteo y porcentaje
+
+```text
+[Prompt 10 registrado - reportar asistencia por materia]
+```

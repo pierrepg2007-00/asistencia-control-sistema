@@ -167,7 +167,82 @@ def reporte_notas_por_materia(codigo_materia, codigo_periodo):
 
 def reporte_asistencia_por_materia(codigo_materia, codigo_periodo):
     """Devuelve el resumen de asistencia de cada estudiante en una materia y periodo."""
-    return []
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    resultado = []
+
+    # Cargar asistencias
+    asistencias = []
+    try:
+        with open(ARCHIVO_ASISTENCIAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            asistencias = json.loads(contenido)
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    # Cargar estudiantes
+    datos_estudiantes = {}
+    try:
+        with open(ARCHIVO_ESTUDIANTES, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            estudiantes = json.loads(contenido)
+            for estudiante in estudiantes:
+                datos_estudiantes[estudiante.get("codigo")] = estudiante
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    # Filtrar asistencias por materia y periodo
+    asistencias_filtradas = []
+    for asistencia in asistencias:
+        if (asistencia.get("codigo_materia") == codigo_materia
+                and asistencia.get("codigo_periodo") == codigo_periodo):
+            asistencias_filtradas.append(asistencia)
+
+    if not asistencias_filtradas:
+        return []
+
+    # Agrupar por estudiante
+    datos_por_estudiante = {}
+    for asistencia in asistencias_filtradas:
+        cod_est = asistencia.get("codigo_estudiante", "")
+        if cod_est not in datos_por_estudiante:
+            datos_por_estudiante[cod_est] = []
+        datos_por_estudiante[cod_est].append(asistencia)
+
+    # Calcular resumen por estudiante
+    for cod_est, registros in datos_por_estudiante.items():
+        total_clases = len(registros)
+        asistencias_count = 0
+        faltas_count = 0
+
+        for registro in registros:
+            estado = registro.get("estado_asistencia", "").lower()
+            if estado in ["presente", "tarde", "justificado"]:
+                asistencias_count += 1
+            elif estado == "falta":
+                faltas_count += 1
+
+        porcentaje = 0
+        if total_clases > 0:
+            porcentaje = round((asistencias_count / total_clases) * 100, 2)
+
+        info = datos_estudiantes.get(cod_est, {})
+
+        resultado.append({
+            "codigo_estudiante": cod_est,
+            "nombres": info.get("nombres", ""),
+            "apellidos": info.get("apellidos", ""),
+            "codigo_materia": codigo_materia,
+            "codigo_periodo": codigo_periodo,
+            "total_clases": total_clases,
+            "asistencias": asistencias_count,
+            "faltas": faltas_count,
+            "porcentaje_asistencia": porcentaje,
+        })
+
+    return resultado
 
 
 def reporte_estudiantes_en_riesgo():

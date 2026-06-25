@@ -18,6 +18,7 @@
 | 7 | Cambiar estado de matriculas | Se implementó cambiar_estado_matricula() con 3 estados válidos | Ninguno | core/matriculas.py | Función completa: activa, retirada, finalizada |
 | 8 | Reportar estudiantes por materia | Se implementó reporte_estudiantes_por_materia() con enriquecimiento de datos | Ninguno | core/reportes.py | Consulta matriculas, estudiantes y materias |
 | 9 | Reportar notas por materia | Se implementó reporte_notas_por_materia() con cálculos estadísticos | Ninguno | core/reportes.py | Calcula aprobados, desaprobados y promedio general |
+| 10 | Reportar asistencia por materia | Se implementó reporte_asistencia_por_materia() con agrupación y porcentaje | Ninguno | core/reportes.py | Cuenta asistencias, faltas y porcentaje por estudiante |
 
 ## Conversación o resumen de interacción con IA
 
@@ -91,3 +92,10 @@
 - Filtra por codigo_materia y codigo_periodo.
 - Calcula total de estudiantes, aprobados, desaprobados y promedio general.
 - Enriquece cada registro con nombres de estudiante y nombre de materia.
+
+### Actividad 10: Reportar asistencia por materia
+
+- Se implementó reporte_asistencia_por_materia() que lee asistencias.json y estudiantes.json.
+- Agrupa registros por estudiante, contando total de clases, asistencias (presente, tarde, justificado) y faltas.
+- Calcula porcentaje de asistencia por estudiante.
+- Enriquece con nombres y apellidos del estudiante.
