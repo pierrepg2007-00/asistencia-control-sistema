@@ -33,4 +33,8 @@
 - Los archivos de prompts y evidencias ya existían pero con datos de "Notas y asistencia". Se actualizaron para reflejar correctamente "Asistencia" como módulo principal.
 - Despues se desarrollaran los archivos base del modulo Asistencia (JSON, Python, HTML, JavaScript).
 - Se crearon los archivos iniciales del modulo Asistencia con 12 funciones base como borradores, JSON vacio, HTML con formularios y JavaScript con eventos.
-- En los proximos commits se desarrollara la logica de carga/guardado JSON y las validaciones de asistencia.
+- Se implementaron carga/guardado JSON, validaciones, registro con verificacion de matricula y prevencion de duplicados.
+- Se crearon funciones de listado por estudiante y materia, calculo de porcentaje y listado de matriculados.
+- Se documentaron 17 casos de prueba en `evidencias/casos_prueba_asistencia.md`.
+- Se verifico que todos los archivos del modulo existen y que no se modificaron indebidamente modulos de otros integrantes.
+- El trabajo del Integrante 4 queda listo para integracion con los demas modulos.
