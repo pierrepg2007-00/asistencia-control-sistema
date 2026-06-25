@@ -472,3 +472,68 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 9 - Calcular porcentaje de asistencia
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** calcular el porcentaje de asistencia de un estudiante
+
+```text
+Continúa con el módulo asistencia.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+
+Desarrolla en core/asistencia.py la función:
+
+- calcular_porcentaje_asistencia(codigo_estudiante, codigo_materia, codigo_periodo)
+
+La función debe calcular el porcentaje de asistencia del estudiante en una materia y periodo.
+
+Reglas:
+
+- debe leer data/asistencias.json
+- debe filtrar registros por:
+  - codigo_estudiante
+  - codigo_materia
+  - codigo_periodo
+- debe contar el total de clases registradas
+- debe considerar como asistencia:
+  - presente
+  - tarde
+  - justificado
+- debe considerar como falta:
+  - falta
+- debe calcular el porcentaje con esta formula:
+
+porcentaje = (asistencias / total_clases) * 100
+
+Debe devolver un diccionario con:
+- codigo_estudiante
+- codigo_materia
+- codigo_periodo
+- total_clases
+- asistencias
+- faltas
+- porcentaje_asistencia
+
+Si no hay registros, debe devolver un mensaje claro o porcentaje 0.
+
+No modifiques otros módulos.
+Mantén el código simple y fácil de explicar.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué función se desarrolló
+- qué fórmula se usa
+- qué estados cuentan como asistencia
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

@@ -248,7 +248,53 @@ def listar_asistencia_por_materia(codigo_materia, codigo_periodo, fecha=None):
 
 def calcular_porcentaje_asistencia(codigo_estudiante, codigo_materia, codigo_periodo):
     """Calcula el porcentaje de asistencia de un estudiante en una materia y periodo."""
-    pass
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+
+    asistencias = cargar_asistencias()
+    total_clases = 0
+    asistencias_contadas = 0
+    faltas_contadas = 0
+
+    for asistencia in asistencias:
+        coincide = (
+            asistencia.get("codigo_estudiante") == codigo_estudiante
+            and asistencia.get("codigo_materia") == codigo_materia
+            and asistencia.get("codigo_periodo") == codigo_periodo
+        )
+
+        if coincide:
+            total_clases += 1
+            estado = asistencia.get("estado_asistencia", "").strip().lower()
+
+            if estado in ["presente", "tarde", "justificado"]:
+                asistencias_contadas += 1
+            elif estado == "falta":
+                faltas_contadas += 1
+
+    if total_clases == 0:
+        return {
+            "codigo_estudiante": codigo_estudiante,
+            "codigo_materia": codigo_materia,
+            "codigo_periodo": codigo_periodo,
+            "total_clases": 0,
+            "asistencias": 0,
+            "faltas": 0,
+            "porcentaje_asistencia": 0,
+        }
+
+    porcentaje = (asistencias_contadas / total_clases) * 100
+
+    return {
+        "codigo_estudiante": codigo_estudiante,
+        "codigo_materia": codigo_materia,
+        "codigo_periodo": codigo_periodo,
+        "total_clases": total_clases,
+        "asistencias": asistencias_contadas,
+        "faltas": faltas_contadas,
+        "porcentaje_asistencia": round(porcentaje, 2),
+    }
 
 
 def listar_matriculados_para_asistencia(codigo_materia, codigo_periodo):
