@@ -21,6 +21,7 @@
 | 9 | Validar materias y periodos para matrículas | Se crearon funciones de apoyo para verificar materias y periodos activos. | No aplica. | `core/materias.py`, `core/periodos.py` | Apoyo listo para el módulo Matrículas. |
 | 10 | Crear interfaz web de materias y periodos | Se desarrolló la página HTML con formularios, tablas, búsqueda y mensajes. | No aplica. | `web/materias.html` | Lista para conectarse con JavaScript. |
 | 11 | Agregar lógica visual de materias y periodos | Se desarrollaron funciones JavaScript para formularios, tablas, búsqueda y activación visual de periodos. | No aplica. | `static/materias.js` | Falta integrar con Python. |
+| 12 | Documentar pruebas de materias y periodos | Se creó una tabla con 24 casos de prueba para materias, periodos y apoyo a matrículas. | No aplica. | `evidencias/casos_prueba_materias_periodos.md` | Pendiente ejecutar en integración completa. |
 
 ## Conversación o resumen de interacción con IA
 
@@ -38,3 +39,4 @@
 - Se agregaron funciones de apoyo para validar materias y periodos en matrículas.
 - Se creó la interfaz HTML de materias y periodos.
 - Se creó la lógica visual inicial para manejar materias y periodos en la página web.
+- Se documentaron casos de prueba del módulo Materias y periodos.

@@ -734,3 +734,83 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 12 - Documentar pruebas de materias y periodos
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** crear la evidencia de pruebas del módulo Materias y periodos  
+
+```text
+Continúa con el módulo materias y periodos.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Crea un archivo de pruebas dentro de evidencias llamado:
+
+casos_prueba_materias_periodos.md
+
+El archivo debe incluir una tabla con:
+
+- número de caso
+- módulo
+- acción realizada
+- datos de entrada
+- resultado esperado
+- resultado obtenido
+- observación
+
+Incluye estos casos de materias:
+
+1. Registrar materia correctamente.
+2. Registrar materia con nombre vacío.
+3. Registrar materia con docente vacío.
+4. Registrar materia con ciclo inválido.
+5. Registrar materia con estado inválido.
+6. Listar materias registradas.
+7. Buscar materia por código existente.
+8. Buscar materia inexistente.
+9. Actualizar materia existente.
+10. Intentar actualizar materia inexistente.
+11. Cambiar estado de materia de activo a inactivo.
+
+Incluye estos casos de periodos:
+
+12. Registrar periodo correctamente.
+13. Registrar periodo con año inválido.
+14. Registrar periodo con nombre vacío.
+15. Registrar periodo con estado inválido.
+16. Registrar periodo repetido.
+17. Activar un periodo.
+18. Verificar que solo exista un periodo activo.
+19. Buscar periodo existente.
+20. Buscar periodo inexistente.
+
+Incluye estos casos de apoyo a matrículas:
+
+21. Validar materia activa para matrícula.
+22. Intentar validar materia inactiva para matrícula.
+23. Validar periodo activo para matrícula.
+24. Intentar validar periodo cerrado para matrícula.
+
+Agrega al final una sección llamada:
+
+Conclusión del módulo
+
+En esa sección indica si el módulo materias y periodos quedó listo para integrarse con matrículas y los demás módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- que se creó la evidencia de pruebas
+- qué casos cubre
+- qué falta verificar en la integración
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
