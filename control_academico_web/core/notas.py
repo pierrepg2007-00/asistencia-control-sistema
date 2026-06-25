@@ -209,18 +209,36 @@ def registrar_nota(codigo_estudiante, codigo_materia, codigo_periodo, nota1, not
 
 
 def listar_notas():
-    """Lista todas las notas registradas. Pendiente de completar."""
+    """Devuelve todas las notas registradas."""
     return cargar_notas()
 
 
 def listar_notas_por_estudiante(codigo_estudiante):
-    """Lista notas por estudiante. Pendiente de completar."""
-    pass
+    """Devuelve todas las notas de un estudiante."""
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    notas_estudiante = []
+
+    for nota in cargar_notas():
+        if nota.get("codigo_estudiante") == codigo_estudiante:
+            notas_estudiante.append(nota)
+
+    return notas_estudiante
 
 
 def listar_notas_por_materia(codigo_materia, codigo_periodo):
-    """Lista notas por materia y periodo. Pendiente de completar."""
-    pass
+    """Devuelve notas de una materia en un periodo."""
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    notas_materia = []
+
+    for nota in cargar_notas():
+        if (
+            nota.get("codigo_materia") == codigo_materia
+            and nota.get("codigo_periodo") == codigo_periodo
+        ):
+            notas_materia.append(nota)
+
+    return notas_materia
 
 
 def actualizar_nota(codigo_estudiante, codigo_materia, codigo_periodo, nuevas_notas):

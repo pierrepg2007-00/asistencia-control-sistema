@@ -351,3 +351,40 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 8 - Listar notas por estudiante y materia
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** crear funciones de consulta de notas  
+
+```text
+Continúa con el módulo notas.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+
+Desarrolla en core/notas.py estas funciones:
+
+- listar_notas()
+- listar_notas_por_estudiante(codigo_estudiante)
+- listar_notas_por_materia(codigo_materia, codigo_periodo)
+
+Las funciones deben leer data/notas.json y devolver las notas registradas, filtradas por estudiante o por materia y periodo según corresponda.
+
+No modifiques otros módulos.
+Mantén el código sencillo.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué casos cubren
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
