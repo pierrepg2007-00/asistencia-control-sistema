@@ -431,3 +431,71 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 10 - Crear interfaz web de estudiantes
+
+**Estudiante asociado:** Integrante 1  
+**Módulo trabajado:** Estudiantes  
+**Objetivo:** crear la página HTML del módulo estudiantes  
+
+```text
+Continúa con el módulo estudiantes.
+
+Este trabajo corresponde al Integrante 1.
+Módulo principal: Estudiantes.
+
+Desarrolla la página web/estudiantes.html.
+
+La página debe tener:
+
+1. Título:
+Gestión de estudiantes
+
+2. Formulario de registro con estos campos:
+- nombres
+- apellidos
+- DNI
+- correo
+- estado
+
+3. Botón:
+Guardar estudiante
+
+4. Sección de búsqueda:
+- campo para buscar por código o DNI
+- botón Buscar
+
+5. Tabla de estudiantes con columnas:
+- código
+- nombres
+- apellidos
+- DNI
+- correo
+- estado
+- acciones
+
+6. Zona para mostrar mensajes:
+- errores
+- confirmaciones
+
+Usa HTML simple.
+No hagas diseño complejo.
+Usa ids claros para conectar con JavaScript.
+
+El archivo debe quedar listo para trabajar con static/estudiantes.js.
+
+No conectes todavía con otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_1_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_1_evidencias_resultado.md
+
+Indicando:
+- qué página se creó
+- qué elementos contiene
+- qué falta conectar después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

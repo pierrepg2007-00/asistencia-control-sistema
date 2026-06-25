@@ -50,3 +50,10 @@
 - La función protege `codigo` y `dni`, por lo que no los modifica.
 - Se validan campos vacíos, correo y estado antes de guardar.
 - Archivo modificado: `core/estudiantes.py`.
+
+## Interfaz web de estudiantes
+
+- Se desarrolló `web/estudiantes.html`.
+- La página contiene título, formulario de registro, sección de búsqueda, tabla de estudiantes y zona de mensajes.
+- Se usaron identificadores claros para conectar luego con `static/estudiantes.js`.
+- Falta integrar la página con el servidor Python.
