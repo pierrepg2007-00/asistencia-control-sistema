@@ -677,3 +677,60 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 11 - Agregar lógica visual de materias y periodos
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** crear funciones JavaScript para manejar la pantalla de materias y periodos  
+
+```text
+Continúa con el módulo materias y periodos.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+
+Desarrolla static/materias.js para manejar la página web/materias.html.
+
+El JavaScript debe tener funciones para materias:
+
+- obtenerDatosFormularioMateria()
+- validarFormularioMateria(datos)
+- mostrarMensajeMaterias(mensaje, tipo)
+- limpiarFormularioMateria()
+- renderizarTablaMaterias(materias)
+- buscarMateriaEnTabla(valor)
+- prepararActualizacionMateria(codigo_materia)
+
+También debe tener funciones para periodos:
+
+- obtenerDatosFormularioPeriodo()
+- validarFormularioPeriodo(datos)
+- limpiarFormularioPeriodo()
+- renderizarTablaPeriodos(periodos)
+- buscarPeriodoEnTabla(valor)
+- prepararCambioPeriodoActivo(codigo_periodo)
+
+Reglas:
+- validar que los campos obligatorios no estén vacíos
+- validar que ciclo y año sean números válidos
+- mostrar mensajes claros en pantalla
+- separar la lógica de materias y periodos
+- dejar funciones preparadas para conectarse después con Python
+
+No mezcles este archivo con otros módulos.
+No desarrolles código de estudiantes, notas, asistencia, matrículas ni reportes.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- qué funciones JavaScript se crearon
+- qué parte de la pantalla controlan
+- qué falta integrar después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

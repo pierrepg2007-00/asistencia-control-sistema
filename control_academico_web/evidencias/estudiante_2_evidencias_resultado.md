@@ -20,6 +20,7 @@
 | 8 | Gestionar periodos académicos | Se desarrollaron registro, listado, búsqueda, activación y validaciones de periodos. | No aplica. | `core/periodos.py` | Al activar un periodo, los demás quedan cerrados. |
 | 9 | Validar materias y periodos para matrículas | Se crearon funciones de apoyo para verificar materias y periodos activos. | No aplica. | `core/materias.py`, `core/periodos.py` | Apoyo listo para el módulo Matrículas. |
 | 10 | Crear interfaz web de materias y periodos | Se desarrolló la página HTML con formularios, tablas, búsqueda y mensajes. | No aplica. | `web/materias.html` | Lista para conectarse con JavaScript. |
+| 11 | Agregar lógica visual de materias y periodos | Se desarrollaron funciones JavaScript para formularios, tablas, búsqueda y activación visual de periodos. | No aplica. | `static/materias.js` | Falta integrar con Python. |
 
 ## Conversación o resumen de interacción con IA
 
@@ -36,3 +37,4 @@
 - Se completó la gestión básica de periodos académicos.
 - Se agregaron funciones de apoyo para validar materias y periodos en matrículas.
 - Se creó la interfaz HTML de materias y periodos.
+- Se creó la lógica visual inicial para manejar materias y periodos en la página web.
