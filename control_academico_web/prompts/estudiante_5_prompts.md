@@ -235,3 +235,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 5 registrado - registrar matriculas]
 ```
+
+
+### Prompt 6 - Listar y buscar matriculas
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Matrículas
+**Objetivo:** Implementar listar_matriculas, buscar_matricula, listar por estudiante y por materia
+
+```text
+[Prompt 6 registrado - listar y buscar matriculas]
+```

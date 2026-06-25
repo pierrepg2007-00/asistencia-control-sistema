@@ -203,22 +203,95 @@ def registrar_matricula(codigo_estudiante, codigo_materia, codigo_periodo):
 
 def listar_matriculas():
     """Devuelve todas las matriculas registradas."""
-    return []
+    return cargar_matriculas()
 
 
 def buscar_matricula(codigo_estudiante, codigo_materia, codigo_periodo):
     """Busca una matricula exacta por estudiante, materia y periodo."""
-    return {"resultado": False, "mensaje": "Funcion pendiente de desarrollo."}
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+
+    matriculas = cargar_matriculas()
+
+    for matricula in matriculas:
+        if (matricula.get("codigo_estudiante") == codigo_estudiante
+                and matricula.get("codigo_materia") == codigo_materia
+                and matricula.get("codigo_periodo") == codigo_periodo):
+            return {
+                "resultado": True,
+                "mensaje": "Matricula encontrada.",
+                "datos": matricula,
+            }
+
+    return {
+        "resultado": False,
+        "mensaje": "No se encontro la matricula.",
+        "datos": None,
+    }
 
 
 def listar_matriculas_por_estudiante(codigo_estudiante):
     """Devuelve todas las matriculas de un estudiante."""
-    return []
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    matriculas = cargar_matriculas()
+    resultado = []
+
+    nombres_materias = {}
+    try:
+        with open(ARCHIVO_MATERIAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            materias = json.loads(contenido)
+            for materia in materias:
+                nombres_materias[materia.get("codigo_materia")] = materia.get("nombre_materia", "")
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    for matricula in matriculas:
+        if matricula.get("codigo_estudiante") == codigo_estudiante:
+            entrada = dict(matricula)
+            cod_mat = matricula.get("codigo_materia", "")
+            entrada["nombre_materia"] = nombres_materias.get(cod_mat, "")
+            resultado.append(entrada)
+
+    return resultado
 
 
 def listar_matriculas_por_materia(codigo_materia, codigo_periodo):
     """Devuelve todos los estudiantes matriculados en una materia y periodo."""
-    return []
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    matriculas = cargar_matriculas()
+    resultado = []
+
+    datos_estudiantes = {}
+    try:
+        with open(ARCHIVO_ESTUDIANTES, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            estudiantes = json.loads(contenido)
+            for estudiante in estudiantes:
+                datos_estudiantes[estudiante.get("codigo")] = {
+                    "nombres": estudiante.get("nombres", ""),
+                    "apellidos": estudiante.get("apellidos", ""),
+                    "dni": estudiante.get("dni", ""),
+                }
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    for matricula in matriculas:
+        if (matricula.get("codigo_materia") == codigo_materia
+                and matricula.get("codigo_periodo") == codigo_periodo):
+            entrada = dict(matricula)
+            cod_est = matricula.get("codigo_estudiante", "")
+            info = datos_estudiantes.get(cod_est, {})
+            entrada["nombres"] = info.get("nombres", "")
+            entrada["apellidos"] = info.get("apellidos", "")
+            entrada["dni"] = info.get("dni", "")
+            resultado.append(entrada)
+
+    return resultado
 
 
 def cambiar_estado_matricula(codigo_estudiante, codigo_materia, codigo_periodo, nuevo_estado):

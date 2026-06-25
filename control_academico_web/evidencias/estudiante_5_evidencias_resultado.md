@@ -14,6 +14,7 @@
 | 3 | Agregar lectura y guardado de matriculas | Se implementaron cargar_matriculas() y guardar_matriculas() con manejo robusto de archivos | Ninguno | core/matriculas.py | Funciones listas siguiendo el patrón de estudiantes.py |
 | 4 | Agregar validaciones de matriculas | Se implementaron 4 validaciones consultando JSON de otros módulos | Ninguno | core/matriculas.py | Validaciones listas: estudiante, materia, periodo y duplicados |
 | 5 | Registrar matriculas con validaciones | Se implementó registrar_matricula() con todas las validaciones y guardado | Ninguno | core/matriculas.py | Función completa con estado inicial "activa" |
+| 6 | Listar y buscar matriculas | Se implementaron 4 funciones de listado y búsqueda con enriquecimiento de datos | Ninguno | core/matriculas.py | Funciones completas con nombres de materia y datos de estudiantes |
 
 ## Conversación o resumen de interacción con IA
 
@@ -59,3 +60,10 @@
 - Asigna estado inicial "activa".
 - Guarda en data/matriculas.json con la estructura requerida.
 - Devuelve diccionario con resultado, mensaje y datos de la matrícula registrada.
+
+### Actividad 6: Listar y buscar matriculas
+
+- Se implementó listar_matriculas(): devuelve todas las matrículas registradas.
+- Se implementó buscar_matricula(): busca matrícula exacta por los tres códigos.
+- Se implementó listar_matriculas_por_estudiante(): filtra y enriquece con nombre de materia.
+- Se implementó listar_matriculas_por_materia(): filtra por materia/periodo y enriquece con nombres, apellidos y DNI de estudiantes.
