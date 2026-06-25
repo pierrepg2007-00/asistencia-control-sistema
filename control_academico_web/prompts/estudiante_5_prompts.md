@@ -255,3 +255,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 7 registrado - cambiar estado de matriculas]
 ```
+
+
+### Prompt 8 - Reportar estudiantes por materia
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Reportes
+**Objetivo:** Implementar reporte_estudiantes_por_materia() consultando matriculas, estudiantes y materias
+
+```text
+[Prompt 8 registrado - reportar estudiantes por materia]
+```

@@ -16,6 +16,7 @@
 | 5 | Registrar matriculas con validaciones | Se implementó registrar_matricula() con todas las validaciones y guardado | Ninguno | core/matriculas.py | Función completa con estado inicial "activa" |
 | 6 | Listar y buscar matriculas | Se implementaron 4 funciones de listado y búsqueda con enriquecimiento de datos | Ninguno | core/matriculas.py | Funciones completas con nombres de materia y datos de estudiantes |
 | 7 | Cambiar estado de matriculas | Se implementó cambiar_estado_matricula() con 3 estados válidos | Ninguno | core/matriculas.py | Función completa: activa, retirada, finalizada |
+| 8 | Reportar estudiantes por materia | Se implementó reporte_estudiantes_por_materia() con enriquecimiento de datos | Ninguno | core/reportes.py | Consulta matriculas, estudiantes y materias |
 
 ## Conversación o resumen de interacción con IA
 
@@ -75,3 +76,10 @@
 - Solo permite cambiar el campo estado, no los códigos.
 - Estados permitidos: activa, retirada, finalizada.
 - Devuelve mensaje claro si el estado es inválido o la matrícula no existe.
+
+### Actividad 8: Reportar estudiantes por materia
+
+- Se implementó reporte_estudiantes_por_materia() que lee matriculas.json, estudiantes.json y materias.json.
+- Filtra por codigo_materia y codigo_periodo, mostrando solo matrículas activas.
+- Enriquece cada registro con nombre de materia, nombres, apellidos y DNI del estudiante.
+- Devuelve lista vacía si no hay datos.
