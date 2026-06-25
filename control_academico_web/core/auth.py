@@ -100,6 +100,14 @@ def datos_publicos_usuario(usuario):
     }
 
 
+def listar_usuarios_publicos():
+    """Lista usuarios sin exponer hash ni salt."""
+    usuarios_publicos = []
+    for usuario in cargar_usuarios():
+        usuarios_publicos.append(datos_publicos_usuario(usuario))
+    return usuarios_publicos
+
+
 def autenticar_usuario(usuario, password):
     """Valida usuario, estado y contrasena sin exponer hash ni salt."""
     usuario_encontrado = buscar_usuario(usuario)
@@ -139,6 +147,10 @@ def crear_usuario(usuario, nombre, password, rol="usuario", estado="activo"):
         return {"resultado": False, "mensaje": "El nombre no puede estar vacio.", "datos": None}
     if not password:
         return {"resultado": False, "mensaje": "La contrasena no puede estar vacia.", "datos": None}
+    if rol not in ["administrador", "usuario"]:
+        return {"resultado": False, "mensaje": "El rol debe ser administrador o usuario.", "datos": None}
+    if estado not in ["activo", "inactivo"]:
+        return {"resultado": False, "mensaje": "El estado debe ser activo o inactivo.", "datos": None}
     if buscar_usuario(usuario):
         return {"resultado": False, "mensaje": "El usuario ya existe.", "datos": None}
 

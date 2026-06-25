@@ -36,6 +36,7 @@ PAGINAS = {
     "/notas": "notas.html",
     "/asistencia": "asistencia.html",
     "/reportes": "reportes.html",
+    "/usuarios": "usuarios.html",
 }
 
 RUTAS_PUBLICAS_GET = ["/login"]
@@ -66,8 +67,12 @@ class ManejadorControlAcademico(BaseHTTPRequestHandler):
             return
 
         if ruta in PAGINAS:
-            if not self.obtener_usuario_sesion():
+            usuario_sesion = self.obtener_usuario_sesion()
+            if not usuario_sesion:
                 self.redirigir("/login")
+                return
+            if ruta == "/usuarios" and not self.usuario_es_administrador(usuario_sesion):
+                self.redirigir("/")
                 return
             self.enviar_archivo(os.path.join(WEB_DIR, PAGINAS[ruta]))
             return
@@ -175,6 +180,10 @@ class ManejadorControlAcademico(BaseHTTPRequestHandler):
             return None
         return SESIONES.get(session_id)
 
+    def usuario_es_administrador(self, usuario_sesion=None):
+        usuario_sesion = usuario_sesion or self.obtener_usuario_sesion()
+        return bool(usuario_sesion and usuario_sesion.get("rol") == "administrador")
+
     def crear_cookie_sesion(self, session_id, expirar=False):
         cookie = cookies.SimpleCookie()
         cookie[NOMBRE_COOKIE_SESION] = session_id
@@ -206,6 +215,22 @@ class ManejadorControlAcademico(BaseHTTPRequestHandler):
         self.wfile.write(contenido)
 
     def procesar_api(self, ruta, datos):
+        if ruta == "/api/usuarios/listar":
+            if not self.usuario_es_administrador():
+                return {"resultado": False, "mensaje": "Solo un administrador puede listar usuarios.", "datos": None}
+            return respuesta_ok(auth.listar_usuarios_publicos(), "Usuarios listados correctamente.")
+
+        if ruta == "/api/usuarios/crear":
+            if not self.usuario_es_administrador():
+                return {"resultado": False, "mensaje": "Solo un administrador puede crear usuarios.", "datos": None}
+            return auth.crear_usuario(
+                datos.get("usuario"),
+                datos.get("nombre"),
+                datos.get("password"),
+                datos.get("rol", "usuario"),
+                datos.get("estado", "activo"),
+            )
+
         if ruta == "/api/estudiantes/guardar":
             return estudiantes.registrar_estudiante(
                 datos.get("nombres"),

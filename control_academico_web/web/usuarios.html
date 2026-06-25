@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de usuarios</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body data-requiere-admin="true">
+  <header class="barra-superior">
+    <div class="marca">Control Academico</div>
+    <nav class="navegacion-principal">
+      <a href="/">Inicio</a>
+      <a href="/estudiantes">Estudiantes</a>
+      <a href="/materias">Materias y periodos</a>
+      <a href="/matriculas">Matriculas</a>
+      <a href="/notas">Notas</a>
+      <a href="/asistencia">Asistencia</a>
+      <a href="/reportes">Reportes</a>
+      <a href="/usuarios" class="solo-admin">Usuarios</a>
+    </nav>
+    <div class="sesion-superior">
+      <span id="usuario-sesion"></span>
+      <button type="button" id="btn-cerrar-sesion" class="btn-salida">Cerrar sesion</button>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <h1>Registro de usuarios</h1>
+
+    <section class="panel">
+      <h2>Crear usuario</h2>
+      <form id="formulario-usuario">
+        <div class="grid-formulario">
+          <div>
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" placeholder="Ej: docente01">
+          </div>
+          <div>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Nombre completo">
+          </div>
+          <div>
+            <label for="password">Contrasena</label>
+            <input type="password" id="password" placeholder="Minimo 4 caracteres">
+          </div>
+          <div>
+            <label for="rol">Rol</label>
+            <select id="rol">
+              <option value="usuario">Usuario</option>
+              <option value="administrador">Administrador</option>
+            </select>
+          </div>
+          <div>
+            <label for="estado">Estado</label>
+            <select id="estado">
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+            </select>
+          </div>
+        </div>
+        <div class="acciones">
+          <button type="button" id="btn-crear-usuario">Crear usuario</button>
+          <button type="button" id="btn-limpiar-usuario" class="secundario">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="mensaje-usuarios" class="mensaje"></section>
+
+    <section class="panel">
+      <h2>Usuarios registrados</h2>
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Nombre</th>
+              <th>Rol</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-usuarios"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+  <script src="/static/usuarios.js"></script>
+</body>
+</html>

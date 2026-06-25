@@ -69,6 +69,14 @@ body {
   background: rgba(255, 255, 255, 0.12);
 }
 
+.solo-admin {
+  display: none;
+}
+
+.solo-admin.visible-admin {
+  display: inline-flex;
+}
+
 .sesion-superior {
   display: flex;
   align-items: center;

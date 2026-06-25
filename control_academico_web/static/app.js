@@ -8,9 +8,21 @@ async function verificarSesion() {
       return;
     }
 
+    const usuario = datos.datos || {};
     const nombreUsuario = document.getElementById("usuario-sesion");
-    if (nombreUsuario && datos.datos) {
-      nombreUsuario.textContent = datos.datos.nombre || datos.datos.usuario || "";
+    if (nombreUsuario) {
+      nombreUsuario.textContent = usuario.nombre || usuario.usuario || "";
+    }
+
+    if (document.body.dataset.requiereAdmin === "true" && usuario.rol !== "administrador") {
+      window.location.href = "/";
+      return;
+    }
+
+    if (usuario.rol === "administrador") {
+      document.querySelectorAll(".solo-admin").forEach((elemento) => {
+        elemento.classList.add("visible-admin");
+      });
     }
   } catch (error) {
     window.location.href = "/login";

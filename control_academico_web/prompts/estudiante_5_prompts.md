@@ -777,16 +777,7 @@ Primero deja el repositorio limpio y confirma qué archivos fueron modificados.
 **Objetivo:** Agregar login real con hash, proteger rutas, agregar logout, rediseñar la interfaz y documentar evidencias
 
 ```text
-Necesito agregar autenticación al proyecto control_academico_web y cambiar la parte visual del sistema.
-
-Esta tarea debe ser realizada por el usuario/integrante que tenga menos commits en el repositorio.
-
-Primero revisa el historial de commits con:
-
-git shortlog -sn --all
-git log --format='%an <%ae>' | sort | uniq -c | sort -n
-
-Identifica cuál integrante o usuario tiene menos commits.
+Necesito agregar inicio de sesión, proteger las páginas internas y mejorar la interfaz del sistema.
 
 IMPORTANTE:
 - No borres archivos existentes.
@@ -804,7 +795,7 @@ La tarea consiste en:
 1. Crear login con usuarios guardados en JSON.
 2. Guardar las contraseñas usando hash.
 3. Proteger las rutas del sistema.
-4. Cambiar el diseño visual para que no se parezca al diseño anterior.
+4. Cambiar el diseño visual.
 5. Registrar prompts y evidencias del integrante que tenga menos commits.
 6. Hacer un commit final.
 
@@ -1083,8 +1074,6 @@ Esto no reemplaza la protección en server.py, solo la refuerza visualmente.
 ------------------------------------------------------------
 8. CAMBIAR EL DISEÑO VISUAL DEL SISTEMA
 ------------------------------------------------------------
-
-La parte visual actual se parece mucho a otro proyecto anterior, así que debes cambiarla.
 
 Actualiza static/styles.css con un diseño diferente.
 

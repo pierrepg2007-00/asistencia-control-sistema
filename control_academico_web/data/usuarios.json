@@ -6,5 +6,21 @@
         "salt": "8d69cc1413c1e7c761bae9736575eb72",
         "rol": "administrador",
         "estado": "activo"
+    },
+    {
+        "usuario": "docente_test",
+        "nombre": "Docente Test",
+        "password_hash": "354a2b31ce25249f612109e5d46365962aa83e6b125d429267ae14b184f6ffb3",
+        "salt": "8190f1c59bf426542223886c3573fb4d",
+        "rol": "usuario",
+        "estado": "activo"
+    },
+    {
+        "usuario": "docente",
+        "nombre": "docente",
+        "password_hash": "3198a8d74b10a29961f8f4de4ed99c182cd3f961d38d34c290bd179d0e85d5b6",
+        "salt": "2dac7bb79aa347f41cb1e14c5554f336",
+        "rol": "usuario",
+        "estado": "activo"
     }
 ]
