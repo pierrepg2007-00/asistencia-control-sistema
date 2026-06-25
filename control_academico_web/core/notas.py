@@ -1,14 +1,48 @@
 """Funciones base para la gestión de notas."""
 
+import json
+import os
+
+
+CARPETA_BASE = os.path.dirname(os.path.dirname(__file__))
+ARCHIVO_NOTAS = os.path.join(CARPETA_BASE, "data", "notas.json")
+ARCHIVO_MATRICULAS = os.path.join(CARPETA_BASE, "data", "matriculas.json")
+ARCHIVO_ESTUDIANTES = os.path.join(CARPETA_BASE, "data", "estudiantes.json")
+
 
 def cargar_notas():
-    """Carga las notas guardadas. Pendiente de completar."""
+    """Carga y devuelve la lista de notas guardada en JSON."""
+    try:
+        with open(ARCHIVO_NOTAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+    except FileNotFoundError:
+        try:
+            guardar_notas([])
+        except OSError:
+            pass
+        return []
+    except OSError:
+        return []
+
+    if not contenido:
+        return []
+
+    try:
+        notas = json.loads(contenido)
+        if isinstance(notas, list):
+            return notas
+    except json.JSONDecodeError:
+        pass
+
     return []
 
 
 def guardar_notas(notas):
-    """Guarda la lista de notas. Pendiente de completar."""
-    pass
+    """Guarda la lista de notas en el archivo JSON."""
+    os.makedirs(os.path.dirname(ARCHIVO_NOTAS), exist_ok=True)
+
+    with open(ARCHIVO_NOTAS, "w", encoding="utf-8") as archivo:
+        json.dump(notas, archivo, ensure_ascii=False, indent=4)
 
 
 def validar_nota(nota):

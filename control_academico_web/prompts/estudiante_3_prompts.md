@@ -150,3 +150,53 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 3 - Agregar lectura y guardado de notas
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** desarrollar funciones para cargar y guardar notas en JSON  
+
+```text
+Continúa con el módulo notas.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+
+Desarrolla en core/notas.py las funciones para leer y guardar notas usando JSON:
+
+- cargar_notas()
+- guardar_notas(notas)
+
+Reglas para cargar_notas():
+
+- debe leer data/notas.json
+- si el archivo no existe, debe crearlo con []
+- si el archivo está vacío, debe devolver []
+- si ocurre un error al leer, debe devolver []
+- no debe romper el programa
+
+Reglas para guardar_notas(notas):
+
+- debe recibir una lista de notas
+- debe guardar esa lista en data/notas.json
+- el JSON debe quedar ordenado y legible
+
+Usa Python básico.
+Usa solo librerías estándar como json y os si hace falta.
+
+No modifiques otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué validaciones de archivo se agregaron
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
