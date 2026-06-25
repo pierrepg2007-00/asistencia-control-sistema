@@ -245,3 +245,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 6 registrado - listar y buscar matriculas]
 ```
+
+
+### Prompt 7 - Cambiar estado de matriculas
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Matrículas
+**Objetivo:** Implementar cambiar_estado_matricula() con estados: activa, retirada, finalizada
+
+```text
+[Prompt 7 registrado - cambiar estado de matriculas]
+```

@@ -296,4 +296,34 @@ def listar_matriculas_por_materia(codigo_materia, codigo_periodo):
 
 def cambiar_estado_matricula(codigo_estudiante, codigo_materia, codigo_periodo, nuevo_estado):
     """Cambia el estado de una matricula existente."""
-    return {"resultado": False, "mensaje": "Funcion pendiente de desarrollo."}
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    nuevo_estado = (nuevo_estado or "").strip().lower()
+
+    estados_validos = ["activa", "retirada", "finalizada"]
+
+    if nuevo_estado not in estados_validos:
+        return {
+            "resultado": False,
+            "mensaje": "El estado debe ser: activa, retirada o finalizada.",
+        }
+
+    matriculas = cargar_matriculas()
+
+    for matricula in matriculas:
+        if (matricula.get("codigo_estudiante") == codigo_estudiante
+                and matricula.get("codigo_materia") == codigo_materia
+                and matricula.get("codigo_periodo") == codigo_periodo):
+            matricula["estado"] = nuevo_estado
+            guardar_matriculas(matriculas)
+            return {
+                "resultado": True,
+                "mensaje": "Estado de la matricula actualizado correctamente.",
+                "datos": matricula,
+            }
+
+    return {
+        "resultado": False,
+        "mensaje": "No se encontro la matricula para cambiar el estado.",
+    }
