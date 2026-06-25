@@ -325,3 +325,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 14 registrado - agregar logica visual de matriculas]
 ```
+
+
+### Prompt 15 - Crear interfaz web de reportes
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Reportes
+**Objetivo:** Desarrollar la página web/reportes.html completa
+
+```text
+[Prompt 15 registrado - crear interfaz web de reportes]
+```

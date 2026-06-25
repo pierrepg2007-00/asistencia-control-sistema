@@ -9,8 +9,77 @@
 <body>
     <div class="contenedor">
         <h1>Reportes Académicos</h1>
-        <p>Módulo de reportes - pendiente de desarrollo.</p>
+
+        <!-- Reporte de estudiantes por materia -->
+        <div class="seccion" id="seccion-reporte-estudiantes">
+            <h2>Reporte de estudiantes por materia</h2>
+            <div class="campo">
+                <label for="rep-est-materia">Código de materia:</label>
+                <input type="text" id="rep-est-materia" placeholder="Ej: MAT001">
+            </div>
+            <div class="campo">
+                <label for="rep-est-periodo">Código de periodo:</label>
+                <input type="text" id="rep-est-periodo" placeholder="Ej: 2026-I">
+            </div>
+            <button type="button" id="btn-reporte-estudiantes">Generar reporte</button>
+        </div>
+
+        <!-- Reporte de notas por materia -->
+        <div class="seccion" id="seccion-reporte-notas">
+            <h2>Reporte de notas por materia</h2>
+            <div class="campo">
+                <label for="rep-notas-materia">Código de materia:</label>
+                <input type="text" id="rep-notas-materia" placeholder="Ej: MAT001">
+            </div>
+            <div class="campo">
+                <label for="rep-notas-periodo">Código de periodo:</label>
+                <input type="text" id="rep-notas-periodo" placeholder="Ej: 2026-I">
+            </div>
+            <button type="button" id="btn-reporte-notas">Generar reporte</button>
+        </div>
+
+        <!-- Reporte de asistencia por materia -->
+        <div class="seccion" id="seccion-reporte-asistencia">
+            <h2>Reporte de asistencia por materia</h2>
+            <div class="campo">
+                <label for="rep-asist-materia">Código de materia:</label>
+                <input type="text" id="rep-asist-materia" placeholder="Ej: MAT001">
+            </div>
+            <div class="campo">
+                <label for="rep-asist-periodo">Código de periodo:</label>
+                <input type="text" id="rep-asist-periodo" placeholder="Ej: 2026-I">
+            </div>
+            <button type="button" id="btn-reporte-asistencia">Generar reporte</button>
+        </div>
+
+        <!-- Reporte de estudiantes en riesgo -->
+        <div class="seccion" id="seccion-reporte-riesgo">
+            <h2>Reporte de estudiantes en riesgo</h2>
+            <button type="button" id="btn-reporte-riesgo">Generar reporte de riesgo</button>
+        </div>
+
+        <!-- Botón para exportar -->
+        <div class="seccion" id="seccion-exportar">
+            <h2>Exportar reporte</h2>
+            <div class="campo">
+                <label for="nombre-reporte">Nombre del reporte:</label>
+                <input type="text" id="nombre-reporte" placeholder="Ej: reporte_notas">
+            </div>
+            <button type="button" id="btn-exportar">Exportar reporte en texto</button>
+        </div>
+
+        <!-- Tabla o zona de resultados -->
+        <div class="seccion" id="seccion-resultados">
+            <h2>Resultados</h2>
+            <div id="zona-resultados-reporte">
+                <p>Seleccione un tipo de reporte y presione Generar.</p>
+            </div>
+        </div>
+
+        <!-- Zona de mensajes -->
+        <div id="zona-mensajes-reportes"></div>
     </div>
+
     <script src="../static/reportes.js"></script>
 </body>
 </html>
