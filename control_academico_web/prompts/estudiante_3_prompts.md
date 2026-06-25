@@ -280,3 +280,40 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 6 - Evitar notas duplicadas por matrícula
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** evitar registros duplicados de notas  
+
+```text
+Continúa con el módulo notas.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+
+Desarrolla en core/notas.py la función:
+
+- nota_existe(codigo_estudiante, codigo_materia, codigo_periodo)
+
+La función debe leer data/notas.json y devolver True si ya existe una nota para el mismo estudiante, materia y periodo; si no existe, debe devolver False.
+
+Esta función servirá para evitar registrar dos veces las notas del mismo estudiante en la misma materia y periodo.
+
+No modifiques otros módulos.
+Mantén el código simple y fácil de defender.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué función se desarrolló
+- qué problema evita
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

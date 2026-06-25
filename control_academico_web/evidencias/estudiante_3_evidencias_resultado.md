@@ -15,6 +15,7 @@
 | 3 | Agregar lectura y guardado de notas | Se desarrollaron `cargar_notas()` y `guardar_notas()`. | No aplica. | `core/notas.py` | El JSON se crea vacío si no existe y se guarda legible. |
 | 4 | Agregar validaciones y promedio de notas | Se desarrollaron validación de notas, cálculo de promedio y estado final. | No aplica. | `core/notas.py` | Se validan notas entre 0 y 20. |
 | 5 | Validar matrícula antes de registrar notas | Se creó `verificar_matricula_para_nota()`. | No aplica. | `core/notas.py` | Consulta `data/matriculas.json` y acepta matrículas activas. |
+| 6 | Evitar notas duplicadas por matrícula | Se desarrolló `nota_existe()`. | No aplica. | `core/notas.py` | Evita duplicar notas del mismo estudiante, materia y periodo. |
 
 ## Conversación o resumen de interacción con IA
 
@@ -26,3 +27,4 @@
 - Se implementó lectura y escritura JSON para notas.
 - Se implementó validación de notas, promedio y estado final.
 - Se agregó validación de matrícula activa antes de registrar notas.
+- Se agregó verificación para evitar notas duplicadas.

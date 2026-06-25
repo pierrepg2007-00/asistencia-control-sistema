@@ -137,8 +137,20 @@ def verificar_matricula_para_nota(codigo_estudiante, codigo_materia, codigo_peri
 
 
 def nota_existe(codigo_estudiante, codigo_materia, codigo_periodo):
-    """Verifica si ya existe una nota registrada. Pendiente de completar."""
-    pass
+    """Devuelve True si ya existe nota para estudiante, materia y periodo."""
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+
+    for nota in cargar_notas():
+        if (
+            nota.get("codigo_estudiante") == codigo_estudiante
+            and nota.get("codigo_materia") == codigo_materia
+            and nota.get("codigo_periodo") == codigo_periodo
+        ):
+            return True
+
+    return False
 
 
 def registrar_nota(codigo_estudiante, codigo_materia, codigo_periodo, nota1, nota2, nota3):
