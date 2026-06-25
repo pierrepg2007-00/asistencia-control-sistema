@@ -211,3 +211,105 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 4 - Agregar validaciones de asistencia
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** validar estado de asistencia y formato de fecha
+
+```text
+Continúa con el módulo asistencia.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+
+Desarrolla en core/asistencia.py estas funciones:
+
+- validar_estado_asistencia(estado)
+- validar_fecha(fecha)
+
+Reglas para validar_estado_asistencia(estado):
+
+- debe aceptar solo estos estados:
+  - presente
+  - tarde
+  - falta
+  - justificado
+- debe convertir el texto a minúsculas para evitar errores por mayúsculas
+- debe devolver True si el estado es válido
+- debe devolver False o un mensaje claro si no es válido
+
+Reglas para validar_fecha(fecha):
+
+- debe verificar que la fecha no esté vacía
+- debe aceptar el formato YYYY-MM-DD
+- si el formato es incorrecto, debe devolver un mensaje claro
+- puedes usar datetime de Python si es necesario
+
+Mantén el código simple y fácil de explicar.
+No uses clases.
+No modifiques otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué validaciones se implementaron
+- qué reglas se aplicaron
+- qué archivo fue modificado
+- qué pruebas se deberían hacer después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** desarrollar funciones para cargar y guardar asistencias en JSON
+
+```text
+Continúa con el módulo asistencia.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+
+Desarrolla en core/asistencia.py las funciones para leer y guardar asistencias usando JSON:
+
+- cargar_asistencias()
+- guardar_asistencias(asistencias)
+
+Reglas para cargar_asistencias():
+
+- debe leer data/asistencias.json
+- si el archivo no existe, debe crearlo con []
+- si el archivo está vacío, debe devolver []
+- si ocurre un error al leer, debe devolver []
+- no debe romper el programa
+
+Reglas para guardar_asistencias(asistencias):
+
+- debe recibir una lista de asistencias
+- debe guardar esa lista en data/asistencias.json
+- el JSON debe quedar ordenado y legible
+
+Usa Python básico.
+Usa solo librerías estándar como json y os si hace falta.
+
+No modifiques otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué validaciones de archivo se agregaron
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

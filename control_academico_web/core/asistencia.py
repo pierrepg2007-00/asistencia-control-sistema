@@ -2,6 +2,7 @@
 
 import json
 import os
+from datetime import datetime
 
 
 CARPETA_BASE = os.path.dirname(os.path.dirname(__file__))
@@ -69,12 +70,28 @@ def guardar_asistencias(asistencias):
 
 def validar_estado_asistencia(estado):
     """Valida que el estado de asistencia sea uno de los permitidos."""
-    pass
+    if not estado:
+        return False
+
+    estado = estado.strip().lower()
+    estados_validos = ["presente", "tarde", "falta", "justificado"]
+
+    if estado in estados_validos:
+        return True
+
+    return False
 
 
 def validar_fecha(fecha):
     """Valida que la fecha tenga el formato YYYY-MM-DD."""
-    pass
+    if not fecha:
+        return False
+
+    try:
+        datetime.strptime(fecha, "%Y-%m-%d")
+        return True
+    except (ValueError, TypeError):
+        return False
 
 
 def verificar_matricula_para_asistencia(codigo_estudiante, codigo_materia, codigo_periodo):
