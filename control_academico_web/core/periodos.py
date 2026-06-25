@@ -194,3 +194,30 @@ def periodo_existe(codigo_periodo):
             return True
 
     return False
+
+
+def validar_periodo_para_matricula(codigo_periodo):
+    """Valida si un periodo puede usarse en una matrícula."""
+    resultado_busqueda = buscar_periodo(codigo_periodo)
+
+    if not resultado_busqueda["resultado"]:
+        return {
+            "resultado": False,
+            "mensaje": "El periodo no existe.",
+            "datos": None,
+        }
+
+    periodo = resultado_busqueda["datos"]
+
+    if periodo.get("estado") != "activo":
+        return {
+            "resultado": False,
+            "mensaje": "El periodo no está activo para matrícula.",
+            "datos": periodo,
+        }
+
+    return {
+        "resultado": True,
+        "mensaje": "El periodo puede usarse en matrícula.",
+        "datos": periodo,
+    }

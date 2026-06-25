@@ -236,3 +236,30 @@ def materia_existe(codigo_materia):
             return True
 
     return False
+
+
+def validar_materia_para_matricula(codigo_materia):
+    """Valida si una materia puede usarse en una matrícula."""
+    resultado_busqueda = buscar_materia(codigo_materia)
+
+    if not resultado_busqueda["resultado"]:
+        return {
+            "resultado": False,
+            "mensaje": "La materia no existe.",
+            "datos": None,
+        }
+
+    materia = resultado_busqueda["datos"]
+
+    if materia.get("estado") != "activo":
+        return {
+            "resultado": False,
+            "mensaje": "La materia no está activa para matrícula.",
+            "datos": materia,
+        }
+
+    return {
+        "resultado": True,
+        "mensaje": "La materia puede usarse en matrícula.",
+        "datos": materia,
+    }

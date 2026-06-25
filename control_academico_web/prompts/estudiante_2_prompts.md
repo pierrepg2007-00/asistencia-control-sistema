@@ -541,3 +541,56 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 9 - Validar materias y periodos para matrículas
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** crear funciones de apoyo para el módulo Matrículas  
+
+```text
+Continúa con el proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Ahora agrega funciones de apoyo para que el módulo de matrículas pueda validar materias y periodos.
+
+En core/materias.py desarrolla o ajusta esta función:
+
+- validar_materia_para_matricula(codigo_materia)
+
+Reglas:
+- debe verificar que la materia exista en data/materias.json
+- debe verificar que la materia esté activa
+- si puede usarse en matrícula, debe devolver resultado positivo
+- si no puede usarse, debe devolver un mensaje claro
+
+En core/periodos.py desarrolla o ajusta esta función:
+
+- validar_periodo_para_matricula(codigo_periodo)
+
+Reglas:
+- debe verificar que el periodo exista en data/periodos.json
+- debe verificar que el periodo esté activo
+- si puede usarse en matrícula, debe devolver resultado positivo
+- si no puede usarse, debe devolver un mensaje claro
+
+Estas funciones serán usadas después por el módulo de matrículas.
+No desarrolles el módulo completo de matrículas.
+No modifiques estudiantes, notas, asistencia ni reportes.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- qué funciones de apoyo a matrículas se crearon
+- qué validan
+- qué archivos fueron modificados
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
