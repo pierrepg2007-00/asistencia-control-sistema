@@ -102,3 +102,62 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 2 - Crear base del modulo asistencia
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** crear los archivos iniciales del modulo Asistencia
+
+```text
+Continúa con el proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Crea únicamente los archivos necesarios para empezar el módulo asistencia:
+
+- data/asistencias.json
+- core/asistencia.py
+- web/asistencia.html
+- static/asistencia.js
+
+El archivo data/asistencias.json debe iniciar con una lista vacía [].
+
+En core/asistencia.py deja preparada la estructura base con estas funciones:
+
+- cargar_asistencias()
+- guardar_asistencias(asistencias)
+- validar_estado_asistencia(estado)
+- validar_fecha(fecha)
+- verificar_matricula_para_asistencia(codigo_estudiante, codigo_materia, codigo_periodo)
+- asistencia_duplicada(codigo_estudiante, codigo_materia, codigo_periodo, fecha)
+- registrar_asistencia(codigo_estudiante, codigo_materia, codigo_periodo, fecha, estado_asistencia)
+- listar_asistencias()
+- listar_asistencia_por_estudiante(codigo_estudiante)
+- listar_asistencia_por_materia(codigo_materia, codigo_periodo, fecha=None)
+- calcular_porcentaje_asistencia(codigo_estudiante, codigo_materia, codigo_periodo)
+- listar_matriculados_para_asistencia(codigo_materia, codigo_periodo)
+
+Por ahora algunas funciones pueden quedar como borrador, pero deben estar ordenadas y con comentarios simples.
+
+No modifiques estudiantes.py.
+No modifiques materias.py ni periodos.py.
+No modifiques notas.py.
+No desarrolles reportes.
+No desarrolles el módulo completo de matrículas.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué archivos se crearon
+- qué funciones quedaron preparadas
+- qué falta desarrollar
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
