@@ -335,3 +335,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 15 registrado - crear interfaz web de reportes]
 ```
+
+
+### Prompt 16 - Agregar logica visual de reportes
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Reportes
+**Objetivo:** Desarrollar static/reportes.js con funciones de interacción visual
+
+```text
+[Prompt 16 registrado - agregar logica visual de reportes]
+```
