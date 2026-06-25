@@ -64,3 +64,9 @@
 - Se crearon funciones para capturar datos, validar formulario, mostrar mensajes, limpiar campos, llenar la tabla y buscar estudiantes.
 - Se agregó una función para preparar la actualización visual de un estudiante.
 - Falta integrar estas funciones con las funciones Python del módulo.
+
+## Pruebas documentadas del módulo estudiantes
+
+- Se creó `evidencias/casos_prueba_estudiantes.md`.
+- Se documentaron 14 casos de prueba para registro, validación, listado, búsqueda y actualización.
+- Falta ejecutar los casos cuando se haga la integración completa entre Python y la web.

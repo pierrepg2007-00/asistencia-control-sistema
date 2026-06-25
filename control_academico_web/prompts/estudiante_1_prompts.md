@@ -551,3 +551,65 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 12 - Documentar pruebas del módulo estudiantes
+
+**Estudiante asociado:** Integrante 1  
+**Módulo trabajado:** Estudiantes  
+**Objetivo:** crear la evidencia de casos de prueba del módulo estudiantes  
+
+```text
+Continúa con el módulo estudiantes.
+
+Este trabajo corresponde al Integrante 1.
+Módulo principal: Estudiantes.
+
+Crea un archivo de pruebas dentro de evidencias llamado:
+
+casos_prueba_estudiantes.md
+
+El archivo debe incluir una tabla con:
+
+- número de caso
+- acción realizada
+- datos de entrada
+- resultado esperado
+- resultado obtenido
+- observación
+
+Incluye estos casos:
+
+1. Registrar estudiante correctamente.
+2. Registrar estudiante con nombres vacíos.
+3. Registrar estudiante con apellidos vacíos.
+4. Registrar estudiante con DNI incompleto.
+5. Registrar estudiante con DNI repetido.
+6. Registrar estudiante con correo inválido.
+7. Registrar estudiante con estado inválido.
+8. Listar estudiantes registrados.
+9. Buscar estudiante por código.
+10. Buscar estudiante por DNI.
+11. Buscar estudiante inexistente.
+12. Actualizar estudiante existente.
+13. Intentar actualizar estudiante inexistente.
+14. Cambiar estado de activo a inactivo.
+
+Agrega al final una sección llamada:
+
+Conclusión del módulo
+
+En esa sección indica si el módulo estudiantes quedó listo para integrarse con los demás módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_1_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_1_evidencias_resultado.md
+
+Indicando:
+- que se creó la evidencia de pruebas
+- qué casos cubre
+- qué falta verificar en la integración
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
