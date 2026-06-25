@@ -324,3 +324,51 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 8 - Listar y buscar estudiantes
+
+**Estudiante asociado:** Integrante 1  
+**Módulo trabajado:** Estudiantes  
+**Objetivo:** desarrollar funciones para listar y buscar estudiantes registrados  
+
+```text
+Continúa con el módulo estudiantes.
+
+Este trabajo corresponde al Integrante 1.
+Módulo principal: Estudiantes.
+
+Desarrolla en core/estudiantes.py estas funciones:
+
+- listar_estudiantes()
+- buscar_estudiante(valor)
+
+listar_estudiantes():
+- debe leer data/estudiantes.json
+- debe devolver todos los estudiantes registrados
+- si no hay estudiantes, debe devolver una lista vacía
+
+buscar_estudiante(valor):
+- debe buscar por código o por DNI
+- si valor empieza con EST, debe buscar por código
+- si valor tiene 8 números, debe buscar por DNI
+- si encuentra el estudiante, debe devolver sus datos
+- si no encuentra, debe devolver un mensaje claro
+
+Ambas funciones deben devolver datos fáciles de usar después desde la web.
+
+No desarrolles otros módulos.
+No cambies la estructura de datos del estudiante.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_1_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_1_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué casos cubren
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

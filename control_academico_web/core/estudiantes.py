@@ -139,8 +139,38 @@ def listar_estudiantes():
 
 
 def buscar_estudiante(valor):
-    """Busca por código, DNI, nombres o apellidos. Pendiente de completar."""
-    pass
+    """Busca un estudiante por código o DNI."""
+    valor = (valor or "").strip()
+    estudiantes = cargar_estudiantes()
+
+    if not valor:
+        return {
+            "resultado": False,
+            "mensaje": "Debe ingresar un código o DNI para buscar.",
+            "datos": None,
+        }
+
+    for estudiante in estudiantes:
+        if valor.upper().startswith("EST"):
+            if estudiante.get("codigo") == valor.upper():
+                return {
+                    "resultado": True,
+                    "mensaje": "Estudiante encontrado.",
+                    "datos": estudiante,
+                }
+        elif validar_dni(valor):
+            if estudiante.get("dni") == valor:
+                return {
+                    "resultado": True,
+                    "mensaje": "Estudiante encontrado.",
+                    "datos": estudiante,
+                }
+
+    return {
+        "resultado": False,
+        "mensaje": "No se encontró ningún estudiante con ese código o DNI.",
+        "datos": None,
+    }
 
 
 def actualizar_estudiante(codigo, nuevos_datos):

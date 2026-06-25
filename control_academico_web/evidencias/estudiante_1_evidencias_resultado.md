@@ -35,3 +35,10 @@
 - El estudiante se guarda con código, nombres, apellidos, DNI, correo y estado.
 - La función devuelve resultado, mensaje y datos del estudiante registrado.
 - Archivo modificado: `core/estudiantes.py`.
+
+## Listado y búsqueda de estudiantes
+
+- `listar_estudiantes()` devuelve todos los estudiantes guardados en el JSON.
+- `buscar_estudiante(valor)` permite buscar por código o DNI.
+- La búsqueda devuelve un mensaje claro si encuentra o no encuentra resultados.
+- Archivo modificado: `core/estudiantes.py`.
