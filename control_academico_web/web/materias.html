@@ -3,17 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de materias y periodos</title>
-  <link rel="stylesheet" href="../static/styles.css">
+  <title>Gestion de materias y periodos</title>
+  <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <main>
-    <h1>Gestión de materias y periodos</h1>
+  <header class="barra-superior">
+    <div class="marca">Control Academico</div>
+    <nav class="navegacion-principal">
+      <a href="/">Inicio</a>
+      <a href="/estudiantes">Estudiantes</a>
+      <a href="/materias">Materias y periodos</a>
+      <a href="/matriculas">Matriculas</a>
+      <a href="/notas">Notas</a>
+      <a href="/asistencia">Asistencia</a>
+      <a href="/reportes">Reportes</a>
+    </nav>
+  </header>
 
-    <section>
-      <h2>Registrar materia</h2>
+  <main class="contenedor">
+    <h1>Gestion de materias y periodos</h1>
 
+    <section class="panel">
+      <h2>Materias</h2>
       <form id="formulario-materia">
+        <input type="hidden" id="codigo-materia-editar">
+
         <label for="nombre-materia">Nombre de materia</label>
         <input type="text" id="nombre-materia" name="nombre_materia">
 
@@ -29,46 +43,43 @@
           <option value="inactivo">Inactivo</option>
         </select>
 
-        <button type="submit" id="btn-guardar-materia">Guardar materia</button>
+        <div class="acciones">
+          <button type="button" id="btn-guardar-materia">Guardar materia</button>
+          <button type="button" id="btn-actualizar-materia">Actualizar materia</button>
+          <button type="button" id="btn-listar-materias">Listar materias</button>
+        </div>
       </form>
+
+      <div class="grupo-consulta">
+        <label for="buscar-materia">Codigo de materia</label>
+        <input type="text" id="buscar-materia" placeholder="Ej: MAT001">
+        <button type="button" id="btn-buscar-materia">Buscar materia</button>
+      </div>
+
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>Codigo</th>
+              <th>Nombre</th>
+              <th>Docente</th>
+              <th>Ciclo</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-materias"></tbody>
+        </table>
+      </div>
     </section>
 
-    <section>
-      <h2>Buscar materia</h2>
-
-      <input type="text" id="buscar-materia" placeholder="Código de materia">
-      <button type="button" id="btn-buscar-materia">Buscar materia</button>
-    </section>
-
-    <section id="mensaje-materias"></section>
-
-    <section>
-      <h2>Lista de materias</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Nombre de materia</th>
-            <th>Docente</th>
-            <th>Ciclo</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tabla-materias">
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2>Registrar periodo</h2>
-
+    <section class="panel">
+      <h2>Periodos</h2>
       <form id="formulario-periodo">
-        <label for="codigo-periodo">Código de periodo</label>
+        <label for="codigo-periodo">Codigo de periodo</label>
         <input type="text" id="codigo-periodo" name="codigo_periodo" placeholder="2026-I">
 
-        <label for="anio-periodo">Año</label>
+        <label for="anio-periodo">Anio</label>
         <input type="number" id="anio-periodo" name="anio" min="2000">
 
         <label for="nombre-periodo">Nombre</label>
@@ -80,29 +91,38 @@
           <option value="cerrado">Cerrado</option>
         </select>
 
-        <button type="submit" id="btn-guardar-periodo">Guardar periodo</button>
+        <div class="acciones">
+          <button type="button" id="btn-guardar-periodo">Guardar periodo</button>
+          <button type="button" id="btn-listar-periodos">Listar periodos</button>
+          <button type="button" id="btn-activar-periodo">Cambiar periodo activo</button>
+        </div>
       </form>
+
+      <div class="grupo-consulta">
+        <label for="buscar-periodo">Codigo de periodo</label>
+        <input type="text" id="buscar-periodo" placeholder="Ej: 2026-I">
+        <button type="button" id="btn-buscar-periodo">Buscar periodo</button>
+      </div>
+
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>Codigo</th>
+              <th>Anio</th>
+              <th>Nombre</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-periodos"></tbody>
+        </table>
+      </div>
     </section>
 
-    <section>
-      <h2>Lista de periodos</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Código de periodo</th>
-            <th>Año</th>
-            <th>Nombre</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tabla-periodos">
-        </tbody>
-      </table>
-    </section>
+    <section id="mensaje-materias" class="mensaje"></section>
   </main>
 
-  <script src="../static/materias.js"></script>
+  <script src="/static/materias.js"></script>
 </body>
 </html>

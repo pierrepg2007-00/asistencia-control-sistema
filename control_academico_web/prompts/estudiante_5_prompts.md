@@ -237,6 +237,379 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```
 
 
+---
+
+### Prompt de corrección general - Rutas, navegación, guardado JSON e interfaz
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Reportes / Integración / Matrículas
+**Objetivo:** Corregir rutas, navegacion, API JSON, conexion de botones, guardado real en JSON, interfaz y evidencias
+
+```text
+Necesito corregir la integración general del proyecto control_academico_web.
+
+Actualmente el sistema ya tiene módulos y páginas, pero hay problemas importantes:
+
+1. Las páginas no siguen bien las rutas.
+2. Falta una barra de navegación visible para moverse entre módulos.
+3. Al presionar botones como “Guardar”, no se están guardando los datos en los archivos JSON.
+4. Algunos módulos comparten funciones y la pantalla debería separar mejor las acciones con botones claros.
+5. La parte visual del sistema necesita ordenarse para que parezca una web académica sencilla y uniforme.
+
+IMPORTANTE:
+- No borres archivos existentes.
+- No reemplaces módulos completos si solo necesitas corregir integración.
+- No modifiques datos ya existentes en los JSON, salvo que sea necesario para probar.
+- No uses frameworks.
+- Mantén Python, HTML, CSS, JavaScript básico y JSON.
+- No subas ni modifiques users-tokens.txt.
+- No rompas el trabajo de los integrantes anteriores.
+- El código debe seguir siendo entendible para estudiantes principiantes.
+
+Primero revisa el estado del proyecto:
+
+- server.py
+- web/index.html
+- web/estudiantes.html
+- web/materias.html
+- web/matriculas.html
+- web/notas.html
+- web/asistencia.html
+- web/reportes.html
+- static/styles.css
+- static/estudiantes.js
+- static/materias.js
+- static/matriculas.js
+- static/notas.js
+- static/asistencia.js
+- static/reportes.js
+- core/estudiantes.py
+- core/materias.py
+- core/periodos.py
+- core/matriculas.py
+- core/notas.py
+- core/asistencia.py
+- core/reportes.py
+
+Luego realiza estas correcciones:
+
+------------------------------------------------------------
+1. CORREGIR RUTAS DEL SISTEMA
+------------------------------------------------------------
+
+Corrige server.py para que el sistema pueda abrir correctamente estas rutas:
+
+- /
+- /index
+- /estudiantes
+- /materias
+- /matriculas
+- /notas
+- /asistencia
+- /reportes
+
+Cada ruta debe mostrar su archivo HTML correspondiente:
+
+- / o /index -> web/index.html
+- /estudiantes -> web/estudiantes.html
+- /materias -> web/materias.html
+- /matriculas -> web/matriculas.html
+- /notas -> web/notas.html
+- /asistencia -> web/asistencia.html
+- /reportes -> web/reportes.html
+
+También debe servir correctamente archivos CSS y JS desde static/.
+
+El sistema debe ejecutarse con:
+
+python server.py
+
+Y abrirse desde:
+
+http://localhost:8000
+
+------------------------------------------------------------
+2. AGREGAR BARRA DE NAVEGACIÓN
+------------------------------------------------------------
+
+Agrega una barra de navegación en todas las páginas HTML:
+
+- index.html
+- estudiantes.html
+- materias.html
+- matriculas.html
+- notas.html
+- asistencia.html
+- reportes.html
+
+La barra debe tener enlaces a:
+
+- Inicio
+- Estudiantes
+- Materias y periodos
+- Matrículas
+- Notas
+- Asistencia
+- Reportes
+
+Los enlaces deben usar las rutas del servidor:
+
+- /
+- /estudiantes
+- /materias
+- /matriculas
+- /notas
+- /asistencia
+- /reportes
+
+La barra debe verse igual en todas las páginas.
+
+------------------------------------------------------------
+3. CONECTAR BOTONES CON PYTHON Y JSON
+------------------------------------------------------------
+
+Corrige server.py para agregar rutas API simples que reciban y devuelvan JSON.
+
+Usa fetch desde JavaScript para conectar los formularios con Python.
+
+Como mínimo deben funcionar estas acciones:
+
+ESTUDIANTES:
+- Guardar estudiante
+- Listar estudiantes
+- Buscar estudiante
+- Actualizar estudiante
+
+MATERIAS:
+- Guardar materia
+- Listar materias
+- Buscar materia
+- Actualizar materia
+
+PERIODOS:
+- Guardar periodo
+- Listar periodos
+- Buscar periodo
+- Cambiar periodo activo
+
+MATRÍCULAS:
+- Registrar matrícula
+- Listar matrículas
+- Buscar matrícula
+- Listar matrículas por estudiante
+- Listar matrículas por materia
+- Cambiar estado de matrícula
+
+NOTAS:
+- Registrar nota
+- Listar notas
+- Listar notas por estudiante
+- Listar notas por materia
+- Actualizar nota
+
+ASISTENCIA:
+- Registrar asistencia
+- Listar asistencias
+- Listar asistencia por estudiante
+- Listar asistencia por materia
+- Calcular porcentaje de asistencia
+
+REPORTES:
+- Reporte de estudiantes por materia
+- Reporte de notas por materia
+- Reporte de asistencia por materia
+- Reporte de estudiantes en riesgo
+- Exportar reporte TXT
+
+Cada botón de la interfaz debe llamar a una función JavaScript.
+Cada función JavaScript debe llamar a server.py mediante fetch.
+server.py debe llamar a la función correspondiente del módulo en core/.
+El módulo debe guardar o leer el archivo JSON correspondiente.
+
+Ejemplo de flujo obligatorio:
+
+Botón Guardar estudiante
+-> static/estudiantes.js
+-> fetch a server.py
+-> core/estudiantes.py
+-> data/estudiantes.json
+-> respuesta JSON a la página
+
+No basta con mostrar datos en pantalla.
+Debe guardar realmente en el archivo JSON.
+
+------------------------------------------------------------
+4. SEPARAR BOTONES EN MÓDULOS QUE COMPARTEN FUNCIONES
+------------------------------------------------------------
+
+Corrige la interfaz para que los módulos que tienen varias funciones no estén mezclados.
+
+En web/materias.html separa visualmente:
+
+A. Sección Materias
+- Guardar materia
+- Listar materias
+- Buscar materia
+- Actualizar materia
+
+B. Sección Periodos
+- Guardar periodo
+- Listar periodos
+- Buscar periodo
+- Cambiar periodo activo
+
+Cada sección debe tener sus propios botones, campos y tabla si corresponde.
+
+En web/matriculas.html separa visualmente:
+
+A. Registro de matrícula
+- Registrar matrícula
+
+B. Consultas de matrícula
+- Listar todas
+- Buscar matrícula exacta
+- Listar por estudiante
+- Listar por materia y periodo
+
+C. Estado de matrícula
+- Cambiar estado
+
+En web/notas.html separa visualmente:
+
+A. Registro de notas
+- Guardar nota
+
+B. Consultas
+- Listar todas
+- Listar por estudiante
+- Listar por materia y periodo
+
+C. Actualización
+- Actualizar nota
+
+En web/asistencia.html separa visualmente:
+
+A. Registro de asistencia
+- Guardar asistencia
+
+B. Consultas
+- Listar todas
+- Listar por estudiante
+- Listar por materia y periodo
+
+C. Indicadores
+- Calcular porcentaje de asistencia
+
+En web/reportes.html separa visualmente:
+
+A. Reportes académicos
+- Estudiantes por materia
+- Notas por materia
+- Asistencia por materia
+
+B. Alertas
+- Estudiantes en riesgo
+
+C. Exportación
+- Exportar reporte TXT
+
+------------------------------------------------------------
+5. CORREGIR LA PARTE VISUAL
+------------------------------------------------------------
+
+Actualiza static/styles.css para que el sistema tenga una apariencia uniforme y ordenada.
+
+Debe incluir estilos para:
+
+- barra de navegación
+- contenedor principal
+- tarjetas o secciones
+- formularios
+- inputs
+- selects
+- botones
+- tablas
+- mensajes de error
+- mensajes de éxito
+- títulos y subtítulos
+
+El diseño debe ser simple, limpio y académico.
+No uses librerías externas.
+No uses diseños complicados.
+
+Todas las páginas deben usar el mismo CSS.
+
+------------------------------------------------------------
+6. VERIFICAR GUARDADO REAL EN JSON
+------------------------------------------------------------
+
+Después de corregir la integración, realiza pruebas manuales mínimas:
+
+1. Registrar un estudiante y verificar que aparece en data/estudiantes.json.
+2. Registrar una materia y verificar data/materias.json.
+3. Registrar un periodo activo y verificar data/periodos.json.
+4. Registrar una matrícula y verificar data/matriculas.json.
+5. Registrar una nota y verificar data/notas.json.
+6. Registrar una asistencia y verificar data/asistencias.json.
+7. Generar un reporte y verificar que se muestra en pantalla.
+8. Exportar un reporte TXT y verificar que se guarde en reportes_generados/.
+
+Si alguna acción no guarda en JSON, corrígela.
+
+------------------------------------------------------------
+7. ACTUALIZAR EVIDENCIAS Y PROMPTS
+------------------------------------------------------------
+
+Como esta corrección corresponde al Integrante 5 por integración general, guarda este prompt completo en:
+
+prompts/estudiante_5_prompts.md
+
+No borres los prompts anteriores.
+Agrega este prompt como un nuevo registro con el título:
+
+### Prompt de corrección general - Rutas, navegación, guardado JSON e interfaz
+
+También actualiza:
+
+evidencias/estudiante_5_evidencias_resultado.md
+
+Indicando:
+
+- qué rutas se corrigieron
+- qué barra de navegación se agregó
+- qué botones fueron conectados
+- qué acciones ahora guardan en JSON
+- qué pantallas se reorganizaron
+- qué mejoras visuales se aplicaron
+- qué pruebas manuales se hicieron
+
+También actualiza:
+
+evidencias/casos_prueba_matriculas_reportes_integracion.md
+
+Agregando casos de prueba sobre:
+
+- navegación entre páginas
+- guardar datos desde formularios
+- verificar cambios en JSON
+- generar reportes
+- exportar TXT
+
+------------------------------------------------------------
+8. COMMIT FINAL
+------------------------------------------------------------
+
+Al terminar, revisa:
+
+git status
+
+Luego haz commit con este mensaje:
+
+git add .
+git commit -m "fix: corregir rutas navegacion guardado json e interfaz"
+
+No hagas push todavía.
+Primero deja el repositorio limpio y confirma qué archivos fueron modificados.
+```
 ### Prompt 6 - Listar y buscar matriculas
 **Estudiante asociado:** Integrante 5
 **Módulo trabajado:** Matrículas

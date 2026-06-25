@@ -60,7 +60,7 @@ def reporte_estudiantes_por_materia(codigo_materia, codigo_periodo):
         if (matricula.get("codigo_materia") == codigo_materia
                 and matricula.get("codigo_periodo") == codigo_periodo):
             estado_mat = matricula.get("estado", "")
-            if estado_mat and estado_mat != "activa":
+            if estado_mat and estado_mat not in ["activa", "activo"]:
                 continue
 
             cod_est = matricula.get("codigo_estudiante", "")

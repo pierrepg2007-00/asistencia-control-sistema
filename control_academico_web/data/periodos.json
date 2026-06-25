@@ -1,1 +1,8 @@
-[]
+[
+    {
+        "codigo_periodo": "2026-I",
+        "anio": 2026,
+        "nombre": "Periodo Integracion",
+        "estado": "activo"
+    }
+]

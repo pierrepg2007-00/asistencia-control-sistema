@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "codigo": "EST001",
+        "nombres": "Prueba",
+        "apellidos": "Integracion",
+        "dni": "12345678",
+        "correo": "prueba.integracion@example.com",
+        "estado": "activo"
+    }
+]

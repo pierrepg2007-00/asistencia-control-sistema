@@ -1,1 +1,8 @@
-[]
+[
+    {
+        "codigo_estudiante": "EST001",
+        "codigo_materia": "MAT001",
+        "codigo_periodo": "2026-I",
+        "estado": "activa"
+    }
+]

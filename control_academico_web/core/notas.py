@@ -116,7 +116,7 @@ def verificar_matricula_para_nota(codigo_estudiante, codigo_materia, codigo_peri
         if misma_matricula:
             estado = matricula.get("estado", "activo").strip().lower()
 
-            if estado == "activo":
+            if estado in ["activo", "activa"]:
                 return {
                     "resultado": True,
                     "mensaje": "Matrícula activa encontrada.",
@@ -303,7 +303,7 @@ def listar_estudiantes_sin_nota(codigo_materia, codigo_periodo):
         )
         estado = matricula.get("estado", "activo").strip().lower()
 
-        if misma_materia_periodo and estado == "activo":
+        if misma_materia_periodo and estado in ["activo", "activa"]:
             codigo_estudiante = matricula.get("codigo_estudiante")
 
             if not nota_existe(codigo_estudiante, codigo_materia, codigo_periodo):

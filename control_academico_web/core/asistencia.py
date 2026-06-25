@@ -111,7 +111,7 @@ def verificar_matricula_para_asistencia(codigo_estudiante, codigo_materia, codig
         if misma_matricula:
             estado = matricula.get("estado", "activo").strip().lower()
 
-            if estado == "activo":
+            if estado in ["activo", "activa"]:
                 return {
                     "resultado": True,
                     "mensaje": "Matricula activa encontrada.",
@@ -312,7 +312,7 @@ def listar_matriculados_para_asistencia(codigo_materia, codigo_periodo):
         )
         estado = matricula.get("estado", "activo").strip().lower()
 
-        if misma_materia_periodo and estado == "activo":
+        if misma_materia_periodo and estado in ["activo", "activa"]:
             codigo_estudiante = matricula.get("codigo_estudiante")
             matriculado = {
                 "codigo_estudiante": codigo_estudiante,

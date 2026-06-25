@@ -3,17 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de estudiantes</title>
-  <link rel="stylesheet" href="../static/styles.css">
+  <title>Gestion de estudiantes</title>
+  <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <main>
-    <h1>Gestión de estudiantes</h1>
+  <header class="barra-superior">
+    <div class="marca">Control Academico</div>
+    <nav class="navegacion-principal">
+      <a href="/">Inicio</a>
+      <a href="/estudiantes">Estudiantes</a>
+      <a href="/materias">Materias y periodos</a>
+      <a href="/matriculas">Matriculas</a>
+      <a href="/notas">Notas</a>
+      <a href="/asistencia">Asistencia</a>
+      <a href="/reportes">Reportes</a>
+    </nav>
+  </header>
 
-    <section>
-      <h2>Registrar estudiante</h2>
+  <main class="contenedor">
+    <h1>Gestion de estudiantes</h1>
 
+    <section class="panel">
+      <h2>Datos del estudiante</h2>
       <form id="formulario-estudiante">
+        <input type="hidden" id="codigo-estudiante-editar">
+
         <label for="nombres">Nombres</label>
         <input type="text" id="nombres" name="nombres">
 
@@ -32,40 +46,47 @@
           <option value="inactivo">Inactivo</option>
         </select>
 
-        <button type="submit" id="btn-guardar-estudiante">Guardar estudiante</button>
+        <div class="acciones">
+          <button type="button" id="btn-guardar-estudiante">Guardar estudiante</button>
+          <button type="button" id="btn-actualizar-estudiante">Actualizar estudiante</button>
+          <button type="button" id="btn-limpiar-estudiante" class="secundario">Limpiar</button>
+        </div>
       </form>
     </section>
 
-    <section>
-      <h2>Buscar estudiante</h2>
-
-      <input type="text" id="buscar-estudiante" placeholder="Código o DNI">
-      <button type="button" id="btn-buscar-estudiante">Buscar</button>
+    <section class="panel">
+      <h2>Consultas</h2>
+      <label for="buscar-estudiante">Codigo o DNI</label>
+      <input type="text" id="buscar-estudiante" placeholder="Ej: EST001 o 12345678">
+      <div class="acciones">
+        <button type="button" id="btn-buscar-estudiante">Buscar estudiante</button>
+        <button type="button" id="btn-listar-estudiantes">Listar estudiantes</button>
+      </div>
     </section>
 
-    <section id="mensaje-estudiantes"></section>
+    <section id="mensaje-estudiantes" class="mensaje"></section>
 
-    <section>
+    <section class="panel">
       <h2>Lista de estudiantes</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>DNI</th>
-            <th>Correo</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tabla-estudiantes">
-        </tbody>
-      </table>
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>Codigo</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>DNI</th>
+              <th>Correo</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-estudiantes"></tbody>
+        </table>
+      </div>
     </section>
   </main>
 
-  <script src="../static/estudiantes.js"></script>
+  <script src="/static/estudiantes.js"></script>
 </body>
 </html>

@@ -1,85 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reportes Académicos</title>
-    <link rel="stylesheet" href="../static/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportes academicos</title>
+  <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="contenedor">
-        <h1>Reportes Académicos</h1>
+  <header class="barra-superior">
+    <div class="marca">Control Academico</div>
+    <nav class="navegacion-principal">
+      <a href="/">Inicio</a>
+      <a href="/estudiantes">Estudiantes</a>
+      <a href="/materias">Materias y periodos</a>
+      <a href="/matriculas">Matriculas</a>
+      <a href="/notas">Notas</a>
+      <a href="/asistencia">Asistencia</a>
+      <a href="/reportes">Reportes</a>
+    </nav>
+  </header>
 
-        <!-- Reporte de estudiantes por materia -->
-        <div class="seccion" id="seccion-reporte-estudiantes">
-            <h2>Reporte de estudiantes por materia</h2>
-            <div class="campo">
-                <label for="rep-est-materia">Código de materia:</label>
-                <input type="text" id="rep-est-materia" placeholder="Ej: MAT001">
-            </div>
-            <div class="campo">
-                <label for="rep-est-periodo">Código de periodo:</label>
-                <input type="text" id="rep-est-periodo" placeholder="Ej: 2026-I">
-            </div>
-            <button type="button" id="btn-reporte-estudiantes">Generar reporte</button>
+  <main class="contenedor">
+    <h1>Reportes academicos</h1>
+
+    <section class="panel">
+      <h2>Reportes academicos</h2>
+      <div class="grid-formulario">
+        <div>
+          <label for="rep-materia">Codigo de materia</label>
+          <input type="text" id="rep-materia" placeholder="Ej: MAT001">
         </div>
-
-        <!-- Reporte de notas por materia -->
-        <div class="seccion" id="seccion-reporte-notas">
-            <h2>Reporte de notas por materia</h2>
-            <div class="campo">
-                <label for="rep-notas-materia">Código de materia:</label>
-                <input type="text" id="rep-notas-materia" placeholder="Ej: MAT001">
-            </div>
-            <div class="campo">
-                <label for="rep-notas-periodo">Código de periodo:</label>
-                <input type="text" id="rep-notas-periodo" placeholder="Ej: 2026-I">
-            </div>
-            <button type="button" id="btn-reporte-notas">Generar reporte</button>
+        <div>
+          <label for="rep-periodo">Codigo de periodo</label>
+          <input type="text" id="rep-periodo" placeholder="Ej: 2026-I">
         </div>
+      </div>
+      <div class="acciones">
+        <button type="button" id="btn-reporte-estudiantes">Estudiantes por materia</button>
+        <button type="button" id="btn-reporte-notas">Notas por materia</button>
+        <button type="button" id="btn-reporte-asistencia">Asistencia por materia</button>
+      </div>
+    </section>
 
-        <!-- Reporte de asistencia por materia -->
-        <div class="seccion" id="seccion-reporte-asistencia">
-            <h2>Reporte de asistencia por materia</h2>
-            <div class="campo">
-                <label for="rep-asist-materia">Código de materia:</label>
-                <input type="text" id="rep-asist-materia" placeholder="Ej: MAT001">
-            </div>
-            <div class="campo">
-                <label for="rep-asist-periodo">Código de periodo:</label>
-                <input type="text" id="rep-asist-periodo" placeholder="Ej: 2026-I">
-            </div>
-            <button type="button" id="btn-reporte-asistencia">Generar reporte</button>
-        </div>
+    <section class="panel">
+      <h2>Alertas</h2>
+      <button type="button" id="btn-reporte-riesgo">Estudiantes en riesgo</button>
+    </section>
 
-        <!-- Reporte de estudiantes en riesgo -->
-        <div class="seccion" id="seccion-reporte-riesgo">
-            <h2>Reporte de estudiantes en riesgo</h2>
-            <button type="button" id="btn-reporte-riesgo">Generar reporte de riesgo</button>
-        </div>
+    <section class="panel">
+      <h2>Exportacion</h2>
+      <label for="nombre-reporte">Nombre del reporte</label>
+      <input type="text" id="nombre-reporte" placeholder="Ej: reporte_integracion">
+      <button type="button" id="btn-exportar">Exportar reporte TXT</button>
+    </section>
 
-        <!-- Botón para exportar -->
-        <div class="seccion" id="seccion-exportar">
-            <h2>Exportar reporte</h2>
-            <div class="campo">
-                <label for="nombre-reporte">Nombre del reporte:</label>
-                <input type="text" id="nombre-reporte" placeholder="Ej: reporte_notas">
-            </div>
-            <button type="button" id="btn-exportar">Exportar reporte en texto</button>
-        </div>
+    <section id="zona-mensajes-reportes" class="mensaje"></section>
 
-        <!-- Tabla o zona de resultados -->
-        <div class="seccion" id="seccion-resultados">
-            <h2>Resultados</h2>
-            <div id="zona-resultados-reporte">
-                <p>Seleccione un tipo de reporte y presione Generar.</p>
-            </div>
-        </div>
+    <section class="panel">
+      <h2>Resultados</h2>
+      <div id="zona-resultados-reporte" class="resultado">
+        <p>Seleccione un reporte para ver los resultados.</p>
+      </div>
+    </section>
+  </main>
 
-        <!-- Zona de mensajes -->
-        <div id="zona-mensajes-reportes"></div>
-    </div>
-
-    <script src="../static/reportes.js"></script>
+  <script src="/static/reportes.js"></script>
 </body>
 </html>

@@ -1,107 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Matrículas</title>
-    <link rel="stylesheet" href="../static/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de matriculas</title>
+  <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="contenedor">
-        <h1>Gestión de Matrículas</h1>
+  <header class="barra-superior">
+    <div class="marca">Control Academico</div>
+    <nav class="navegacion-principal">
+      <a href="/">Inicio</a>
+      <a href="/estudiantes">Estudiantes</a>
+      <a href="/materias">Materias y periodos</a>
+      <a href="/matriculas">Matriculas</a>
+      <a href="/notas">Notas</a>
+      <a href="/asistencia">Asistencia</a>
+      <a href="/reportes">Reportes</a>
+    </nav>
+  </header>
 
-        <!-- Sección de registro de matrícula -->
-        <div class="seccion" id="seccion-registro">
-            <h2>Registrar matrícula</h2>
-            <form id="formulario-matricula">
-                <div class="campo">
-                    <label for="codigo-estudiante">Código de estudiante:</label>
-                    <input type="text" id="codigo-estudiante" placeholder="Ej: EST001">
-                </div>
-                <div class="campo">
-                    <label for="codigo-materia">Código de materia:</label>
-                    <input type="text" id="codigo-materia" placeholder="Ej: MAT001">
-                </div>
-                <div class="campo">
-                    <label for="codigo-periodo">Código de periodo:</label>
-                    <input type="text" id="codigo-periodo" placeholder="Ej: 2026-I">
-                </div>
-                <button type="button" id="btn-registrar-matricula">Registrar matrícula</button>
-            </form>
+  <main class="contenedor">
+    <h1>Gestion de matriculas</h1>
+
+    <section class="panel">
+      <h2>Registro de matricula</h2>
+      <form id="formulario-matricula">
+        <label for="codigo-estudiante">Codigo de estudiante</label>
+        <input type="text" id="codigo-estudiante" placeholder="Ej: EST001">
+
+        <label for="codigo-materia">Codigo de materia</label>
+        <input type="text" id="codigo-materia" placeholder="Ej: MAT001">
+
+        <label for="codigo-periodo">Codigo de periodo</label>
+        <input type="text" id="codigo-periodo" placeholder="Ej: 2026-I">
+
+        <button type="button" id="btn-registrar-matricula">Registrar matricula</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Consultas de matricula</h2>
+      <div class="grid-formulario">
+        <div>
+          <label for="buscar-estudiante">Codigo de estudiante</label>
+          <input type="text" id="buscar-estudiante" placeholder="Ej: EST001">
         </div>
-
-        <!-- Sección de búsqueda -->
-        <div class="seccion" id="seccion-busqueda">
-            <h2>Buscar matrículas</h2>
-
-            <h3>Por estudiante</h3>
-            <div class="campo">
-                <label for="buscar-estudiante">Código de estudiante:</label>
-                <input type="text" id="buscar-estudiante" placeholder="Ej: EST001">
-                <button type="button" id="btn-listar-estudiante">Listar matrículas por estudiante</button>
-            </div>
-
-            <h3>Por materia</h3>
-            <div class="campo">
-                <label for="buscar-materia">Código de materia:</label>
-                <input type="text" id="buscar-materia" placeholder="Ej: MAT001">
-            </div>
-            <div class="campo">
-                <label for="buscar-periodo">Código de periodo:</label>
-                <input type="text" id="buscar-periodo" placeholder="Ej: 2026-I">
-            </div>
-            <button type="button" id="btn-listar-materia">Listar matrículas por materia</button>
+        <div>
+          <label for="buscar-materia">Codigo de materia</label>
+          <input type="text" id="buscar-materia" placeholder="Ej: MAT001">
         </div>
-
-        <!-- Tabla de matrículas -->
-        <div class="seccion" id="seccion-tabla">
-            <h2>Matrículas registradas</h2>
-            <table id="tabla-matriculas">
-                <thead>
-                    <tr>
-                        <th>Código estudiante</th>
-                        <th>Código materia</th>
-                        <th>Código periodo</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="cuerpo-tabla-matriculas">
-                </tbody>
-            </table>
+        <div>
+          <label for="buscar-periodo">Codigo de periodo</label>
+          <input type="text" id="buscar-periodo" placeholder="Ej: 2026-I">
         </div>
+      </div>
+      <div class="acciones">
+        <button type="button" id="btn-listar-todas">Listar todas</button>
+        <button type="button" id="btn-buscar-exacta">Buscar matricula exacta</button>
+        <button type="button" id="btn-listar-estudiante">Listar por estudiante</button>
+        <button type="button" id="btn-listar-materia">Listar por materia y periodo</button>
+      </div>
+    </section>
 
-        <!-- Sección para cambiar estado -->
-        <div class="seccion" id="seccion-cambiar-estado">
-            <h2>Cambiar estado de matrícula</h2>
-            <div class="campo">
-                <label for="cambio-estudiante">Código de estudiante:</label>
-                <input type="text" id="cambio-estudiante" placeholder="Ej: EST001">
-            </div>
-            <div class="campo">
-                <label for="cambio-materia">Código de materia:</label>
-                <input type="text" id="cambio-materia" placeholder="Ej: MAT001">
-            </div>
-            <div class="campo">
-                <label for="cambio-periodo">Código de periodo:</label>
-                <input type="text" id="cambio-periodo" placeholder="Ej: 2026-I">
-            </div>
-            <div class="campo">
-                <label for="nuevo-estado">Nuevo estado:</label>
-                <select id="nuevo-estado">
-                    <option value="">-- Seleccionar --</option>
-                    <option value="activa">Activa</option>
-                    <option value="retirada">Retirada</option>
-                    <option value="finalizada">Finalizada</option>
-                </select>
-            </div>
-            <button type="button" id="btn-cambiar-estado">Cambiar estado</button>
+    <section class="panel">
+      <h2>Estado de matricula</h2>
+      <div class="grid-formulario">
+        <div>
+          <label for="cambio-estudiante">Codigo de estudiante</label>
+          <input type="text" id="cambio-estudiante" placeholder="Ej: EST001">
         </div>
+        <div>
+          <label for="cambio-materia">Codigo de materia</label>
+          <input type="text" id="cambio-materia" placeholder="Ej: MAT001">
+        </div>
+        <div>
+          <label for="cambio-periodo">Codigo de periodo</label>
+          <input type="text" id="cambio-periodo" placeholder="Ej: 2026-I">
+        </div>
+        <div>
+          <label for="nuevo-estado">Nuevo estado</label>
+          <select id="nuevo-estado">
+            <option value="activa">Activa</option>
+            <option value="retirada">Retirada</option>
+            <option value="finalizada">Finalizada</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" id="btn-cambiar-estado">Cambiar estado</button>
+    </section>
 
-        <!-- Zona de mensajes -->
-        <div id="zona-mensajes-matriculas"></div>
-    </div>
+    <section id="zona-mensajes-matriculas" class="mensaje"></section>
 
-    <script src="../static/matriculas.js"></script>
+    <section class="panel">
+      <h2>Matriculas registradas</h2>
+      <div class="tabla-contenedor">
+        <table id="tabla-matriculas">
+          <thead>
+            <tr>
+              <th>Codigo estudiante</th>
+              <th>Codigo materia</th>
+              <th>Periodo</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo-tabla-matriculas"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/matriculas.js"></script>
 </body>
 </html>

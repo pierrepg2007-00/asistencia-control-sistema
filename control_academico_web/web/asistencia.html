@@ -1,99 +1,123 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion de Asistencia</title>
-    <link rel="stylesheet" href="../static/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de asistencia</title>
+  <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>Gestion de Asistencia</h1>
+  <header class="barra-superior">
+    <div class="marca">Control Academico</div>
+    <nav class="navegacion-principal">
+      <a href="/">Inicio</a>
+      <a href="/estudiantes">Estudiantes</a>
+      <a href="/materias">Materias y periodos</a>
+      <a href="/matriculas">Matriculas</a>
+      <a href="/notas">Notas</a>
+      <a href="/asistencia">Asistencia</a>
+      <a href="/reportes">Reportes</a>
+    </nav>
+  </header>
 
-    <section id="registro-asistencia">
-        <h2>Registrar Asistencia</h2>
-        <form id="form-asistencia">
-            <label for="codigo-estudiante">Codigo de estudiante:</label>
-            <input type="text" id="codigo-estudiante" placeholder="Ej: EST001">
+  <main class="contenedor">
+    <h1>Gestion de asistencia</h1>
 
-            <label for="codigo-materia">Codigo de materia:</label>
-            <input type="text" id="codigo-materia" placeholder="Ej: MAT001">
+    <section class="panel">
+      <h2>Registro de asistencia</h2>
+      <form id="form-asistencia">
+        <label for="codigo-estudiante">Codigo de estudiante</label>
+        <input type="text" id="codigo-estudiante" placeholder="Ej: EST001">
 
-            <label for="codigo-periodo">Codigo de periodo:</label>
-            <input type="text" id="codigo-periodo" placeholder="Ej: 2026-I">
+        <label for="codigo-materia">Codigo de materia</label>
+        <input type="text" id="codigo-materia" placeholder="Ej: MAT001">
 
-            <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha">
+        <label for="codigo-periodo">Codigo de periodo</label>
+        <input type="text" id="codigo-periodo" placeholder="Ej: 2026-I">
 
-            <label for="estado-asistencia">Estado de asistencia:</label>
-            <select id="estado-asistencia">
-                <option value="">Seleccione un estado</option>
-                <option value="presente">Presente</option>
-                <option value="tarde">Tarde</option>
-                <option value="falta">Falta</option>
-                <option value="justificado">Justificado</option>
-            </select>
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha">
 
-            <button type="button" id="btn-guardar-asistencia">Guardar asistencia</button>
-        </form>
+        <label for="estado-asistencia">Estado de asistencia</label>
+        <select id="estado-asistencia">
+          <option value="presente">Presente</option>
+          <option value="tarde">Tarde</option>
+          <option value="falta">Falta</option>
+          <option value="justificado">Justificado</option>
+        </select>
+
+        <button type="button" id="btn-guardar-asistencia">Guardar asistencia</button>
+      </form>
     </section>
 
-    <section id="listar-asistencia">
-        <h2>Buscar o listar asistencia</h2>
-
-        <h3>Por estudiante</h3>
-        <label for="filtro-codigo-estudiante">Codigo de estudiante:</label>
-        <input type="text" id="filtro-codigo-estudiante" placeholder="Ej: EST001">
-        <button type="button" id="btn-listar-por-estudiante">Listar asistencia por estudiante</button>
-
-        <h3>Por materia y periodo</h3>
-        <label for="filtro-codigo-materia">Codigo de materia:</label>
-        <input type="text" id="filtro-codigo-materia" placeholder="Ej: MAT001">
-
-        <label for="filtro-codigo-periodo">Codigo de periodo:</label>
-        <input type="text" id="filtro-codigo-periodo" placeholder="Ej: 2026-I">
-
-        <label for="filtro-fecha">Fecha (opcional):</label>
-        <input type="date" id="filtro-fecha">
-
-        <button type="button" id="btn-listar-por-materia">Listar asistencia por materia</button>
+    <section class="panel">
+      <h2>Consultas</h2>
+      <div class="grid-formulario">
+        <div>
+          <label for="filtro-codigo-estudiante">Codigo de estudiante</label>
+          <input type="text" id="filtro-codigo-estudiante" placeholder="Ej: EST001">
+        </div>
+        <div>
+          <label for="filtro-codigo-materia">Codigo de materia</label>
+          <input type="text" id="filtro-codigo-materia" placeholder="Ej: MAT001">
+        </div>
+        <div>
+          <label for="filtro-codigo-periodo">Codigo de periodo</label>
+          <input type="text" id="filtro-codigo-periodo" placeholder="Ej: 2026-I">
+        </div>
+        <div>
+          <label for="filtro-fecha">Fecha opcional</label>
+          <input type="date" id="filtro-fecha">
+        </div>
+      </div>
+      <div class="acciones">
+        <button type="button" id="btn-listar-asistencias">Listar todas</button>
+        <button type="button" id="btn-listar-por-estudiante">Listar por estudiante</button>
+        <button type="button" id="btn-listar-por-materia">Listar por materia y periodo</button>
+      </div>
     </section>
 
-    <section id="porcentaje-asistencia">
-        <h2>Porcentaje de asistencia</h2>
-        <label for="calc-codigo-estudiante">Codigo de estudiante:</label>
-        <input type="text" id="calc-codigo-estudiante" placeholder="Ej: EST001">
-
-        <label for="calc-codigo-materia">Codigo de materia:</label>
-        <input type="text" id="calc-codigo-materia" placeholder="Ej: MAT001">
-
-        <label for="calc-codigo-periodo">Codigo de periodo:</label>
-        <input type="text" id="calc-codigo-periodo" placeholder="Ej: 2026-I">
-
-        <button type="button" id="btn-calcular-porcentaje">Calcular porcentaje</button>
-        <div id="resultado-porcentaje"></div>
+    <section class="panel">
+      <h2>Indicadores</h2>
+      <div class="grid-formulario">
+        <div>
+          <label for="calc-codigo-estudiante">Codigo de estudiante</label>
+          <input type="text" id="calc-codigo-estudiante" placeholder="Ej: EST001">
+        </div>
+        <div>
+          <label for="calc-codigo-materia">Codigo de materia</label>
+          <input type="text" id="calc-codigo-materia" placeholder="Ej: MAT001">
+        </div>
+        <div>
+          <label for="calc-codigo-periodo">Codigo de periodo</label>
+          <input type="text" id="calc-codigo-periodo" placeholder="Ej: 2026-I">
+        </div>
+      </div>
+      <button type="button" id="btn-calcular-porcentaje">Calcular porcentaje de asistencia</button>
+      <div id="resultado-porcentaje" class="resultado"></div>
     </section>
 
-    <section id="tabla-asistencia">
-        <h2>Registros de asistencia</h2>
+    <section id="mensajes-asistencia" class="mensaje"></section>
+
+    <section class="panel">
+      <h2>Registros de asistencia</h2>
+      <div class="tabla-contenedor">
         <table id="tabla-asistencias">
-            <thead>
-                <tr>
-                    <th>Codigo estudiante</th>
-                    <th>Codigo materia</th>
-                    <th>Periodo</th>
-                    <th>Fecha</th>
-                    <th>Estado de asistencia</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="tbody-asistencias">
-            </tbody>
+          <thead>
+            <tr>
+              <th>Codigo estudiante</th>
+              <th>Codigo materia</th>
+              <th>Periodo</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-asistencias"></tbody>
         </table>
+      </div>
     </section>
+  </main>
 
-    <section id="mensajes-asistencia">
-    </section>
-
-    <script src="../static/asistencia.js"></script>
+  <script src="/static/asistencia.js"></script>
 </body>
 </html>

@@ -57,3 +57,26 @@
 Los módulos de matrículas y reportes quedaron con su lógica Python completa y las páginas web preparadas. La integración básica está lista con el servidor simple y la página principal con enlaces a los 6 módulos.
 
 Falta la conexión entre el frontend (HTML/JavaScript) y el backend (Python) para que las páginas consuman las funciones de core/. Esto se realizará en una etapa posterior de integración completa del proyecto.
+
+## Casos de prueba agregados - Correccion general de integracion
+
+| N° | Modulo | Accion realizada | Datos de entrada | Resultado esperado | Resultado obtenido | Observacion |
+|---|---|---|---|---|---|---|
+| 31 | Navegacion | Abrir ruta principal | `http://localhost:8000/` | Muestra inicio | Correcto, HTTP 200 | Ruta corregida |
+| 32 | Navegacion | Abrir rutas de modulos | `/index`, `/estudiantes`, `/materias`, `/matriculas`, `/notas`, `/asistencia`, `/reportes` | Todas responden | Correcto, HTTP 200 | Barra comun agregada |
+| 33 | Archivos estaticos | Cargar CSS y JS | `/static/styles.css`, `/static/estudiantes.js` | Archivos servidos | Correcto, HTTP 200 | Servidor sirve `static/` |
+| 34 | Estudiantes | Guardar desde API/formulario | Prueba Integracion, DNI 12345678 | Guarda en JSON | Correcto, registro en `data/estudiantes.json` | Flujo JS -> server.py -> core -> JSON |
+| 35 | Materias | Guardar desde API/formulario | Integracion Web, Docente Prueba | Guarda en JSON | Correcto, registro en `data/materias.json` | Codigo generado MAT001 |
+| 36 | Periodos | Guardar periodo activo | 2026-I, 2026, Periodo Integracion | Guarda activo | Correcto, registro en `data/periodos.json` | Periodo activo disponible |
+| 37 | Matriculas | Registrar matricula | EST001, MAT001, 2026-I | Guarda matricula activa | Correcto, registro en `data/matriculas.json` | Estado guardado como activa |
+| 38 | Notas | Registrar nota | EST001, MAT001, 2026-I, 14, 15, 16 | Guarda nota y promedio | Correcto, registro en `data/notas.json` | Promedio 15.0 |
+| 39 | Asistencia | Registrar asistencia | EST001, MAT001, 2026-I, 2026-06-25, presente | Guarda asistencia | Correcto, registro en `data/asistencias.json` | Porcentaje calculable |
+| 40 | Reportes | Generar estudiantes por materia | MAT001, 2026-I | Muestra estudiante matriculado | Correcto, devuelve EST001 | Reporte visible en pantalla |
+| 41 | Reportes | Generar notas por materia | MAT001, 2026-I | Muestra detalle y resumen | Correcto, total 1, aprobado 1 | Reporte visible en pantalla |
+| 42 | Reportes | Generar asistencia por materia | MAT001, 2026-I | Muestra porcentaje | Correcto, asistencia 100% | Reporte visible en pantalla |
+| 43 | Reportes | Generar estudiantes en riesgo | Sin datos | Lista o vacio controlado | Correcto, devuelve lista vacia | Sin error |
+| 44 | Exportacion | Exportar TXT | reporte_integracion_prueba | Archivo TXT generado | Correcto, archivo en `reportes_generados/` | Exportacion verificada |
+
+## Conclusion de la correccion general
+
+La etapa de integracion completa quedo conectada con rutas del servidor, navegacion uniforme, APIs JSON, botones con `fetch`, guardado real en archivos JSON, reportes en pantalla y exportacion TXT.

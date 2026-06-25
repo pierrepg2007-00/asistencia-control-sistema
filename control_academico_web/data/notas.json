@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "codigo_estudiante": "EST001",
+        "codigo_materia": "MAT001",
+        "codigo_periodo": "2026-I",
+        "nota1": 14.0,
+        "nota2": 15.0,
+        "nota3": 16.0,
+        "promedio": 15.0,
+        "estado_final": "aprobado"
+    }
+]

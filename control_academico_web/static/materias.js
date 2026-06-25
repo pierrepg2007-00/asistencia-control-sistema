@@ -1,12 +1,24 @@
-// Lógica visual inicial del módulo Materias y periodos.
-// La conexión con Python se realizará en una etapa posterior.
+let materiasActuales = [];
+let periodosActuales = [];
 
-let materiasTemporales = [];
-let periodosTemporales = [];
-let contadorMateriaTemporal = 1;
+async function llamarApi(ruta, datos) {
+  const respuesta = await fetch(ruta, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(datos || {})
+  });
+  return await respuesta.json();
+}
 
-function obtenerDatosFormularioMateria() {
+function mostrarMensajeMaterias(mensaje, tipo) {
+  const zonaMensaje = document.getElementById("mensaje-materias");
+  zonaMensaje.textContent = mensaje || "";
+  zonaMensaje.className = "mensaje " + (tipo || "");
+}
+
+function datosMateria() {
   return {
+    codigo_materia: document.getElementById("codigo-materia-editar").value.trim(),
     nombre_materia: document.getElementById("nombre-materia").value.trim(),
     docente: document.getElementById("docente").value.trim(),
     ciclo: document.getElementById("ciclo").value.trim(),
@@ -14,85 +26,7 @@ function obtenerDatosFormularioMateria() {
   };
 }
 
-function validarFormularioMateria(datos) {
-  if (!datos.nombre_materia) {
-    return "Ingrese el nombre de la materia.";
-  }
-
-  if (!datos.docente) {
-    return "Ingrese el docente de la materia.";
-  }
-
-  if (!datos.ciclo || Number(datos.ciclo) <= 0) {
-    return "Ingrese un ciclo válido.";
-  }
-
-  if (!datos.estado) {
-    return "Seleccione el estado de la materia.";
-  }
-
-  return "";
-}
-
-function mostrarMensajeMaterias(mensaje, tipo) {
-  const zonaMensaje = document.getElementById("mensaje-materias");
-  zonaMensaje.textContent = mensaje;
-  zonaMensaje.className = tipo;
-}
-
-function limpiarFormularioMateria() {
-  document.getElementById("formulario-materia").reset();
-}
-
-function renderizarTablaMaterias(materias) {
-  const cuerpoTabla = document.getElementById("tabla-materias");
-  cuerpoTabla.innerHTML = "";
-
-  materias.forEach((materia) => {
-    const fila = document.createElement("tr");
-
-    fila.innerHTML = `
-      <td>${materia.codigo_materia}</td>
-      <td>${materia.nombre_materia}</td>
-      <td>${materia.docente}</td>
-      <td>${materia.ciclo}</td>
-      <td>${materia.estado}</td>
-      <td>
-        <button type="button" data-codigo="${materia.codigo_materia}" class="btn-editar-materia">
-          Editar
-        </button>
-      </td>
-    `;
-
-    cuerpoTabla.appendChild(fila);
-  });
-}
-
-function buscarMateriaEnTabla(valor) {
-  const codigo = valor.trim().toUpperCase();
-
-  return materiasTemporales.find((materia) => {
-    return materia.codigo_materia === codigo;
-  });
-}
-
-function prepararActualizacionMateria(codigo_materia) {
-  const materia = buscarMateriaEnTabla(codigo_materia);
-
-  if (!materia) {
-    mostrarMensajeMaterias("No se encontró la materia para editar.", "error");
-    return;
-  }
-
-  document.getElementById("nombre-materia").value = materia.nombre_materia;
-  document.getElementById("docente").value = materia.docente;
-  document.getElementById("ciclo").value = materia.ciclo;
-  document.getElementById("estado-materia").value = materia.estado;
-
-  mostrarMensajeMaterias("Datos de materia cargados para actualización visual.", "confirmacion");
-}
-
-function obtenerDatosFormularioPeriodo() {
+function datosPeriodo() {
   return {
     codigo_periodo: document.getElementById("codigo-periodo").value.trim().toUpperCase(),
     anio: document.getElementById("anio-periodo").value.trim(),
@@ -101,155 +35,159 @@ function obtenerDatosFormularioPeriodo() {
   };
 }
 
-function validarFormularioPeriodo(datos) {
-  if (!datos.codigo_periodo) {
-    return "Ingrese el código del periodo.";
-  }
-
-  if (!datos.anio || Number(datos.anio) <= 0) {
-    return "Ingrese un año válido.";
-  }
-
-  if (!datos.nombre) {
-    return "Ingrese el nombre del periodo.";
-  }
-
-  if (!datos.estado) {
-    return "Seleccione el estado del periodo.";
-  }
-
-  return "";
-}
-
-function limpiarFormularioPeriodo() {
-  document.getElementById("formulario-periodo").reset();
-}
-
-function renderizarTablaPeriodos(periodos) {
-  const cuerpoTabla = document.getElementById("tabla-periodos");
-  cuerpoTabla.innerHTML = "";
-
-  periodos.forEach((periodo) => {
-    const fila = document.createElement("tr");
-
-    fila.innerHTML = `
-      <td>${periodo.codigo_periodo}</td>
-      <td>${periodo.anio}</td>
-      <td>${periodo.nombre}</td>
-      <td>${periodo.estado}</td>
-      <td>
-        <button type="button" data-codigo="${periodo.codigo_periodo}" class="btn-activar-periodo">
-          Activar
-        </button>
-      </td>
-    `;
-
-    cuerpoTabla.appendChild(fila);
-  });
-}
-
-function buscarPeriodoEnTabla(valor) {
-  const codigo = valor.trim().toUpperCase();
-
-  return periodosTemporales.find((periodo) => {
-    return periodo.codigo_periodo === codigo;
-  });
-}
-
-function prepararCambioPeriodoActivo(codigo_periodo) {
-  const periodo = buscarPeriodoEnTabla(codigo_periodo);
-
-  if (!periodo) {
-    mostrarMensajeMaterias("No se encontró el periodo para activar.", "error");
+function renderizarTablaMaterias(materias) {
+  const cuerpo = document.getElementById("tabla-materias");
+  cuerpo.innerHTML = "";
+  if (!materias || materias.length === 0) {
+    cuerpo.innerHTML = '<tr><td colspan="6">No hay materias para mostrar.</td></tr>';
     return;
   }
 
-  periodosTemporales = periodosTemporales.map((item) => {
-    return {
-      ...item,
-      estado: item.codigo_periodo === codigo_periodo ? "activo" : "cerrado"
-    };
+  materias.forEach((materia) => {
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td>${materia.codigo_materia || ""}</td>
+      <td>${materia.nombre_materia || ""}</td>
+      <td>${materia.docente || ""}</td>
+      <td>${materia.ciclo || ""}</td>
+      <td>${materia.estado || ""}</td>
+      <td><button type="button" class="secundario btn-editar-materia" data-codigo="${materia.codigo_materia || ""}">Editar</button></td>
+    `;
+    cuerpo.appendChild(fila);
   });
+}
 
-  renderizarTablaPeriodos(periodosTemporales);
-  mostrarMensajeMaterias("Periodo activado visualmente. Falta conectar con Python.", "confirmacion");
+function renderizarTablaPeriodos(periodos) {
+  const cuerpo = document.getElementById("tabla-periodos");
+  cuerpo.innerHTML = "";
+  if (!periodos || periodos.length === 0) {
+    cuerpo.innerHTML = '<tr><td colspan="5">No hay periodos para mostrar.</td></tr>';
+    return;
+  }
+
+  periodos.forEach((periodo) => {
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td>${periodo.codigo_periodo || ""}</td>
+      <td>${periodo.anio || ""}</td>
+      <td>${periodo.nombre || ""}</td>
+      <td>${periodo.estado || ""}</td>
+      <td><button type="button" class="secundario btn-usar-periodo" data-codigo="${periodo.codigo_periodo || ""}">Usar</button></td>
+    `;
+    cuerpo.appendChild(fila);
+  });
+}
+
+async function guardarMateria() {
+  const respuesta = await llamarApi("/api/materias/guardar", datosMateria());
+  mostrarMensajeMaterias(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  if (respuesta.resultado) {
+    document.getElementById("formulario-materia").reset();
+    document.getElementById("codigo-materia-editar").value = "";
+    listarMaterias();
+  }
+}
+
+async function listarMaterias() {
+  const respuesta = await llamarApi("/api/materias/listar");
+  materiasActuales = respuesta.datos || [];
+  renderizarTablaMaterias(materiasActuales);
+}
+
+async function buscarMateria() {
+  const codigo = document.getElementById("buscar-materia").value.trim().toUpperCase();
+  const respuesta = await llamarApi("/api/materias/buscar", { codigo_materia: codigo });
+  mostrarMensajeMaterias(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  renderizarTablaMaterias(respuesta.resultado ? [respuesta.datos] : materiasActuales);
+}
+
+async function actualizarMateria() {
+  const datos = datosMateria();
+  if (!datos.codigo_materia) {
+    mostrarMensajeMaterias("Seleccione una materia con Editar antes de actualizar.", "error");
+    return;
+  }
+  const respuesta = await llamarApi("/api/materias/actualizar", datos);
+  mostrarMensajeMaterias(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  if (respuesta.resultado) {
+    document.getElementById("formulario-materia").reset();
+    document.getElementById("codigo-materia-editar").value = "";
+    listarMaterias();
+  }
+}
+
+function prepararActualizacionMateria(codigo) {
+  const materia = materiasActuales.find((item) => item.codigo_materia === codigo);
+  if (!materia) {
+    mostrarMensajeMaterias("No se encontro la materia para editar.", "error");
+    return;
+  }
+  document.getElementById("codigo-materia-editar").value = materia.codigo_materia || "";
+  document.getElementById("nombre-materia").value = materia.nombre_materia || "";
+  document.getElementById("docente").value = materia.docente || "";
+  document.getElementById("ciclo").value = materia.ciclo || "";
+  document.getElementById("estado-materia").value = materia.estado || "activo";
+  mostrarMensajeMaterias("Datos de materia cargados para actualizar.", "info");
+}
+
+async function guardarPeriodo() {
+  const respuesta = await llamarApi("/api/periodos/guardar", datosPeriodo());
+  mostrarMensajeMaterias(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  if (respuesta.resultado) {
+    document.getElementById("formulario-periodo").reset();
+    listarPeriodos();
+  }
+}
+
+async function listarPeriodos() {
+  const respuesta = await llamarApi("/api/periodos/listar");
+  periodosActuales = respuesta.datos || [];
+  renderizarTablaPeriodos(periodosActuales);
+}
+
+async function buscarPeriodo() {
+  const codigo = document.getElementById("buscar-periodo").value.trim().toUpperCase();
+  const respuesta = await llamarApi("/api/periodos/buscar", { codigo_periodo: codigo });
+  mostrarMensajeMaterias(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  renderizarTablaPeriodos(respuesta.resultado ? [respuesta.datos] : periodosActuales);
+}
+
+async function activarPeriodo() {
+  const codigoFormulario = document.getElementById("codigo-periodo").value.trim().toUpperCase();
+  const codigoBusqueda = document.getElementById("buscar-periodo").value.trim().toUpperCase();
+  const codigo = codigoFormulario || codigoBusqueda;
+  const respuesta = await llamarApi("/api/periodos/activar", { codigo_periodo: codigo });
+  mostrarMensajeMaterias(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  if (respuesta.resultado) {
+    listarPeriodos();
+  }
+}
+
+function usarPeriodo(codigo) {
+  document.getElementById("codigo-periodo").value = codigo;
+  document.getElementById("buscar-periodo").value = codigo;
+  mostrarMensajeMaterias("Periodo seleccionado.", "info");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const formularioMateria = document.getElementById("formulario-materia");
-  const formularioPeriodo = document.getElementById("formulario-periodo");
-  const botonBuscarMateria = document.getElementById("btn-buscar-materia");
-  const tablaMaterias = document.getElementById("tabla-materias");
-  const tablaPeriodos = document.getElementById("tabla-periodos");
-
-  formularioMateria.addEventListener("submit", (evento) => {
-    evento.preventDefault();
-
-    const datos = obtenerDatosFormularioMateria();
-    const error = validarFormularioMateria(datos);
-
-    if (error) {
-      mostrarMensajeMaterias(error, "error");
-      return;
-    }
-
-    datos.codigo_materia = `MAT${String(contadorMateriaTemporal).padStart(3, "0")}`;
-    contadorMateriaTemporal += 1;
-    materiasTemporales.push(datos);
-
-    renderizarTablaMaterias(materiasTemporales);
-    limpiarFormularioMateria();
-    mostrarMensajeMaterias("Materia agregada visualmente. Falta conectar con Python.", "confirmacion");
-  });
-
-  botonBuscarMateria.addEventListener("click", () => {
-    const valor = document.getElementById("buscar-materia").value;
-    const materia = buscarMateriaEnTabla(valor);
-
-    if (materia) {
-      renderizarTablaMaterias([materia]);
-      mostrarMensajeMaterias("Materia encontrada en la tabla.", "confirmacion");
-    } else {
-      renderizarTablaMaterias(materiasTemporales);
-      mostrarMensajeMaterias("No se encontró la materia en la tabla.", "error");
-    }
-  });
-
-  tablaMaterias.addEventListener("click", (evento) => {
+  document.getElementById("btn-guardar-materia").addEventListener("click", guardarMateria);
+  document.getElementById("btn-actualizar-materia").addEventListener("click", actualizarMateria);
+  document.getElementById("btn-listar-materias").addEventListener("click", listarMaterias);
+  document.getElementById("btn-buscar-materia").addEventListener("click", buscarMateria);
+  document.getElementById("btn-guardar-periodo").addEventListener("click", guardarPeriodo);
+  document.getElementById("btn-listar-periodos").addEventListener("click", listarPeriodos);
+  document.getElementById("btn-buscar-periodo").addEventListener("click", buscarPeriodo);
+  document.getElementById("btn-activar-periodo").addEventListener("click", activarPeriodo);
+  document.getElementById("tabla-materias").addEventListener("click", (evento) => {
     if (evento.target.classList.contains("btn-editar-materia")) {
       prepararActualizacionMateria(evento.target.dataset.codigo);
     }
   });
-
-  formularioPeriodo.addEventListener("submit", (evento) => {
-    evento.preventDefault();
-
-    const datos = obtenerDatosFormularioPeriodo();
-    const error = validarFormularioPeriodo(datos);
-
-    if (error) {
-      mostrarMensajeMaterias(error, "error");
-      return;
-    }
-
-    if (datos.estado === "activo") {
-      periodosTemporales = periodosTemporales.map((periodo) => {
-        return {
-          ...periodo,
-          estado: "cerrado"
-        };
-      });
-    }
-
-    periodosTemporales.push(datos);
-    renderizarTablaPeriodos(periodosTemporales);
-    limpiarFormularioPeriodo();
-    mostrarMensajeMaterias("Periodo agregado visualmente. Falta conectar con Python.", "confirmacion");
-  });
-
-  tablaPeriodos.addEventListener("click", (evento) => {
-    if (evento.target.classList.contains("btn-activar-periodo")) {
-      prepararCambioPeriodoActivo(evento.target.dataset.codigo);
+  document.getElementById("tabla-periodos").addEventListener("click", (evento) => {
+    if (evento.target.classList.contains("btn-usar-periodo")) {
+      usarPeriodo(evento.target.dataset.codigo);
     }
   });
+  listarMaterias();
+  listarPeriodos();
 });

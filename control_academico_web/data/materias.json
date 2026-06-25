@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "codigo_materia": "MAT001",
+        "nombre_materia": "Integracion Web",
+        "docente": "Docente Prueba",
+        "ciclo": 1,
+        "estado": "activo"
+    }
+]

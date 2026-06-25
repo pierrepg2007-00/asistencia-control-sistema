@@ -1,0 +1,29 @@
+============================================================
+  REPORTE: REPORTE_INTEGRACION_PRUEBA
+  Fecha de generacion: 2026-06-25 07:49:44
+============================================================
+
+Total de estudiantes: 1
+Aprobados: 1
+Desaprobados: 0
+Promedio general: 15
+
+------------------------------------------------------------
+DETALLE:
+
+  codigo_estudiante: EST001
+  nombres: Prueba
+  apellidos: Integracion
+  codigo_materia: MAT001
+  nombre_materia: Integracion Web
+  codigo_periodo: 2026-I
+  nota1: 14
+  nota2: 15
+  nota3: 16
+  promedio: 15
+  estado_final: aprobado
+----------------------------------------
+
+============================================================
+  FIN DEL REPORTE
+============================================================

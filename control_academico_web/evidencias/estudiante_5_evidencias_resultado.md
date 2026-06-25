@@ -30,6 +30,7 @@
 | 19 | Agregar estilos generales | CSS con secciones, mensajes, tarjetas | Ninguno | static/styles.css | Diseno uniforme para todas las paginas |
 | 20 | Documentar pruebas | 30 casos de prueba | Ninguno | evidencias/casos_prueba_matriculas_reportes_integracion.md | Matriculas, reportes e integracion |
 | 21 | Revision final del integrante 5 | Verificacion de archivos y correcciones | Correccion de evidencias | evidencias/estudiante_5_evidencias_resultado.md | Trabajo listo para entrega |
+| 22 | Corregir integracion general | Se corrigieron rutas, navegacion, API JSON, frontend con fetch, interfaz y pruebas | Ninguno | server.py, web/*.html, static/*.js, static/styles.css, core/notas.py, core/asistencia.py, core/reportes.py | Integracion funcional con guardado real en JSON |
 
 ## Conversación o resumen de interacción con IA
 
@@ -186,3 +187,25 @@
 - Se confirmó que existe página principal con enlaces a los 6 módulos.
 - Se verificó que existe servidor simple para abrir el sistema.
 - El trabajo del Integrante 5 quedó listo para entrega.
+
+### Actividad 22: Correccion general de integracion
+
+- Se corrigieron las rutas del servidor para abrir `/`, `/index`, `/estudiantes`, `/materias`, `/matriculas`, `/notas`, `/asistencia` y `/reportes`.
+- Se agrego una barra de navegacion comun en todas las paginas HTML con enlaces a todos los modulos.
+- Se agregaron rutas API JSON en `server.py` para estudiantes, materias, periodos, matriculas, notas, asistencia y reportes.
+- Se conectaron botones de las pantallas con funciones JavaScript y llamadas `fetch` hacia `server.py`.
+- Las acciones que ahora guardan en JSON son: guardar estudiante, guardar materia, guardar periodo, registrar matricula, registrar nota y registrar asistencia.
+- Tambien quedaron conectadas acciones de listar, buscar, actualizar, cambiar estados, calcular porcentaje, generar reportes y exportar TXT.
+- Se reorganizaron las pantallas de materias/periodos, matriculas, notas, asistencia y reportes en secciones separadas por accion.
+- Se actualizo `static/styles.css` con estilos uniformes para navegacion, contenedor, paneles, formularios, inputs, selects, botones, tablas y mensajes.
+- Se ajusto la compatibilidad de estado de matricula para que `"activa"` sea aceptado por notas, asistencia y reportes.
+- Pruebas manuales realizadas con `python server.py`:
+  - Rutas HTML y archivos estaticos respondieron con codigo HTTP 200.
+  - Se registro un estudiante y se verifico `data/estudiantes.json`.
+  - Se registro una materia y se verifico `data/materias.json`.
+  - Se registro un periodo activo y se verifico `data/periodos.json`.
+  - Se registro una matricula y se verifico `data/matriculas.json`.
+  - Se registro una nota y se verifico `data/notas.json`.
+  - Se registro una asistencia y se verifico `data/asistencias.json`.
+  - Se generaron reportes de estudiantes, notas, asistencia y riesgo.
+  - Se exporto un reporte TXT en `reportes_generados/`.

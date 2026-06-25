@@ -1,9 +1,19 @@
-// Lógica visual inicial del módulo Matrículas.
-// La conexión con Python se realizará en una etapa posterior.
+async function llamarApi(ruta, datos) {
+  const respuesta = await fetch(ruta, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(datos || {})
+  });
+  return await respuesta.json();
+}
 
-let matriculasTemporales = [];
+function mostrarMensajeMatriculas(mensaje, tipo) {
+  const zona = document.getElementById("zona-mensajes-matriculas");
+  zona.textContent = mensaje || "";
+  zona.className = "mensaje " + (tipo || "");
+}
 
-function obtenerDatosFormularioMatricula() {
+function datosRegistroMatricula() {
   return {
     codigo_estudiante: document.getElementById("codigo-estudiante").value.trim().toUpperCase(),
     codigo_materia: document.getElementById("codigo-materia").value.trim().toUpperCase(),
@@ -11,126 +21,105 @@ function obtenerDatosFormularioMatricula() {
   };
 }
 
-function validarFormularioMatricula(datos) {
-  if (!datos.codigo_estudiante) {
-    return "Ingrese el código de estudiante.";
-  }
-
-  if (!datos.codigo_materia) {
-    return "Ingrese el código de materia.";
-  }
-
-  if (!datos.codigo_periodo) {
-    return "Ingrese el código de periodo.";
-  }
-
-  return "";
-}
-
-function mostrarMensajeMatriculas(mensaje, tipo) {
-  const zonaMensaje = document.getElementById("zona-mensajes-matriculas");
-  zonaMensaje.textContent = mensaje;
-  zonaMensaje.className = tipo;
-}
-
-function limpiarFormularioMatricula() {
-  document.getElementById("formulario-matricula").reset();
+function datosBusquedaMatricula() {
+  return {
+    codigo_estudiante: document.getElementById("buscar-estudiante").value.trim().toUpperCase(),
+    codigo_materia: document.getElementById("buscar-materia").value.trim().toUpperCase(),
+    codigo_periodo: document.getElementById("buscar-periodo").value.trim().toUpperCase()
+  };
 }
 
 function renderizarTablaMatriculas(matriculas) {
   const cuerpo = document.getElementById("cuerpo-tabla-matriculas");
   cuerpo.innerHTML = "";
-
   if (!matriculas || matriculas.length === 0) {
-    const fila = document.createElement("tr");
-    const celda = document.createElement("td");
-    celda.colSpan = 5;
-    celda.textContent = "No hay matrículas registradas.";
-    fila.appendChild(celda);
-    cuerpo.appendChild(fila);
+    cuerpo.innerHTML = '<tr><td colspan="5">No hay matriculas para mostrar.</td></tr>';
     return;
   }
 
-  for (const matricula of matriculas) {
+  matriculas.forEach((matricula) => {
     const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td>${matricula.codigo_estudiante || ""}</td>
+      <td>${matricula.codigo_materia || ""}</td>
+      <td>${matricula.codigo_periodo || ""}</td>
+      <td>${matricula.estado || ""}</td>
+      <td><button type="button" class="secundario btn-preparar-estado" data-estudiante="${matricula.codigo_estudiante || ""}" data-materia="${matricula.codigo_materia || ""}" data-periodo="${matricula.codigo_periodo || ""}">Cambiar</button></td>
+    `;
+    cuerpo.appendChild(fila);
+  });
+}
 
-    const tdEstudiante = document.createElement("td");
-    tdEstudiante.textContent = matricula.codigo_estudiante || "";
-    fila.appendChild(tdEstudiante);
+async function registrarMatricula() {
+  const respuesta = await llamarApi("/api/matriculas/guardar", datosRegistroMatricula());
+  mostrarMensajeMatriculas(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  if (respuesta.resultado) {
+    document.getElementById("formulario-matricula").reset();
+    listarMatriculas();
+  }
+}
 
-    const tdMateria = document.createElement("td");
-    tdMateria.textContent = matricula.codigo_materia || "";
-    fila.appendChild(tdMateria);
+async function listarMatriculas() {
+  const respuesta = await llamarApi("/api/matriculas/listar");
+  renderizarTablaMatriculas(respuesta.datos || []);
+}
 
-    const tdPeriodo = document.createElement("td");
-    tdPeriodo.textContent = matricula.codigo_periodo || "";
-    fila.appendChild(tdPeriodo);
+async function buscarMatriculaExacta() {
+  const respuesta = await llamarApi("/api/matriculas/buscar", datosBusquedaMatricula());
+  mostrarMensajeMatriculas(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  renderizarTablaMatriculas(respuesta.resultado ? [respuesta.datos] : []);
+}
 
-    const tdEstado = document.createElement("td");
-    tdEstado.textContent = matricula.estado || "";
-    fila.appendChild(tdEstado);
+async function listarMatriculasPorEstudiante() {
+  const datos = datosBusquedaMatricula();
+  const respuesta = await llamarApi("/api/matriculas/por-estudiante", datos);
+  mostrarMensajeMatriculas(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  renderizarTablaMatriculas(respuesta.datos || []);
+}
 
-    const tdAcciones = document.createElement("td");
-    const btnCambiar = document.createElement("button");
-    btnCambiar.textContent = "Cambiar estado";
-    btnCambiar.onclick = function() {
+async function listarMatriculasPorMateria() {
+  const datos = datosBusquedaMatricula();
+  const respuesta = await llamarApi("/api/matriculas/por-materia", datos);
+  mostrarMensajeMatriculas(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  renderizarTablaMatriculas(respuesta.datos || []);
+}
+
+function prepararCambioEstadoMatricula(codigoEstudiante, codigoMateria, codigoPeriodo) {
+  document.getElementById("cambio-estudiante").value = codigoEstudiante || "";
+  document.getElementById("cambio-materia").value = codigoMateria || "";
+  document.getElementById("cambio-periodo").value = codigoPeriodo || "";
+  mostrarMensajeMatriculas("Datos cargados para cambiar estado.", "info");
+}
+
+async function cambiarEstadoMatricula() {
+  const datos = {
+    codigo_estudiante: document.getElementById("cambio-estudiante").value.trim().toUpperCase(),
+    codigo_materia: document.getElementById("cambio-materia").value.trim().toUpperCase(),
+    codigo_periodo: document.getElementById("cambio-periodo").value.trim().toUpperCase(),
+    estado: document.getElementById("nuevo-estado").value
+  };
+  const respuesta = await llamarApi("/api/matriculas/cambiar-estado", datos);
+  mostrarMensajeMatriculas(respuesta.mensaje, respuesta.resultado ? "exito" : "error");
+  if (respuesta.resultado) {
+    listarMatriculas();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("btn-registrar-matricula").addEventListener("click", registrarMatricula);
+  document.getElementById("btn-listar-todas").addEventListener("click", listarMatriculas);
+  document.getElementById("btn-buscar-exacta").addEventListener("click", buscarMatriculaExacta);
+  document.getElementById("btn-listar-estudiante").addEventListener("click", listarMatriculasPorEstudiante);
+  document.getElementById("btn-listar-materia").addEventListener("click", listarMatriculasPorMateria);
+  document.getElementById("btn-cambiar-estado").addEventListener("click", cambiarEstadoMatricula);
+  document.getElementById("cuerpo-tabla-matriculas").addEventListener("click", (evento) => {
+    if (evento.target.classList.contains("btn-preparar-estado")) {
       prepararCambioEstadoMatricula(
-        matricula.codigo_estudiante,
-        matricula.codigo_materia,
-        matricula.codigo_periodo
+        evento.target.dataset.estudiante,
+        evento.target.dataset.materia,
+        evento.target.dataset.periodo
       );
-    };
-    tdAcciones.appendChild(btnCambiar);
-    fila.appendChild(tdAcciones);
-
-    cuerpo.appendChild(fila);
-  }
-}
-
-function filtrarMatriculasPorEstudiante(codigo_estudiante) {
-  if (!codigo_estudiante) {
-    mostrarMensajeMatriculas("Ingrese el código de estudiante para buscar.", "error");
-    return;
-  }
-
-  const filtradas = matriculasTemporales.filter(function(m) {
-    return m.codigo_estudiante === codigo_estudiante;
+    }
   });
-
-  if (filtradas.length === 0) {
-    mostrarMensajeMatriculas("No se encontraron matrículas para ese estudiante.", "error");
-  } else {
-    mostrarMensajeMatriculas("Se encontraron " + filtradas.length + " matrícula(s).", "exito");
-  }
-
-  renderizarTablaMatriculas(filtradas);
-}
-
-function filtrarMatriculasPorMateria(codigo_materia, codigo_periodo) {
-  if (!codigo_materia || !codigo_periodo) {
-    mostrarMensajeMatriculas("Ingrese código de materia y periodo para buscar.", "error");
-    return;
-  }
-
-  const filtradas = matriculasTemporales.filter(function(m) {
-    return m.codigo_materia === codigo_materia && m.codigo_periodo === codigo_periodo;
-  });
-
-  if (filtradas.length === 0) {
-    mostrarMensajeMatriculas("No se encontraron matrículas para esa materia y periodo.", "error");
-  } else {
-    mostrarMensajeMatriculas("Se encontraron " + filtradas.length + " matrícula(s).", "exito");
-  }
-
-  renderizarTablaMatriculas(filtradas);
-}
-
-function prepararCambioEstadoMatricula(codigo_estudiante, codigo_materia, codigo_periodo) {
-  document.getElementById("cambio-estudiante").value = codigo_estudiante || "";
-  document.getElementById("cambio-materia").value = codigo_materia || "";
-  document.getElementById("cambio-periodo").value = codigo_periodo || "";
-  document.getElementById("nuevo-estado").value = "";
-  mostrarMensajeMatriculas("Seleccione el nuevo estado y presione Cambiar estado.", "info");
-}
-
-console.log("matriculas.js cargado.");
+  listarMatriculas();
+});

@@ -3,79 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de notas</title>
-  <link rel="stylesheet" href="../static/styles.css">
+  <title>Gestion de notas</title>
+  <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <main>
-    <h1>Gestión de notas</h1>
+  <header class="barra-superior">
+    <div class="marca">Control Academico</div>
+    <nav class="navegacion-principal">
+      <a href="/">Inicio</a>
+      <a href="/estudiantes">Estudiantes</a>
+      <a href="/materias">Materias y periodos</a>
+      <a href="/matriculas">Matriculas</a>
+      <a href="/notas">Notas</a>
+      <a href="/asistencia">Asistencia</a>
+      <a href="/reportes">Reportes</a>
+    </nav>
+  </header>
 
-    <section>
-      <h2>Registrar nota</h2>
+  <main class="contenedor">
+    <h1>Gestion de notas</h1>
 
+    <section class="panel">
+      <h2>Registro de notas</h2>
       <form id="formulario-nota">
-        <label for="codigo-estudiante">Código de estudiante</label>
-        <input type="text" id="codigo-estudiante" name="codigo_estudiante">
+        <label for="codigo-estudiante">Codigo de estudiante</label>
+        <input type="text" id="codigo-estudiante">
 
-        <label for="codigo-materia">Código de materia</label>
-        <input type="text" id="codigo-materia" name="codigo_materia">
+        <label for="codigo-materia">Codigo de materia</label>
+        <input type="text" id="codigo-materia">
 
-        <label for="codigo-periodo">Código de periodo</label>
-        <input type="text" id="codigo-periodo" name="codigo_periodo">
+        <label for="codigo-periodo">Codigo de periodo</label>
+        <input type="text" id="codigo-periodo">
 
-        <label for="nota1">Nota 1</label>
-        <input type="number" id="nota1" name="nota1" min="0" max="20" step="0.01">
+        <div class="grid-formulario">
+          <div>
+            <label for="nota1">Nota 1</label>
+            <input type="number" id="nota1" min="0" max="20" step="0.01">
+          </div>
+          <div>
+            <label for="nota2">Nota 2</label>
+            <input type="number" id="nota2" min="0" max="20" step="0.01">
+          </div>
+          <div>
+            <label for="nota3">Nota 3</label>
+            <input type="number" id="nota3" min="0" max="20" step="0.01">
+          </div>
+        </div>
 
-        <label for="nota2">Nota 2</label>
-        <input type="number" id="nota2" name="nota2" min="0" max="20" step="0.01">
-
-        <label for="nota3">Nota 3</label>
-        <input type="number" id="nota3" name="nota3" min="0" max="20" step="0.01">
-
-        <button type="submit" id="btn-guardar-nota">Guardar nota</button>
+        <div class="acciones">
+          <button type="button" id="btn-guardar-nota">Guardar nota</button>
+          <button type="button" id="btn-actualizar-nota">Actualizar nota</button>
+        </div>
       </form>
     </section>
 
-    <section>
-      <h2>Buscar o listar notas</h2>
-
-      <label for="buscar-estudiante-notas">Código de estudiante</label>
-      <input type="text" id="buscar-estudiante-notas">
-      <button type="button" id="btn-listar-notas-estudiante">Listar notas por estudiante</button>
-
-      <label for="buscar-materia-notas">Código de materia</label>
-      <input type="text" id="buscar-materia-notas">
-
-      <label for="buscar-periodo-notas">Código de periodo</label>
-      <input type="text" id="buscar-periodo-notas">
-      <button type="button" id="btn-listar-notas-materia">Listar notas por materia</button>
+    <section class="panel">
+      <h2>Consultas</h2>
+      <div class="grid-formulario">
+        <div>
+          <label for="buscar-estudiante-notas">Codigo de estudiante</label>
+          <input type="text" id="buscar-estudiante-notas">
+        </div>
+        <div>
+          <label for="buscar-materia-notas">Codigo de materia</label>
+          <input type="text" id="buscar-materia-notas">
+        </div>
+        <div>
+          <label for="buscar-periodo-notas">Codigo de periodo</label>
+          <input type="text" id="buscar-periodo-notas">
+        </div>
+      </div>
+      <div class="acciones">
+        <button type="button" id="btn-listar-notas">Listar todas</button>
+        <button type="button" id="btn-listar-notas-estudiante">Listar por estudiante</button>
+        <button type="button" id="btn-listar-notas-materia">Listar por materia y periodo</button>
+      </div>
     </section>
 
-    <section id="mensaje-notas"></section>
+    <section id="mensaje-notas" class="mensaje"></section>
 
-    <section>
+    <section class="panel">
       <h2>Lista de notas</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Código de estudiante</th>
-            <th>Código de materia</th>
-            <th>Periodo</th>
-            <th>Nota 1</th>
-            <th>Nota 2</th>
-            <th>Nota 3</th>
-            <th>Promedio</th>
-            <th>Estado final</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tabla-notas">
-        </tbody>
-      </table>
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>Codigo estudiante</th>
+              <th>Codigo materia</th>
+              <th>Periodo</th>
+              <th>Nota 1</th>
+              <th>Nota 2</th>
+              <th>Nota 3</th>
+              <th>Promedio</th>
+              <th>Estado final</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-notas"></tbody>
+        </table>
+      </div>
     </section>
   </main>
 
-  <script src="../static/notas.js"></script>
+  <script src="/static/notas.js"></script>
 </body>
 </html>
