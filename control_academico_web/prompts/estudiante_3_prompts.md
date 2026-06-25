@@ -540,3 +540,91 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 13 - Documentar pruebas del módulo notas
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** documentar casos de prueba del módulo Notas  
+
+```text
+Continúa con el módulo notas del proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Antes de trabajar, revisa:
+
+git status
+git log --oneline -5
+
+Asegúrate de que el commit anterior ya exista:
+
+feat: agregar logica visual de notas
+
+Ahora crea un archivo de pruebas dentro de evidencias llamado:
+
+control_academico_web/evidencias/casos_prueba_notas.md
+
+El archivo debe incluir una tabla con estas columnas:
+
+- número de caso
+- acción realizada
+- datos de entrada
+- resultado esperado
+- resultado obtenido
+- observación
+
+Incluye estos casos:
+
+1. Registrar nota correctamente.
+2. Registrar nota con estudiante vacío.
+3. Registrar nota con materia vacía.
+4. Registrar nota con periodo vacío.
+5. Registrar nota menor a 0.
+6. Registrar nota mayor a 20.
+7. Registrar nota con texto en vez de número.
+8. Registrar nota de estudiante no matriculado.
+9. Registrar nota duplicada para el mismo estudiante, materia y periodo.
+10. Calcular promedio aprobado.
+11. Calcular promedio desaprobado.
+12. Listar notas registradas.
+13. Listar notas por estudiante.
+14. Listar notas por materia y periodo.
+15. Actualizar notas existentes.
+16. Intentar actualizar nota inexistente.
+17. Verificar estudiantes matriculados sin nota.
+
+Agrega al final una sección llamada:
+
+Conclusión del módulo
+
+En esa sección indica si el módulo notas quedó listo para integrarse con matrículas, estudiantes, materias y reportes.
+
+También actualiza:
+
+control_academico_web/prompts/estudiante_3_prompts.md
+
+Agrega este prompt completo como nuevo registro, sin borrar los prompts anteriores.
+
+También actualiza:
+
+control_academico_web/evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- que se creó la evidencia de pruebas
+- qué casos cubre
+- qué falta verificar en la integración
+
+Cuando termines, revisa los cambios con:
+
+git status
+
+Luego haz el commit:
+
+git add control_academico_web/evidencias/casos_prueba_notas.md control_academico_web/evidencias/estudiante_3_evidencias_resultado.md control_academico_web/prompts/estudiante_3_prompts.md
+git commit -m "test: documentar pruebas del modulo notas"
+
+No hagas push todavía.
+```
