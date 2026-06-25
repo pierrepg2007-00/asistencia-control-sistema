@@ -105,3 +105,48 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ````
+
+### Prompt 2 - Crear base del módulo notas
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** crear los archivos iniciales del módulo Notas  
+
+```text
+Continúa con el proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Crea únicamente los archivos necesarios para empezar el módulo notas:
+
+- data/notas.json
+- core/notas.py
+- web/notas.html
+- static/notas.js
+
+El archivo data/notas.json debe iniciar con una lista vacía [].
+
+En core/notas.py deja preparada la estructura base con las funciones indicadas para cargar, guardar, validar, registrar, listar y actualizar notas.
+
+Por ahora algunas funciones pueden quedar como borrador, pero deben estar ordenadas y con comentarios simples.
+
+No modifiques estudiantes.py.
+No modifiques materias.py ni periodos.py.
+No desarrolles asistencia ni reportes.
+No desarrolles el módulo completo de matrículas.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué archivos se crearon
+- qué funciones quedaron preparadas
+- qué falta desarrollar
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
