@@ -133,7 +133,20 @@ def verificar_matricula_para_asistencia(codigo_estudiante, codigo_materia, codig
 
 def asistencia_duplicada(codigo_estudiante, codigo_materia, codigo_periodo, fecha):
     """Verifica si ya existe asistencia para el mismo estudiante, materia, periodo y fecha."""
-    pass
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+
+    for asistencia in cargar_asistencias():
+        if (
+            asistencia.get("codigo_estudiante") == codigo_estudiante
+            and asistencia.get("codigo_materia") == codigo_materia
+            and asistencia.get("codigo_periodo") == codigo_periodo
+            and asistencia.get("fecha") == fecha
+        ):
+            return True
+
+    return False
 
 
 def registrar_asistencia(codigo_estudiante, codigo_materia, codigo_periodo, fecha, estado_asistencia):
