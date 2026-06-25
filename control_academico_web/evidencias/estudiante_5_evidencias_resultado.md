@@ -19,6 +19,7 @@
 | 8 | Reportar estudiantes por materia | Se implementó reporte_estudiantes_por_materia() con enriquecimiento de datos | Ninguno | core/reportes.py | Consulta matriculas, estudiantes y materias |
 | 9 | Reportar notas por materia | Se implementó reporte_notas_por_materia() con cálculos estadísticos | Ninguno | core/reportes.py | Calcula aprobados, desaprobados y promedio general |
 | 10 | Reportar asistencia por materia | Se implementó reporte_asistencia_por_materia() con agrupación y porcentaje | Ninguno | core/reportes.py | Cuenta asistencias, faltas y porcentaje por estudiante |
+| 11 | Reportar estudiantes en riesgo | Se implementó reporte_estudiantes_en_riesgo() con cruce de notas y asistencia | Ninguno | core/reportes.py | Identifica nota baja (<11) y asistencia (<70%) |
 
 ## Conversación o resumen de interacción con IA
 
@@ -99,3 +100,11 @@
 - Agrupa registros por estudiante, contando total de clases, asistencias (presente, tarde, justificado) y faltas.
 - Calcula porcentaje de asistencia por estudiante.
 - Enriquece con nombres y apellidos del estudiante.
+
+### Actividad 11: Reportar estudiantes en riesgo
+
+- Se implementó reporte_estudiantes_en_riesgo() que cruza notas.json y asistencias.json.
+- Criterio nota baja: promedio menor a 11.
+- Criterio baja asistencia: porcentaje de asistencia menor a 70%.
+- Si cumple ambos, marca "nota baja y baja asistencia".
+- Enriquece con nombres de estudiante y materia.

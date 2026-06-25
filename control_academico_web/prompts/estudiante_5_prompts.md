@@ -285,3 +285,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 10 registrado - reportar asistencia por materia]
 ```
+
+
+### Prompt 11 - Reportar estudiantes en riesgo
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Reportes
+**Objetivo:** Implementar reporte_estudiantes_en_riesgo() con criterios de nota baja y asistencia
+
+```text
+[Prompt 11 registrado - reportar estudiantes en riesgo]
+```

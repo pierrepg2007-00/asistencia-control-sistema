@@ -247,7 +247,140 @@ def reporte_asistencia_por_materia(codigo_materia, codigo_periodo):
 
 def reporte_estudiantes_en_riesgo():
     """Identifica estudiantes en riesgo por nota baja o baja asistencia."""
-    return []
+    resultado = []
+    riesgo_dict = {}
+
+    # Cargar notas
+    notas = []
+    try:
+        with open(ARCHIVO_NOTAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            notas = json.loads(contenido)
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    # Cargar asistencias
+    asistencias = []
+    try:
+        with open(ARCHIVO_ASISTENCIAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            asistencias = json.loads(contenido)
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    # Cargar estudiantes
+    datos_estudiantes = {}
+    try:
+        with open(ARCHIVO_ESTUDIANTES, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            estudiantes = json.loads(contenido)
+            for estudiante in estudiantes:
+                datos_estudiantes[estudiante.get("codigo")] = estudiante
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    # Cargar materias
+    datos_materias = {}
+    try:
+        with open(ARCHIVO_MATERIAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+        if contenido:
+            materias = json.loads(contenido)
+            for materia in materias:
+                datos_materias[materia.get("codigo_materia")] = materia
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        pass
+
+    # Clave unica: codigo_estudiante|codigo_materia|codigo_periodo
+
+    # Evaluar notas (promedio menor a 11)
+    for nota in notas:
+        clave = "{}|{}|{}".format(
+            nota.get("codigo_estudiante", ""),
+            nota.get("codigo_materia", ""),
+            nota.get("codigo_periodo", ""),
+        )
+        promedio = nota.get("promedio")
+        if promedio is not None and float(promedio) < 11:
+            if clave not in riesgo_dict:
+                riesgo_dict[clave] = {
+                    "codigo_estudiante": nota.get("codigo_estudiante"),
+                    "codigo_materia": nota.get("codigo_materia"),
+                    "codigo_periodo": nota.get("codigo_periodo"),
+                    "promedio": promedio,
+                    "porcentaje_asistencia": None,
+                    "motivo_riesgo": "nota baja",
+                }
+            else:
+                riesgo_dict[clave]["promedio"] = promedio
+                riesgo_dict[clave]["motivo_riesgo"] = "nota baja"
+
+    # Evaluar asistencia (menor a 70%)
+    # Agrupar asistencias por clave
+    asistencia_por_clave = {}
+    for asistencia in asistencias:
+        clave = "{}|{}|{}".format(
+            asistencia.get("codigo_estudiante", ""),
+            asistencia.get("codigo_materia", ""),
+            asistencia.get("codigo_periodo", ""),
+        )
+        if clave not in asistencia_por_clave:
+            asistencia_por_clave[clave] = []
+        asistencia_por_clave[clave].append(asistencia)
+
+    for clave, registros in asistencia_por_clave.items():
+        total = len(registros)
+        asistencias_count = 0
+        for registro in registros:
+            estado = registro.get("estado_asistencia", "").lower()
+            if estado in ["presente", "tarde", "justificado"]:
+                asistencias_count += 1
+
+        porcentaje = 0
+        if total > 0:
+            porcentaje = round((asistencias_count / total) * 100, 2)
+
+        if porcentaje < 70:
+            if clave in riesgo_dict:
+                riesgo_dict[clave]["porcentaje_asistencia"] = porcentaje
+                riesgo_dict[clave]["motivo_riesgo"] = "nota baja y baja asistencia"
+            else:
+                partes = clave.split("|")
+                riesgo_dict[clave] = {
+                    "codigo_estudiante": partes[0],
+                    "codigo_materia": partes[1],
+                    "codigo_periodo": partes[2],
+                    "promedio": None,
+                    "porcentaje_asistencia": porcentaje,
+                    "motivo_riesgo": "baja asistencia",
+                }
+
+    # Construir resultado
+    for clave, datos in riesgo_dict.items():
+        cod_est = datos.get("codigo_estudiante", "")
+        cod_mat = datos.get("codigo_materia", "")
+        info_est = datos_estudiantes.get(cod_est, {})
+        info_mat = datos_materias.get(cod_mat, {})
+
+        resultado.append({
+            "codigo_estudiante": cod_est,
+            "nombres": info_est.get("nombres", ""),
+            "apellidos": info_est.get("apellidos", ""),
+            "codigo_materia": cod_mat,
+            "nombre_materia": info_mat.get("nombre_materia", ""),
+            "codigo_periodo": datos.get("codigo_periodo"),
+            "promedio": datos.get("promedio"),
+            "porcentaje_asistencia": datos.get("porcentaje_asistencia"),
+            "motivo_riesgo": datos.get("motivo_riesgo"),
+        })
+
+    if not resultado:
+        return []
+
+    return resultado
 
 
 def exportar_reporte_txt(nombre_reporte, datos):
