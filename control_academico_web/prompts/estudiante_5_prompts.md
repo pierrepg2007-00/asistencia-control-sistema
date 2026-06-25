@@ -315,3 +315,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 13 registrado - crear interfaz web de matriculas]
 ```
+
+
+### Prompt 14 - Agregar logica visual de matriculas
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Matrículas
+**Objetivo:** Desarrollar static/matriculas.js con funciones de interacción visual
+
+```text
+[Prompt 14 registrado - agregar logica visual de matriculas]
+```

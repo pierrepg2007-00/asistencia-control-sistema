@@ -126,3 +126,14 @@
 - Select para cambio de estado con opciones: activa, retirada, finalizada.
 - Zona de mensajes para errores y confirmaciones.
 - Pendiente: conectar con static/matriculas.js.
+
+| 12 | Exportar reportes en texto | Se implementó exportar_reporte_txt() | Ninguno | core/reportes.py | Genera .txt con fecha y datos |
+| 13 | Crear interfaz web de matriculas | Se creó formularios y tabla HTML | Ninguno | web/matriculas.html | Pendiente conectar con JS |
+| 14 | Agregar logica visual de matriculas | Se implementaron 8 funciones JS | Ninguno | static/matriculas.js | Pendiente conectar con Python |
+
+### Actividad 14: Agregar lógica visual de matriculas
+
+- Se implementaron todas las funciones JavaScript para matrículas: obtener datos, validar, mostrar mensajes, limpiar, renderizar tabla, filtrar por estudiante, filtrar por materia y preparar cambio de estado.
+- La tabla muestra columnas: código estudiante, materia, periodo, estado y botón de acciones.
+- Las funciones siguen el patrón de notas.js para mantener consistencia.
+- Pendiente: conectar con el backend Python.
