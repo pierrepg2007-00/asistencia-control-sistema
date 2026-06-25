@@ -3,16 +3,102 @@
 ## Datos del estudiante
 
 - Estudiante asociado: Integrante 4
-- Módulo principal: Notas y asistencia
+- Módulo principal: Asistencia
+- Responsabilidad adicional: apoyo al módulo Matrículas
 
 ## Prompts usados
 
-### Prompt X - Título del prompt
+Cada prompt debe registrarse con este formato:
 
-**Estudiante asociado:** Integrante 4  
-**Módulo trabajado:** Notas y asistencia  
-**Objetivo:** breve descripción del objetivo del prompt  
+### Prompt N - Título del prompt
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** objetivo breve del prompt
 
 ```text
-Pega aquí el prompt completo utilizado.
+Aquí se pega el prompt completo utilizado.
+```
+
+### Prompt 1 - Preparar evidencias del integrante 4
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** preparar la estructura de prompts y evidencias del Integrante 4
+
+```text
+Trabaja como agente de desarrollo dentro del proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Antes de modificar archivos, revisa:
+- AGENTS.md
+- README.md
+- estructura actual del proyecto
+- prompts/estudiante_4_prompts.md
+- evidencias/estudiante_4_evidencias_resultado.md
+
+No borres archivos existentes.
+No modifiques el módulo de estudiantes.
+No modifiques el módulo de materias y periodos.
+No modifiques el módulo de notas.
+No desarrolles reportes.
+
+Primero asegúrate de que existan estos archivos:
+
+- prompts/estudiante_4_prompts.md
+- evidencias/estudiante_4_evidencias_resultado.md
+
+Si no existen, créalos.
+
+El archivo prompts/estudiante_4_prompts.md debe tener esta estructura:
+
+# Estudiante 4 - Prompts utilizados
+
+## Datos del estudiante
+- Estudiante asociado: Integrante 4
+- Módulo principal: Asistencia
+- Responsabilidad adicional: apoyo al módulo Matrículas
+
+## Prompts usados
+
+Cada prompt debe registrarse con este formato:
+
+### Prompt N - Título del prompt
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** objetivo breve del prompt
+
+Aquí se pega el prompt completo utilizado.
+
+El archivo evidencias/estudiante_4_evidencias_resultado.md debe tener esta estructura:
+
+# Estudiante 4 - Evidencias de resultado
+
+## Datos del estudiante
+- Estudiante asociado: Integrante 4
+- Módulo principal: Asistencia
+- Responsabilidad adicional: apoyo al módulo Matrículas
+
+## Resultados obtenidos
+
+| N° | Actividad realizada | Resultado entregado por la IA | Cambios realizados manualmente | Archivo creado o modificado | Observación final |
+|---|---|---|---|---|---|
+
+## Conversación o resumen de interacción con IA
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué archivos de prompts y evidencias se revisaron o crearon
+- qué estructura quedó preparada para el Integrante 4
+- qué se desarrollará después
+
+Finalmente revisa los cambios y deja todo listo para commit.
 ```
