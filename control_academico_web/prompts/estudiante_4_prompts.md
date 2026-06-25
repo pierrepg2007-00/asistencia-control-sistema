@@ -731,3 +731,126 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 13 - Documentar pruebas del modulo asistencia
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** crear archivo de casos de prueba para el modulo asistencia
+
+```text
+Continúa con el módulo asistencia.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Crea un archivo de pruebas dentro de evidencias llamado:
+
+casos_prueba_asistencia.md
+
+El archivo debe incluir una tabla con:
+
+- número de caso
+- acción realizada
+- datos de entrada
+- resultado esperado
+- resultado obtenido
+- observación
+
+Incluye estos casos:
+
+1. Registrar asistencia correctamente.
+2. Registrar asistencia con estudiante vacío.
+3. Registrar asistencia con materia vacía.
+4. Registrar asistencia con periodo vacío.
+5. Registrar asistencia con fecha vacía.
+6. Registrar asistencia con fecha inválida.
+7. Registrar asistencia con estado inválido.
+8. Registrar asistencia de estudiante no matriculado.
+9. Registrar asistencia duplicada para el mismo estudiante, materia, periodo y fecha.
+10. Listar asistencias registradas.
+11. Listar asistencia por estudiante.
+12. Listar asistencia por materia y periodo.
+13. Listar asistencia por materia, periodo y fecha.
+14. Calcular porcentaje con asistencias y faltas.
+15. Calcular porcentaje cuando solo tiene faltas.
+16. Calcular porcentaje cuando no hay registros.
+17. Listar matriculados para tomar asistencia.
+
+Agrega al final una sección llamada:
+
+Conclusión del módulo
+
+En esa sección indica si el módulo asistencia quedó listo para integrarse con matrículas, estudiantes, materias y reportes.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- que se creó la evidencia de pruebas
+- qué casos cubre
+- qué falta verificar en la integración
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
+
+### Prompt 14 - Revisar entrega del integrante 4
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** revision final del trabajo del Integrante 4
+
+```text
+Haz una revisión final del trabajo del Integrante 4 en el proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Revisa que existan y estén ordenados estos elementos:
+
+- data/asistencias.json
+- core/asistencia.py
+- web/asistencia.html
+- static/asistencia.js
+- prompts/estudiante_4_prompts.md
+- evidencias/estudiante_4_evidencias_resultado.md
+- evidencias/casos_prueba_asistencia.md
+
+Verifica que:
+
+- los prompts del Integrante 4 estén guardados en prompts/estudiante_4_prompts.md
+- las evidencias del resultado estén registradas
+- asistencia.py tenga funciones claras y separadas
+- el módulo pueda validar matrícula antes de registrar asistencia
+- el módulo evite asistencias duplicadas
+- el módulo pueda listar asistencia por estudiante, materia y fecha
+- el módulo pueda calcular porcentaje de asistencia
+- no se haya modificado indebidamente estudiantes.py
+- no se haya modificado indebidamente materias.py o periodos.py
+- no se haya modificado indebidamente notas.py
+- no se hayan desarrollado módulos que correspondan a otros integrantes
+- no se hayan borrado archivos existentes
+- el código sea entendible para estudiantes principiantes
+
+Si encuentras detalles pequeños, corrígelos.
+No hagas cambios grandes.
+No agregues funcionalidades nuevas.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué se revisó
+- qué correcciones menores se hicieron
+- si el trabajo del Integrante 4 quedó listo
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

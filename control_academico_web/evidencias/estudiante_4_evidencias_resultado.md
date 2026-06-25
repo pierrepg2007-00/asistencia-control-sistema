@@ -22,6 +22,8 @@
 | 10 | Listar matriculados para asistencia | Se creo `listar_matriculados_para_asistencia()`. | No aplica. | `core/asistencia.py` | Consulta `data/matriculas.json` y `data/estudiantes.json`. Apoyo para tomar asistencia. |
 | 11 | Crear interfaz web de asistencia | Se creo pagina HTML con formulario, secciones de busqueda, tabla y zona de mensajes. | No aplica. | `web/asistencia.html` | Pagina lista para conectar con asistencia.js y el backend Python. |
 | 12 | Agregar logica visual de asistencia | Se creo JavaScript con funciones de validacion, renderizado y eventos de botones. | No aplica. | `static/asistencia.js` | Funciones preparadas para integracion con Python. |
+| 13 | Documentar pruebas del modulo asistencia | Se creo `casos_prueba_asistencia.md` con 17 casos de prueba. | No aplica. | `evidencias/casos_prueba_asistencia.md` | Cubre registro, validaciones, listados, porcentaje y matriculados. |
+| 14 | Revisar entrega del integrante 4 | Se verifico estructura, archivos, funciones y cumplimiento de reglas. | Se confirmo que todos los archivos existen y las funciones estan implementadas. | Todos los archivos del modulo asistencia. | Trabajo del Integrante 4 listo para integracion. |
 
 ## Conversación o resumen de interacción con IA
 
