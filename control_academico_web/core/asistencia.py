@@ -209,17 +209,41 @@ def registrar_asistencia(codigo_estudiante, codigo_materia, codigo_periodo, fech
 
 def listar_asistencias():
     """Devuelve todas las asistencias registradas."""
-    pass
+    return cargar_asistencias()
 
 
 def listar_asistencia_por_estudiante(codigo_estudiante):
     """Devuelve todas las asistencias de un estudiante."""
-    pass
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    asistencias_estudiante = []
+
+    for asistencia in cargar_asistencias():
+        if asistencia.get("codigo_estudiante") == codigo_estudiante:
+            asistencias_estudiante.append(asistencia)
+
+    return asistencias_estudiante
 
 
 def listar_asistencia_por_materia(codigo_materia, codigo_periodo, fecha=None):
     """Devuelve las asistencias de una materia y periodo. Puede filtrar por fecha."""
-    pass
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    asistencias_materia = []
+
+    for asistencia in cargar_asistencias():
+        coincide_materia_periodo = (
+            asistencia.get("codigo_materia") == codigo_materia
+            and asistencia.get("codigo_periodo") == codigo_periodo
+        )
+
+        if coincide_materia_periodo:
+            if fecha:
+                if asistencia.get("fecha") == fecha:
+                    asistencias_materia.append(asistencia)
+            else:
+                asistencias_materia.append(asistencia)
+
+    return asistencias_materia
 
 
 def calcular_porcentaje_asistencia(codigo_estudiante, codigo_materia, codigo_periodo):
