@@ -293,3 +293,53 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 5 - Generar código automático de materia
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** desarrollar el código automático de materias  
+
+```text
+Continúa con el módulo materias y periodos.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+
+Desarrolla la función generar_codigo_materia() en core/materias.py.
+
+El código debe tener este formato:
+
+MAT001
+MAT002
+MAT003
+
+Reglas:
+
+- debe leer las materias guardadas en data/materias.json
+- si no hay materias, debe devolver MAT001
+- si ya hay materias, debe generar el siguiente código disponible
+- no debe repetir códigos
+- debe funcionar aunque existan varios registros
+
+Ejemplo:
+Si existen MAT001 y MAT002, debe generar MAT003.
+
+Usa las funciones cargar_materias() y guardar_materias() si corresponde.
+No uses código avanzado.
+
+No modifiques otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- qué función se desarrolló
+- qué problema resuelve
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

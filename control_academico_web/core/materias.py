@@ -44,8 +44,22 @@ def guardar_materias(materias):
 
 
 def generar_codigo_materia():
-    """Genera el código automático de materia. Pendiente de completar."""
-    pass
+    """Genera el siguiente código consecutivo para una materia."""
+    materias = cargar_materias()
+    codigos_usados = []
+
+    for materia in materias:
+        codigo = materia.get("codigo_materia", "")
+
+        if codigo.startswith("MAT") and codigo[3:].isdigit():
+            codigos_usados.append(int(codigo[3:]))
+
+    numero = 1
+
+    while numero in codigos_usados:
+        numero += 1
+
+    return f"MAT{numero:03d}"
 
 
 def registrar_materia(nombre_materia, docente, ciclo, estado):
