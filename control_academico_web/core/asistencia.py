@@ -151,7 +151,60 @@ def asistencia_duplicada(codigo_estudiante, codigo_materia, codigo_periodo, fech
 
 def registrar_asistencia(codigo_estudiante, codigo_materia, codigo_periodo, fecha, estado_asistencia):
     """Registra la asistencia de un estudiante con validaciones."""
-    pass
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    fecha = (fecha or "").strip()
+    estado_asistencia = (estado_asistencia or "").strip().lower()
+
+    if not codigo_estudiante:
+        return {"resultado": False, "mensaje": "El codigo de estudiante no puede estar vacio.", "datos": None}
+
+    if not codigo_materia:
+        return {"resultado": False, "mensaje": "El codigo de materia no puede estar vacio.", "datos": None}
+
+    if not codigo_periodo:
+        return {"resultado": False, "mensaje": "El codigo de periodo no puede estar vacio.", "datos": None}
+
+    if not fecha:
+        return {"resultado": False, "mensaje": "La fecha no puede estar vacia.", "datos": None}
+
+    if not validar_fecha(fecha):
+        return {"resultado": False, "mensaje": "La fecha debe tener el formato YYYY-MM-DD.", "datos": None}
+
+    if not validar_estado_asistencia(estado_asistencia):
+        return {"resultado": False, "mensaje": "El estado de asistencia debe ser: presente, tarde, falta o justificado.", "datos": None}
+
+    resultado_matricula = verificar_matricula_para_asistencia(
+        codigo_estudiante,
+        codigo_materia,
+        codigo_periodo,
+    )
+
+    if not resultado_matricula["resultado"]:
+        return {"resultado": False, "mensaje": resultado_matricula["mensaje"], "datos": None}
+
+    if asistencia_duplicada(codigo_estudiante, codigo_materia, codigo_periodo, fecha):
+        return {"resultado": False, "mensaje": "Ya existe una asistencia registrada para ese estudiante en esa fecha.", "datos": None}
+
+    asistencias = cargar_asistencias()
+
+    registro = {
+        "codigo_estudiante": codigo_estudiante,
+        "codigo_materia": codigo_materia,
+        "codigo_periodo": codigo_periodo,
+        "fecha": fecha,
+        "estado_asistencia": estado_asistencia,
+    }
+
+    asistencias.append(registro)
+    guardar_asistencias(asistencias)
+
+    return {
+        "resultado": True,
+        "mensaje": "Asistencia registrada correctamente.",
+        "datos": registro,
+    }
 
 
 def listar_asistencias():

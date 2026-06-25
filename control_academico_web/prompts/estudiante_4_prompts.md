@@ -361,3 +361,63 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 7 - Registrar asistencia con validaciones
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** registrar asistencia validando matricula, duplicados y campos obligatorios
+
+```text
+Continúa con el módulo asistencia.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+
+Desarrolla la función registrar_asistencia(codigo_estudiante, codigo_materia, codigo_periodo, fecha, estado_asistencia) en core/asistencia.py.
+
+La función debe:
+
+- validar que codigo_estudiante no esté vacío
+- validar que codigo_materia no esté vacío
+- validar que codigo_periodo no esté vacío
+- validar que fecha no esté vacía y tenga formato YYYY-MM-DD
+- validar que estado_asistencia sea:
+  - presente
+  - tarde
+  - falta
+  - justificado
+- verificar que el estudiante esté matriculado usando verificar_matricula_para_asistencia()
+- evitar asistencia duplicada usando asistencia_duplicada()
+- guardar el registro en data/asistencias.json
+- devolver un diccionario con resultado, mensaje y datos de la asistencia registrada
+
+La asistencia debe guardarse con esta estructura:
+
+{
+  "codigo_estudiante": "EST001",
+  "codigo_materia": "MAT001",
+  "codigo_periodo": "2026-I",
+  "fecha": "2026-06-24",
+  "estado_asistencia": "presente"
+}
+
+Si hay error, debe devolver un mensaje claro y no guardar datos.
+
+No modifiques otros módulos.
+No uses código avanzado.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué función se desarrolló
+- qué validaciones aplica
+- cómo se guarda una asistencia
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

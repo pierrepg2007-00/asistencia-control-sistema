@@ -16,6 +16,7 @@
 | 4 | Agregar validaciones de asistencia | Se desarrollaron `validar_estado_asistencia()` y `validar_fecha()`. | No aplica. | `core/asistencia.py` | Valida estados presente/tarde/falta/justificado y fecha YYYY-MM-DD. |
 | 5 | Validar matricula antes de registrar asistencia | Se creo `verificar_matricula_para_asistencia()`. | No aplica. | `core/asistencia.py` | Consulta `data/matriculas.json` y acepta solo matriculas activas. |
 | 6 | Evitar asistencia duplicada | Se desarrollo `asistencia_duplicada()`. | No aplica. | `core/asistencia.py` | Evita duplicar asistencia del mismo estudiante, materia, periodo y fecha. |
+| 7 | Registrar asistencia con validaciones | Se desarrollo `registrar_asistencia()`. | No aplica. | `core/asistencia.py` | Valida matricula, duplicados, campos obligatorios, fecha y estado. |
 
 ## Conversación o resumen de interacción con IA
 
