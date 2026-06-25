@@ -23,6 +23,7 @@
 | 11 | Crear interfaz web de notas | Se desarrolló la página HTML con formulario, búsquedas, tabla y mensajes. | No aplica. | `web/notas.html` | Lista para conectarse con JavaScript. |
 | 12 | Agregar lógica visual de notas | Se desarrollaron funciones JavaScript para formulario, validación, tabla, filtros y edición visual. | No aplica. | `static/notas.js` | Falta integrar con Python. |
 | 13 | Documentar pruebas del módulo notas | Se creó `casos_prueba_notas.md` con 17 casos de prueba en Python y 6 validaciones visuales en JavaScript. | No aplica. | `evidencias/casos_prueba_notas.md`, `prompts/estudiante_3_prompts.md`, `evidencias/estudiante_3_evidencias_resultado.md` | Casos cubren registro, validación, listado, actualización y pendientes. |
+| 14 | Revisión final del Integrante 3 | Se verificaron commits, archivos, funciones, integridad de otros módulos y calidad del código. | Sin correcciones necesarias. | `prompts/estudiante_3_prompts.md`, `evidencias/estudiante_3_evidencias_resultado.md` | Trabajo del Integrante 3 listo para entrega. |
 
 ## Conversación o resumen de interacción con IA
 

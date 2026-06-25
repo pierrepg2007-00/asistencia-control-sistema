@@ -628,3 +628,96 @@ git commit -m "test: documentar pruebas del modulo notas"
 
 No hagas push todavía.
 ```
+
+### Prompt 14 - Revisión final del Integrante 3
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** revisar entrega del Integrante 3 antes del push  
+
+```text
+Haz una revisión final del trabajo del Integrante 3 en el proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Antes de hacer cambios, revisa:
+
+git status
+git log --oneline -8
+
+Verifica que existan estos commits o sus equivalentes:
+
+- feat: crear base del modulo notas
+- feat: agregar lectura y guardado de notas
+- feat: agregar validaciones y promedio de notas
+- feat: validar matricula antes de registrar notas
+- feat: evitar notas duplicadas por matricula
+- feat: registrar notas con validaciones
+- feat: listar notas por estudiante y materia
+- feat: actualizar notas y recalcular promedio
+- feat: listar matriculados sin nota registrada
+- feat: crear interfaz web de notas
+- feat: agregar logica visual de notas
+- test: documentar pruebas del modulo notas
+
+Ahora revisa que existan y estén ordenados estos elementos:
+
+- control_academico_web/data/notas.json
+- control_academico_web/core/notas.py
+- control_academico_web/web/notas.html
+- control_academico_web/static/notas.js
+- control_academico_web/prompts/estudiante_3_prompts.md
+- control_academico_web/evidencias/estudiante_3_evidencias_resultado.md
+- control_academico_web/evidencias/casos_prueba_notas.md
+
+Verifica que:
+
+- los prompts del Integrante 3 estén guardados en prompts/estudiante_3_prompts.md
+- las evidencias del resultado estén registradas
+- notas.py tenga funciones claras y separadas
+- el módulo pueda validar matrícula antes de registrar notas
+- el módulo pueda evitar notas duplicadas
+- el módulo pueda calcular promedio y estado final
+- el módulo pueda listar notas por estudiante y por materia
+- el módulo pueda actualizar notas y recalcular promedio
+- exista la función para listar matriculados sin nota registrada
+- web/notas.html tenga formulario, tabla, búsqueda y mensajes
+- static/notas.js tenga funciones visuales separadas y claras
+- no se haya modificado indebidamente estudiantes.py
+- no se haya modificado indebidamente materias.py o periodos.py
+- no se hayan desarrollado módulos que correspondan a otros integrantes
+- no se hayan borrado archivos existentes
+- el código sea entendible para estudiantes principiantes
+
+Si encuentras detalles pequeños, corrígelos.
+No hagas cambios grandes.
+No agregues funcionalidades nuevas.
+
+También actualiza:
+
+control_academico_web/prompts/estudiante_3_prompts.md
+
+Agrega este prompt completo como nuevo registro, sin borrar los prompts anteriores.
+
+También actualiza:
+
+control_academico_web/evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué se revisó
+- qué correcciones menores se hicieron
+- si el trabajo del Integrante 3 quedó listo
+
+Cuando termines, revisa:
+
+git status
+
+Luego haz el commit final del Integrante 3:
+
+git add control_academico_web/data/notas.json control_academico_web/core/notas.py control_academico_web/web/notas.html control_academico_web/static/notas.js control_academico_web/prompts/estudiante_3_prompts.md control_academico_web/evidencias/estudiante_3_evidencias_resultado.md control_academico_web/evidencias/casos_prueba_notas.md
+git commit -m "chore: revisar entrega del integrante 3"
+
+No hagas push todavía.
+```
