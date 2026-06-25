@@ -21,6 +21,7 @@
 | 9 | Actualizar notas y recalcular promedio | Se desarrolló `actualizar_nota()`. | No aplica. | `core/notas.py` | Protege estudiante, materia y periodo; recalcula promedio y estado. |
 | 10 | Listar matriculados sin nota registrada | Se desarrolló `listar_estudiantes_sin_nota()`. | No aplica. | `core/notas.py` | Consulta matrículas, notas y opcionalmente estudiantes. |
 | 11 | Crear interfaz web de notas | Se desarrolló la página HTML con formulario, búsquedas, tabla y mensajes. | No aplica. | `web/notas.html` | Lista para conectarse con JavaScript. |
+| 12 | Agregar lógica visual de notas | Se desarrollaron funciones JavaScript para formulario, validación, tabla, filtros y edición visual. | No aplica. | `static/notas.js` | Falta integrar con Python. |
 
 ## Conversación o resumen de interacción con IA
 
@@ -38,3 +39,4 @@
 - Se agregó actualización de notas con recálculo automático.
 - Se agregó apoyo para identificar matriculados pendientes de nota.
 - Se creó la interfaz HTML del módulo Notas.
+- Se creó la lógica visual inicial del módulo Notas.

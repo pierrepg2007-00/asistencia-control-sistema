@@ -497,3 +497,46 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 12 - Agregar lógica visual de notas
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** crear funciones JavaScript para manejar la pantalla de notas  
+
+```text
+Continúa con el módulo notas.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+
+Desarrolla static/notas.js para manejar la página web/notas.html.
+
+El JavaScript debe capturar datos del formulario, validar campos vacíos, validar notas entre 0 y 20, mostrar mensajes, limpiar formulario, llenar tabla, filtrar por estudiante, filtrar por materia y periodo, y preparar la actualización.
+
+Usa estos nombres de funciones:
+- obtenerDatosFormularioNota()
+- validarFormularioNota(datos)
+- mostrarMensajeNotas(mensaje, tipo)
+- limpiarFormularioNota()
+- renderizarTablaNotas(notas)
+- filtrarNotasPorEstudiante(codigo_estudiante)
+- filtrarNotasPorMateria(codigo_materia, codigo_periodo)
+- prepararActualizacionNota(codigo_estudiante, codigo_materia, codigo_periodo)
+
+No mezcles este archivo con otros módulos.
+No desarrolles código de estudiantes, materias, asistencia, matrículas ni reportes.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué funciones JavaScript se crearon
+- qué parte de la pantalla controlan
+- qué falta integrar después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
