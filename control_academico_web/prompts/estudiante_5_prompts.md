@@ -345,3 +345,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 16 registrado - agregar logica visual de reportes]
 ```
+
+
+### Prompt 17 - Crear pagina principal del sistema
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Integración
+**Objetivo:** Crear web/index.html con menú de navegación y tarjetas de módulos
+
+```text
+[Prompt 17 registrado - crear pagina principal]
+```
