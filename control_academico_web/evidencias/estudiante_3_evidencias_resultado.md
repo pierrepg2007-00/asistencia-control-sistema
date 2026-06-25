@@ -19,6 +19,7 @@
 | 7 | Registrar notas con validaciones | Se desarrolló `registrar_nota()`. | No aplica. | `core/notas.py` | Valida matrícula, notas, duplicados, promedio y estado final. |
 | 8 | Listar notas por estudiante y materia | Se desarrollaron listados generales, por estudiante y por materia/periodo. | No aplica. | `core/notas.py` | Devuelven listas simples para conectar con la web. |
 | 9 | Actualizar notas y recalcular promedio | Se desarrolló `actualizar_nota()`. | No aplica. | `core/notas.py` | Protege estudiante, materia y periodo; recalcula promedio y estado. |
+| 10 | Listar matriculados sin nota registrada | Se desarrolló `listar_estudiantes_sin_nota()`. | No aplica. | `core/notas.py` | Consulta matrículas, notas y opcionalmente estudiantes. |
 
 ## Conversación o resumen de interacción con IA
 
@@ -34,3 +35,4 @@
 - Se completó el registro de notas con validaciones principales.
 - Se agregaron funciones para listar notas por distintos criterios.
 - Se agregó actualización de notas con recálculo automático.
+- Se agregó apoyo para identificar matriculados pendientes de nota.

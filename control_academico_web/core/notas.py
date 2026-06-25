@@ -289,5 +289,36 @@ def actualizar_nota(codigo_estudiante, codigo_materia, codigo_periodo, nuevas_no
 
 
 def listar_estudiantes_sin_nota(codigo_materia, codigo_periodo):
-    """Lista matriculados que aún no tienen nota. Pendiente de completar."""
-    pass
+    """Lista estudiantes matriculados que aún no tienen nota registrada."""
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    matriculas = cargar_lista_json(ARCHIVO_MATRICULAS)
+    estudiantes = cargar_lista_json(ARCHIVO_ESTUDIANTES)
+    pendientes = []
+
+    for matricula in matriculas:
+        misma_materia_periodo = (
+            matricula.get("codigo_materia") == codigo_materia
+            and matricula.get("codigo_periodo") == codigo_periodo
+        )
+        estado = matricula.get("estado", "activo").strip().lower()
+
+        if misma_materia_periodo and estado == "activo":
+            codigo_estudiante = matricula.get("codigo_estudiante")
+
+            if not nota_existe(codigo_estudiante, codigo_materia, codigo_periodo):
+                pendiente = {
+                    "codigo_estudiante": codigo_estudiante,
+                    "codigo_materia": codigo_materia,
+                    "codigo_periodo": codigo_periodo,
+                }
+
+                for estudiante in estudiantes:
+                    if estudiante.get("codigo") == codigo_estudiante:
+                        pendiente["nombres"] = estudiante.get("nombres", "")
+                        pendiente["apellidos"] = estudiante.get("apellidos", "")
+                        break
+
+                pendientes.append(pendiente)
+
+    return pendientes

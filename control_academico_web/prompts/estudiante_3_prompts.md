@@ -422,3 +422,41 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 10 - Listar matriculados sin nota registrada
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** identificar estudiantes matriculados que aún no tienen nota  
+
+```text
+Continúa con el proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Desarrolla en core/notas.py la función:
+
+- listar_estudiantes_sin_nota(codigo_materia, codigo_periodo)
+
+La función debe leer data/matriculas.json y data/notas.json, comparar estudiantes matriculados en la materia y periodo indicados con las notas ya registradas, y devolver quienes aún no tienen nota. Si existe data/estudiantes.json puede usarlo para mostrar nombres.
+
+No desarrolles el módulo completo de matrículas.
+No modifiques otros módulos.
+Esta función solo será apoyo para notas y reportes.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué función de apoyo se creó
+- qué archivos consulta
+- qué problema ayuda a resolver
+- qué falta integrar después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
