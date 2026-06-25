@@ -594,3 +594,86 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 10 - Crear interfaz web de materias y periodos
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** crear la página HTML del módulo Materias y periodos  
+
+```text
+Continúa con el módulo materias y periodos.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+
+Desarrolla la página web/materias.html.
+
+La página debe tener estas secciones:
+
+1. Título:
+Gestión de materias y periodos
+
+2. Formulario de registro de materia con estos campos:
+- nombre de materia
+- docente
+- ciclo
+- estado
+
+3. Botón:
+Guardar materia
+
+4. Sección de búsqueda de materia:
+- campo para buscar por código de materia
+- botón Buscar materia
+
+5. Tabla de materias con columnas:
+- código
+- nombre de materia
+- docente
+- ciclo
+- estado
+- acciones
+
+6. Formulario de registro de periodo con estos campos:
+- código de periodo
+- año
+- nombre
+- estado
+
+7. Botón:
+Guardar periodo
+
+8. Tabla de periodos con columnas:
+- código de periodo
+- año
+- nombre
+- estado
+- acciones
+
+9. Zona para mostrar mensajes:
+- errores
+- confirmaciones
+
+Usa HTML simple.
+No hagas diseño complejo.
+Usa ids claros para conectar con JavaScript.
+
+El archivo debe quedar listo para trabajar con static/materias.js.
+
+No conectes todavía con otros módulos.
+No modifiques la página de estudiantes.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- qué página se creó
+- qué elementos contiene
+- qué falta conectar después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

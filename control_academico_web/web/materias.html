@@ -3,12 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Materias y periodos</title>
+  <title>Gestión de materias y periodos</title>
 </head>
 <body>
   <main>
-    <h1>Módulo de materias y periodos</h1>
-    <p>Espacio inicial para gestionar materias y periodos académicos.</p>
+    <h1>Gestión de materias y periodos</h1>
+
+    <section>
+      <h2>Registrar materia</h2>
+
+      <form id="formulario-materia">
+        <label for="nombre-materia">Nombre de materia</label>
+        <input type="text" id="nombre-materia" name="nombre_materia">
+
+        <label for="docente">Docente</label>
+        <input type="text" id="docente" name="docente">
+
+        <label for="ciclo">Ciclo</label>
+        <input type="number" id="ciclo" name="ciclo" min="1">
+
+        <label for="estado-materia">Estado</label>
+        <select id="estado-materia" name="estado">
+          <option value="activo">Activo</option>
+          <option value="inactivo">Inactivo</option>
+        </select>
+
+        <button type="submit" id="btn-guardar-materia">Guardar materia</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Buscar materia</h2>
+
+      <input type="text" id="buscar-materia" placeholder="Código de materia">
+      <button type="button" id="btn-buscar-materia">Buscar materia</button>
+    </section>
+
+    <section id="mensaje-materias"></section>
+
+    <section>
+      <h2>Lista de materias</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre de materia</th>
+            <th>Docente</th>
+            <th>Ciclo</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-materias">
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Registrar periodo</h2>
+
+      <form id="formulario-periodo">
+        <label for="codigo-periodo">Código de periodo</label>
+        <input type="text" id="codigo-periodo" name="codigo_periodo" placeholder="2026-I">
+
+        <label for="anio-periodo">Año</label>
+        <input type="number" id="anio-periodo" name="anio" min="2000">
+
+        <label for="nombre-periodo">Nombre</label>
+        <input type="text" id="nombre-periodo" name="nombre">
+
+        <label for="estado-periodo">Estado</label>
+        <select id="estado-periodo" name="estado">
+          <option value="activo">Activo</option>
+          <option value="cerrado">Cerrado</option>
+        </select>
+
+        <button type="submit" id="btn-guardar-periodo">Guardar periodo</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Lista de periodos</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Código de periodo</th>
+            <th>Año</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-periodos">
+        </tbody>
+      </table>
+    </section>
   </main>
 
   <script src="../static/materias.js"></script>
