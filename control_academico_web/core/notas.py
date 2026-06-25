@@ -46,18 +46,36 @@ def guardar_notas(notas):
 
 
 def validar_nota(nota):
-    """Valida una nota. Pendiente de completar."""
-    pass
+    """Valida que una nota sea numérica y esté entre 0 y 20."""
+    if nota is None or nota == "":
+        return False
+
+    try:
+        nota_numero = float(nota)
+    except (ValueError, TypeError):
+        return False
+
+    return 0 <= nota_numero <= 20
 
 
 def calcular_promedio(nota1, nota2, nota3):
-    """Calcula el promedio de tres notas. Pendiente de completar."""
-    pass
+    """Calcula el promedio de tres notas válidas."""
+    if not validar_nota(nota1) or not validar_nota(nota2) or not validar_nota(nota3):
+        return None
+
+    promedio = (float(nota1) + float(nota2) + float(nota3)) / 3
+    return round(promedio, 2)
 
 
 def determinar_estado_final(promedio):
-    """Determina si el estudiante aprobó o desaprobó. Pendiente de completar."""
-    pass
+    """Devuelve aprobado si el promedio es mayor o igual a 11."""
+    if promedio is None:
+        return "desaprobado"
+
+    if float(promedio) >= 11:
+        return "aprobado"
+
+    return "desaprobado"
 
 
 def verificar_matricula_para_nota(codigo_estudiante, codigo_materia, codigo_periodo):

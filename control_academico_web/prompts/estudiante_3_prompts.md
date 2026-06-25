@@ -200,3 +200,45 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 4 - Agregar validaciones y promedio de notas
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** validar notas, calcular promedio y determinar estado final  
+
+```text
+Continúa con el módulo notas.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+
+Desarrolla en core/notas.py estas funciones:
+
+- validar_nota(nota)
+- calcular_promedio(nota1, nota2, nota3)
+- determinar_estado_final(promedio)
+
+Reglas:
+- validar_nota debe aceptar valores numéricos entre 0 y 20.
+- calcular_promedio debe validar primero las tres notas y redondear a dos decimales.
+- determinar_estado_final debe devolver aprobado con promedio mayor o igual a 11 y desaprobado si es menor.
+
+Mantén el código simple y fácil de explicar.
+No uses clases.
+No modifiques otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué reglas de nota se aplicaron
+- qué archivo fue modificado
+- qué pruebas se deberían hacer después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
