@@ -33,13 +33,38 @@ def cargar_lista_json(ruta_archivo):
 
 
 def cargar_asistencias():
-    """Lee y devuelve la lista de asistencias desde el JSON."""
-    pass
+    """Carga y devuelve la lista de asistencias guardada en JSON."""
+    try:
+        with open(ARCHIVO_ASISTENCIAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+    except FileNotFoundError:
+        try:
+            guardar_asistencias([])
+        except OSError:
+            pass
+        return []
+    except OSError:
+        return []
+
+    if not contenido:
+        return []
+
+    try:
+        asistencias = json.loads(contenido)
+        if isinstance(asistencias, list):
+            return asistencias
+    except json.JSONDecodeError:
+        pass
+
+    return []
 
 
 def guardar_asistencias(asistencias):
     """Guarda la lista de asistencias en el archivo JSON."""
-    pass
+    os.makedirs(os.path.dirname(ARCHIVO_ASISTENCIAS), exist_ok=True)
+
+    with open(ARCHIVO_ASISTENCIAS, "w", encoding="utf-8") as archivo:
+        json.dump(asistencias, archivo, ensure_ascii=False, indent=4)
 
 
 def validar_estado_asistencia(estado):

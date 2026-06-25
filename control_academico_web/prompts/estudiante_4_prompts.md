@@ -161,3 +161,53 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 3 - Agregar lectura y guardado de asistencias
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** desarrollar funciones para cargar y guardar asistencias en JSON
+
+```text
+Continúa con el módulo asistencia.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+
+Desarrolla en core/asistencia.py las funciones para leer y guardar asistencias usando JSON:
+
+- cargar_asistencias()
+- guardar_asistencias(asistencias)
+
+Reglas para cargar_asistencias():
+
+- debe leer data/asistencias.json
+- si el archivo no existe, debe crearlo con []
+- si el archivo está vacío, debe devolver []
+- si ocurre un error al leer, debe devolver []
+- no debe romper el programa
+
+Reglas para guardar_asistencias(asistencias):
+
+- debe recibir una lista de asistencias
+- debe guardar esa lista en data/asistencias.json
+- el JSON debe quedar ordenado y legible
+
+Usa Python básico.
+Usa solo librerías estándar como json y os si hace falta.
+
+No modifiques otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué validaciones de archivo se agregaron
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

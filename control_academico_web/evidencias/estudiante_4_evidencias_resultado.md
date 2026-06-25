@@ -12,6 +12,7 @@
 |---|---|---|---|---|---|---|
 | 1 | Preparar evidencias del Integrante 4 | Se revisaron y ordenaron los archivos de prompts y evidencias. | Se corrigio el modulo principal a Asistencia y se agrego responsabilidad adicional de apoyo a Matriculas. | `prompts/estudiante_4_prompts.md`, `evidencias/estudiante_4_evidencias_resultado.md` | Estructura lista para registrar el trabajo del modulo Asistencia. |
 | 2 | Crear base del modulo Asistencia | Se crearon archivos JSON, Python, HTML y JavaScript iniciales. | No aplica. | `data/asistencias.json`, `core/asistencia.py`, `web/asistencia.html`, `static/asistencia.js` | Funciones preparadas como borradores para desarrollo posterior. |
+| 3 | Agregar lectura y guardado de asistencias | Se desarrollaron `cargar_asistencias()` y `guardar_asistencias()`. | No aplica. | `core/asistencia.py` | El JSON se crea vacio si no existe y se guarda legible con indentacion. |
 
 ## Conversación o resumen de interacción con IA
 
