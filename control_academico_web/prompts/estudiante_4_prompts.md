@@ -421,3 +421,54 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 8 - Listar asistencia por estudiante y materia
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** crear funciones de consulta de asistencia
+
+```text
+Continúa con el módulo asistencia.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+
+Desarrolla en core/asistencia.py estas funciones:
+
+- listar_asistencias()
+- listar_asistencia_por_estudiante(codigo_estudiante)
+- listar_asistencia_por_materia(codigo_materia, codigo_periodo, fecha=None)
+
+listar_asistencias():
+- debe leer data/asistencias.json
+- debe devolver todas las asistencias registradas
+- si no hay asistencias, debe devolver una lista vacía
+
+listar_asistencia_por_estudiante(codigo_estudiante):
+- debe devolver todas las asistencias de un estudiante
+- si existe data/materias.json, puede usarlo para mostrar el nombre de la materia
+- si no encuentra registros, debe devolver lista vacía o mensaje claro
+
+listar_asistencia_por_materia(codigo_materia, codigo_periodo, fecha=None):
+- debe devolver asistencias de una materia y periodo
+- si se envía fecha, debe filtrar por fecha
+- si no se envía fecha, debe listar todos los registros de esa materia y periodo
+- debe incluir código de estudiante, materia, periodo, fecha y estado
+
+No modifiques otros módulos.
+Mantén el código sencillo y entendible.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué casos cubren
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

@@ -17,6 +17,7 @@
 | 5 | Validar matricula antes de registrar asistencia | Se creo `verificar_matricula_para_asistencia()`. | No aplica. | `core/asistencia.py` | Consulta `data/matriculas.json` y acepta solo matriculas activas. |
 | 6 | Evitar asistencia duplicada | Se desarrollo `asistencia_duplicada()`. | No aplica. | `core/asistencia.py` | Evita duplicar asistencia del mismo estudiante, materia, periodo y fecha. |
 | 7 | Registrar asistencia con validaciones | Se desarrollo `registrar_asistencia()`. | No aplica. | `core/asistencia.py` | Valida matricula, duplicados, campos obligatorios, fecha y estado. |
+| 8 | Listar asistencia por estudiante y materia | Se desarrollaron `listar_asistencias()`, `listar_asistencia_por_estudiante()` y `listar_asistencia_por_materia()`. | No aplica. | `core/asistencia.py` | Filtros por estudiante y por materia/periodo con fecha opcional. |
 
 ## Conversación o resumen de interacción con IA
 
