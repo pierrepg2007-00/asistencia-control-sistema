@@ -215,7 +215,7 @@ def validar_ciclo(ciclo):
 
     try:
         ciclo_entero = int(ciclo)
-    except ValueError:
+    except (ValueError, TypeError):
         return False
 
     return ciclo_entero > 0

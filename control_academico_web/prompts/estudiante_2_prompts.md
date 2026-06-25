@@ -814,3 +814,58 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 13 - Revisar entrega del integrante 2
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** revisar la entrega final del Integrante 2 y registrar el cierre  
+
+```text
+Haz una revisión final del trabajo del Integrante 2 en el proyecto control_academico_web.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+Responsabilidad adicional: apoyo al módulo Matrículas.
+
+Revisa que existan y estén ordenados estos elementos:
+
+- data/materias.json
+- data/periodos.json
+- core/materias.py
+- core/periodos.py
+- web/materias.html
+- static/materias.js
+- prompts/estudiante_2_prompts.md
+- evidencias/estudiante_2_evidencias_resultado.md
+- evidencias/casos_prueba_materias_periodos.md
+
+Verifica que:
+
+- los prompts del Integrante 2 estén guardados en prompts/estudiante_2_prompts.md
+- las evidencias del resultado estén registradas
+- materias.py tenga funciones claras y separadas
+- periodos.py tenga funciones claras y separadas
+- las funciones de apoyo a matrículas estén creadas
+- no se haya modificado indebidamente el módulo estudiantes
+- no se hayan desarrollado módulos que correspondan a otros integrantes
+- no se hayan borrado archivos existentes
+- el código sea entendible para estudiantes principiantes
+
+Si encuentras detalles pequeños, corrígelos.
+No hagas cambios grandes.
+No agregues funcionalidades nuevas.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- qué se revisó
+- qué correcciones menores se hicieron
+- si el trabajo del Integrante 2 quedó listo
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
