@@ -9,8 +9,99 @@
 <body>
     <div class="contenedor">
         <h1>Gestión de Matrículas</h1>
-        <p>Módulo de matrículas - pendiente de desarrollo.</p>
+
+        <!-- Sección de registro de matrícula -->
+        <div class="seccion" id="seccion-registro">
+            <h2>Registrar matrícula</h2>
+            <form id="formulario-matricula">
+                <div class="campo">
+                    <label for="codigo-estudiante">Código de estudiante:</label>
+                    <input type="text" id="codigo-estudiante" placeholder="Ej: EST001">
+                </div>
+                <div class="campo">
+                    <label for="codigo-materia">Código de materia:</label>
+                    <input type="text" id="codigo-materia" placeholder="Ej: MAT001">
+                </div>
+                <div class="campo">
+                    <label for="codigo-periodo">Código de periodo:</label>
+                    <input type="text" id="codigo-periodo" placeholder="Ej: 2026-I">
+                </div>
+                <button type="button" id="btn-registrar-matricula">Registrar matrícula</button>
+            </form>
+        </div>
+
+        <!-- Sección de búsqueda -->
+        <div class="seccion" id="seccion-busqueda">
+            <h2>Buscar matrículas</h2>
+
+            <h3>Por estudiante</h3>
+            <div class="campo">
+                <label for="buscar-estudiante">Código de estudiante:</label>
+                <input type="text" id="buscar-estudiante" placeholder="Ej: EST001">
+                <button type="button" id="btn-listar-estudiante">Listar matrículas por estudiante</button>
+            </div>
+
+            <h3>Por materia</h3>
+            <div class="campo">
+                <label for="buscar-materia">Código de materia:</label>
+                <input type="text" id="buscar-materia" placeholder="Ej: MAT001">
+            </div>
+            <div class="campo">
+                <label for="buscar-periodo">Código de periodo:</label>
+                <input type="text" id="buscar-periodo" placeholder="Ej: 2026-I">
+            </div>
+            <button type="button" id="btn-listar-materia">Listar matrículas por materia</button>
+        </div>
+
+        <!-- Tabla de matrículas -->
+        <div class="seccion" id="seccion-tabla">
+            <h2>Matrículas registradas</h2>
+            <table id="tabla-matriculas">
+                <thead>
+                    <tr>
+                        <th>Código estudiante</th>
+                        <th>Código materia</th>
+                        <th>Código periodo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla-matriculas">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Sección para cambiar estado -->
+        <div class="seccion" id="seccion-cambiar-estado">
+            <h2>Cambiar estado de matrícula</h2>
+            <div class="campo">
+                <label for="cambio-estudiante">Código de estudiante:</label>
+                <input type="text" id="cambio-estudiante" placeholder="Ej: EST001">
+            </div>
+            <div class="campo">
+                <label for="cambio-materia">Código de materia:</label>
+                <input type="text" id="cambio-materia" placeholder="Ej: MAT001">
+            </div>
+            <div class="campo">
+                <label for="cambio-periodo">Código de periodo:</label>
+                <input type="text" id="cambio-periodo" placeholder="Ej: 2026-I">
+            </div>
+            <div class="campo">
+                <label for="nuevo-estado">Nuevo estado:</label>
+                <select id="nuevo-estado">
+                    <option value="">-- Seleccionar --</option>
+                    <option value="activa">Activa</option>
+                    <option value="retirada">Retirada</option>
+                    <option value="finalizada">Finalizada</option>
+                </select>
+            </div>
+            <button type="button" id="btn-cambiar-estado">Cambiar estado</button>
+        </div>
+
+        <!-- Zona de mensajes -->
+        <div id="zona-mensajes-matriculas"></div>
     </div>
+
     <script src="../static/matriculas.js"></script>
 </body>
 </html>

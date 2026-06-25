@@ -21,6 +21,7 @@
 | 10 | Reportar asistencia por materia | Se implementó reporte_asistencia_por_materia() con agrupación y porcentaje | Ninguno | core/reportes.py | Cuenta asistencias, faltas y porcentaje por estudiante |
 | 11 | Reportar estudiantes en riesgo | Se implementó reporte_estudiantes_en_riesgo() con cruce de notas y asistencia | Ninguno | core/reportes.py | Identifica nota baja (<11) y asistencia (<70%) |
 | 12 | Exportar reportes en texto | Se implementó exportar_reporte_txt() con formato de archivo | Ninguno | core/reportes.py | Genera .txt en reportes_generados/ con fecha y datos |
+| 13 | Crear interfaz web de matriculas | Se creó web/matriculas.html con formularios y tabla | Ninguno | web/matriculas.html | Pendiente conectar con JavaScript |
 
 ## Conversación o resumen de interacción con IA
 
@@ -117,3 +118,11 @@
 - Genera archivo .txt con título, fecha de generación y datos formateados.
 - Maneja dict con detalle, listas y otros tipos de datos.
 - Devuelve resultado, mensaje y ruta del archivo generado.
+
+### Actividad 13: Crear interfaz web de matriculas
+
+- Se creó web/matriculas.html con formulario de registro, secciones de búsqueda, tabla de matrículas y cambio de estado.
+- IDs claros para conectar con JavaScript: codigo-estudiante, codigo-materia, codigo-periodo, etc.
+- Select para cambio de estado con opciones: activa, retirada, finalizada.
+- Zona de mensajes para errores y confirmaciones.
+- Pendiente: conectar con static/matriculas.js.

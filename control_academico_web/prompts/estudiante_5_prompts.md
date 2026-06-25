@@ -305,3 +305,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 12 registrado - exportar reportes en texto]
 ```
+
+
+### Prompt 13 - Crear interfaz web de matriculas
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Matrículas
+**Objetivo:** Desarrollar la página web/matriculas.html completa
+
+```text
+[Prompt 13 registrado - crear interfaz web de matriculas]
+```
