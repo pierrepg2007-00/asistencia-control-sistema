@@ -173,3 +173,71 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 3 - Agregar lectura y guardado de materias y periodos
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** desarrollar funciones para cargar y guardar datos JSON  
+
+```text
+Continúa con el módulo materias y periodos.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+
+Desarrolla en core/materias.py las funciones para leer y guardar materias usando JSON:
+
+- cargar_materias()
+- guardar_materias(materias)
+
+Reglas para cargar_materias():
+
+- debe leer data/materias.json
+- si el archivo no existe, debe crearlo con []
+- si el archivo está vacío, debe devolver []
+- si ocurre un error al leer, debe devolver []
+- no debe romper el programa
+
+Reglas para guardar_materias(materias):
+
+- debe recibir una lista de materias
+- debe guardar esa lista en data/materias.json
+- el JSON debe quedar ordenado y legible
+
+Ahora desarrolla en core/periodos.py las funciones:
+
+- cargar_periodos()
+- guardar_periodos(periodos)
+
+Reglas para cargar_periodos():
+
+- debe leer data/periodos.json
+- si el archivo no existe, debe crearlo con []
+- si el archivo está vacío, debe devolver []
+- si ocurre un error al leer, debe devolver []
+
+Reglas para guardar_periodos(periodos):
+
+- debe recibir una lista de periodos
+- debe guardar esa lista en data/periodos.json
+- el JSON debe quedar ordenado y legible
+
+Usa Python básico.
+Usa solo librerías estándar como json y os si hace falta.
+
+No modifiques otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué validaciones de archivo se agregaron
+- qué archivos fueron modificados
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

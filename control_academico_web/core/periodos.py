@@ -1,14 +1,46 @@
 """Funciones base para la gestión de periodos académicos."""
 
+import json
+import os
+
+
+CARPETA_BASE = os.path.dirname(os.path.dirname(__file__))
+ARCHIVO_PERIODOS = os.path.join(CARPETA_BASE, "data", "periodos.json")
+
 
 def cargar_periodos():
-    """Carga los periodos guardados. Pendiente de completar."""
+    """Carga y devuelve la lista de periodos guardada en JSON."""
+    try:
+        with open(ARCHIVO_PERIODOS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+    except FileNotFoundError:
+        try:
+            guardar_periodos([])
+        except OSError:
+            pass
+        return []
+    except OSError:
+        return []
+
+    if not contenido:
+        return []
+
+    try:
+        periodos = json.loads(contenido)
+        if isinstance(periodos, list):
+            return periodos
+    except json.JSONDecodeError:
+        pass
+
     return []
 
 
 def guardar_periodos(periodos):
-    """Guarda la lista de periodos. Pendiente de completar."""
-    pass
+    """Guarda la lista de periodos en el archivo JSON."""
+    os.makedirs(os.path.dirname(ARCHIVO_PERIODOS), exist_ok=True)
+
+    with open(ARCHIVO_PERIODOS, "w", encoding="utf-8") as archivo:
+        json.dump(periodos, archivo, ensure_ascii=False, indent=4)
 
 
 def registrar_periodo(codigo_periodo, anio, nombre, estado):
