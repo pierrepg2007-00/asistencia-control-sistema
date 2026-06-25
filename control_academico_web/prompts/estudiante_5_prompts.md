@@ -164,3 +164,53 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+
+### Prompt 3 - Agregar lectura y guardado de matriculas
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Matrículas
+**Objetivo:** Implementar cargar_matriculas() y guardar_matriculas() con manejo de archivos JSON
+
+```text
+Continúa con el módulo matrículas.
+
+Este trabajo corresponde al Integrante 5.
+Responsabilidad adicional: Matrículas.
+
+Desarrolla en core/matriculas.py las funciones para leer y guardar matrículas usando JSON:
+
+- cargar_matriculas()
+- guardar_matriculas(matriculas)
+
+Reglas para cargar_matriculas():
+
+- debe leer data/matriculas.json
+- si el archivo no existe, debe crearlo con []
+- si el archivo está vacío, debe devolver []
+- si ocurre un error al leer, debe devolver []
+- no debe romper el programa
+
+Reglas para guardar_matriculas(matriculas):
+
+- debe recibir una lista de matrículas
+- debe guardar esa lista en data/matriculas.json
+- el JSON debe quedar ordenado y legible
+
+Usa Python básico.
+Usa solo librerías estándar como json y os si hace falta.
+
+No modifiques otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_5_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_5_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- qué validaciones de archivo se agregaron
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

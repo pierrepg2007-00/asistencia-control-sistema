@@ -13,12 +13,37 @@ ARCHIVO_PERIODOS = os.path.join(CARPETA_BASE, "data", "periodos.json")
 
 def cargar_matriculas():
     """Carga y devuelve la lista de matriculas guardada en JSON."""
+    try:
+        with open(ARCHIVO_MATRICULAS, "r", encoding="utf-8") as archivo:
+            contenido = archivo.read().strip()
+    except FileNotFoundError:
+        try:
+            guardar_matriculas([])
+        except OSError:
+            pass
+        return []
+    except OSError:
+        return []
+
+    if not contenido:
+        return []
+
+    try:
+        matriculas = json.loads(contenido)
+        if isinstance(matriculas, list):
+            return matriculas
+    except (json.JSONDecodeError, OSError):
+        pass
+
     return []
 
 
 def guardar_matriculas(matriculas):
     """Guarda la lista de matriculas en el archivo JSON."""
-    pass
+    os.makedirs(os.path.dirname(ARCHIVO_MATRICULAS), exist_ok=True)
+
+    with open(ARCHIVO_MATRICULAS, "w", encoding="utf-8") as archivo:
+        json.dump(matriculas, archivo, ensure_ascii=False, indent=4)
 
 
 def validar_estudiante_para_matricula(codigo_estudiante):

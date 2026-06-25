@@ -590,3 +590,144 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 11 - Crear interfaz web de asistencia
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** desarrollar la pagina HTML para la gestion de asistencia
+
+```text
+Continúa con el módulo asistencia.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+
+Desarrolla la página web/asistencia.html.
+
+La página debe tener estas secciones:
+
+1. Título:
+Gestión de asistencia
+
+2. Formulario de registro de asistencia con estos campos:
+- código de estudiante
+- código de materia
+- código de periodo
+- fecha
+- estado de asistencia
+
+3. Estados permitidos:
+- presente
+- tarde
+- falta
+- justificado
+
+4. Botón:
+Guardar asistencia
+
+5. Sección para buscar o listar asistencia:
+- campo para código de estudiante
+- botón Listar asistencia por estudiante
+- campo para código de materia
+- campo para código de periodo
+- campo opcional para fecha
+- botón Listar asistencia por materia
+
+6. Sección para porcentaje de asistencia:
+- código de estudiante
+- código de materia
+- código de periodo
+- botón Calcular porcentaje
+
+7. Tabla de asistencia con columnas:
+- código de estudiante
+- código de materia
+- periodo
+- fecha
+- estado de asistencia
+- acciones
+
+8. Zona para mostrar mensajes:
+- errores
+- confirmaciones
+
+Usa HTML simple.
+No hagas diseño complejo.
+Usa ids claros para conectar con JavaScript.
+
+El archivo debe quedar listo para trabajar con static/asistencia.js.
+
+No conectes todavía con otros módulos.
+No modifiques las páginas de estudiantes, materias ni notas.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué página se creó
+- qué elementos contiene
+- qué falta conectar después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
+
+### Prompt 12 - Agregar logica visual de asistencia
+
+**Estudiante asociado:** Integrante 4
+**Módulo trabajado:** Asistencia
+**Objetivo:** desarrollar el JavaScript para la pagina de asistencia
+
+```text
+Continúa con el módulo asistencia.
+
+Este trabajo corresponde al Integrante 4.
+Módulo principal: Asistencia.
+
+Desarrolla static/asistencia.js para manejar la página web/asistencia.html.
+
+El JavaScript debe tener funciones para:
+
+- capturar los datos del formulario de asistencia
+- validar campos vacíos antes de enviar
+- validar visualmente el estado de asistencia
+- validar visualmente que la fecha no esté vacía
+- mostrar mensajes en pantalla
+- limpiar el formulario
+- llenar la tabla de asistencia
+- buscar o filtrar asistencia por estudiante
+- buscar o filtrar asistencia por materia y periodo
+- preparar el cálculo del porcentaje de asistencia
+
+Usa estos nombres de funciones:
+
+- obtenerDatosFormularioAsistencia()
+- validarFormularioAsistencia(datos)
+- mostrarMensajeAsistencia(mensaje, tipo)
+- limpiarFormularioAsistencia()
+- renderizarTablaAsistencia(asistencias)
+- filtrarAsistenciaPorEstudiante(codigo_estudiante)
+- filtrarAsistenciaPorMateria(codigo_materia, codigo_periodo, fecha)
+- prepararCalculoPorcentaje(codigo_estudiante, codigo_materia, codigo_periodo)
+
+Como la integración completa con Python se hará después, deja funciones separadas y claras para conectarlas con el servidor.
+
+No mezcles este archivo con otros módulos.
+No desarrolles código de estudiantes, materias, notas, matrículas ni reportes.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_4_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_4_evidencias_resultado.md
+
+Indicando:
+- qué funciones JavaScript se crearon
+- qué parte de la pantalla controlan
+- qué falta integrar después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

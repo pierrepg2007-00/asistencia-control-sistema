@@ -11,6 +11,7 @@
 |---|---|---|---|---|---|
 | 1 | Preparar estructura de prompts y evidencias | Se revisaron los archivos existentes y se actualizó la estructura | Ninguno | prompts/estudiante_5_prompts.md, evidencias/estudiante_5_evidencias_resultado.md | Estructura lista para registrar avances |
 | 2 | Crear base de matriculas y reportes | Se crearon 7 archivos base con funciones borrador | Ninguno | data/matriculas.json, core/matriculas.py, core/reportes.py, web/matriculas.html, web/reportes.html, static/matriculas.js, static/reportes.js | Archivos base listos para desarrollar funciones completas |
+| 3 | Agregar lectura y guardado de matriculas | Se implementaron cargar_matriculas() y guardar_matriculas() con manejo robusto de archivos | Ninguno | core/matriculas.py | Funciones listas siguiendo el patrón de estudiantes.py |
 
 ## Conversación o resumen de interacción con IA
 
@@ -29,3 +30,12 @@
 - Se crearon web/matriculas.html y web/reportes.html con estructura base.
 - Se crearon static/matriculas.js y static/reportes.js con carga inicial.
 - Falta desarrollar las funciones completas y la interfaz web.
+
+### Actividad 3: Agregar lectura y guardado de matriculas
+
+- Se implementó cargar_matriculas() con manejo de FileNotFoundError, OSError, JSONDecodeError.
+- Si el archivo no existe, se crea automáticamente con [] usando guardar_matriculas([]).
+- Si el archivo está vacío, devuelve [].
+- Se implementó guardar_matriculas() que crea la carpeta data/ si no existe y guarda con indent=4.
+- Se usaron solo json y os (librerías estándar).
+- El patrón sigue el mismo estilo de estudiantes.py.

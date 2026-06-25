@@ -20,6 +20,8 @@
 | 8 | Listar asistencia por estudiante y materia | Se desarrollaron `listar_asistencias()`, `listar_asistencia_por_estudiante()` y `listar_asistencia_por_materia()`. | No aplica. | `core/asistencia.py` | Filtros por estudiante y por materia/periodo con fecha opcional. |
 | 9 | Calcular porcentaje de asistencia | Se desarrollo `calcular_porcentaje_asistencia()`. | No aplica. | `core/asistencia.py` | Presente, tarde y justificado cuentan como asistencia. Falta cuenta como falta. |
 | 10 | Listar matriculados para asistencia | Se creo `listar_matriculados_para_asistencia()`. | No aplica. | `core/asistencia.py` | Consulta `data/matriculas.json` y `data/estudiantes.json`. Apoyo para tomar asistencia. |
+| 11 | Crear interfaz web de asistencia | Se creo pagina HTML con formulario, secciones de busqueda, tabla y zona de mensajes. | No aplica. | `web/asistencia.html` | Pagina lista para conectar con asistencia.js y el backend Python. |
+| 12 | Agregar logica visual de asistencia | Se creo JavaScript con funciones de validacion, renderizado y eventos de botones. | No aplica. | `static/asistencia.js` | Funciones preparadas para integracion con Python. |
 
 ## Conversación o resumen de interacción con IA
 
