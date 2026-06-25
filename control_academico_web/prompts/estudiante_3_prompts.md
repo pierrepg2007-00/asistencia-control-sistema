@@ -388,3 +388,37 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 9 - Actualizar notas y recalcular promedio
+
+**Estudiante asociado:** Integrante 3  
+**Módulo trabajado:** Notas  
+**Objetivo:** actualizar notas permitidas y recalcular promedio y estado final  
+
+```text
+Continúa con el módulo notas.
+
+Este trabajo corresponde al Integrante 3.
+Módulo principal: Notas.
+
+Desarrolla la función actualizar_nota(codigo_estudiante, codigo_materia, codigo_periodo, nuevas_notas) en core/notas.py.
+
+La función debe buscar el registro por estudiante, materia y periodo, permitir actualizar solo nota1, nota2 y nota3, validar notas entre 0 y 20, recalcular promedio y estado_final, guardar cambios y devolver resultado, mensaje y datos.
+
+No modifiques otros módulos.
+Mantén el código simple y fácil de defender.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_3_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_3_evidencias_resultado.md
+
+Indicando:
+- qué función se desarrolló
+- qué campos permite modificar
+- qué campos protege
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```

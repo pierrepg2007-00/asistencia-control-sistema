@@ -242,8 +242,50 @@ def listar_notas_por_materia(codigo_materia, codigo_periodo):
 
 
 def actualizar_nota(codigo_estudiante, codigo_materia, codigo_periodo, nuevas_notas):
-    """Actualiza las notas de un registro. Pendiente de completar."""
-    pass
+    """Actualiza nota1, nota2 y nota3 de un registro existente."""
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    nuevas_notas = nuevas_notas or {}
+    notas = cargar_notas()
+
+    for nota in notas:
+        if (
+            nota.get("codigo_estudiante") == codigo_estudiante
+            and nota.get("codigo_materia") == codigo_materia
+            and nota.get("codigo_periodo") == codigo_periodo
+        ):
+            nota1 = nuevas_notas.get("nota1", nota.get("nota1"))
+            nota2 = nuevas_notas.get("nota2", nota.get("nota2"))
+            nota3 = nuevas_notas.get("nota3", nota.get("nota3"))
+
+            if not validar_nota(nota1) or not validar_nota(nota2) or not validar_nota(nota3):
+                return {
+                    "resultado": False,
+                    "mensaje": "Las notas deben ser números entre 0 y 20.",
+                    "datos": None,
+                }
+
+            promedio = calcular_promedio(nota1, nota2, nota3)
+            nota["nota1"] = float(nota1)
+            nota["nota2"] = float(nota2)
+            nota["nota3"] = float(nota3)
+            nota["promedio"] = promedio
+            nota["estado_final"] = determinar_estado_final(promedio)
+
+            guardar_notas(notas)
+
+            return {
+                "resultado": True,
+                "mensaje": "Nota actualizada correctamente.",
+                "datos": nota,
+            }
+
+    return {
+        "resultado": False,
+        "mensaje": "No existe una nota para ese estudiante, materia y periodo.",
+        "datos": None,
+    }
 
 
 def listar_estudiantes_sin_nota(codigo_materia, codigo_periodo):

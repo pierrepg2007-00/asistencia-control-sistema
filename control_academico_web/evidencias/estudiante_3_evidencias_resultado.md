@@ -18,6 +18,7 @@
 | 6 | Evitar notas duplicadas por matrícula | Se desarrolló `nota_existe()`. | No aplica. | `core/notas.py` | Evita duplicar notas del mismo estudiante, materia y periodo. |
 | 7 | Registrar notas con validaciones | Se desarrolló `registrar_nota()`. | No aplica. | `core/notas.py` | Valida matrícula, notas, duplicados, promedio y estado final. |
 | 8 | Listar notas por estudiante y materia | Se desarrollaron listados generales, por estudiante y por materia/periodo. | No aplica. | `core/notas.py` | Devuelven listas simples para conectar con la web. |
+| 9 | Actualizar notas y recalcular promedio | Se desarrolló `actualizar_nota()`. | No aplica. | `core/notas.py` | Protege estudiante, materia y periodo; recalcula promedio y estado. |
 
 ## Conversación o resumen de interacción con IA
 
@@ -32,3 +33,4 @@
 - Se agregó verificación para evitar notas duplicadas.
 - Se completó el registro de notas con validaciones principales.
 - Se agregaron funciones para listar notas por distintos criterios.
+- Se agregó actualización de notas con recálculo automático.
