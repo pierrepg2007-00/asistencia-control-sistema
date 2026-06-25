@@ -17,6 +17,7 @@
 | 5 | Generar código automático de materia | Se desarrolló `generar_codigo_materia()` con formato `MAT001`. | No aplica. | `core/materias.py` | La función evita repetir códigos existentes. |
 | 6 | Registrar y listar materias | Se desarrollaron `registrar_materia()` y `listar_materias()`. | No aplica. | `core/materias.py` | El registro valida campos obligatorios, ciclo y estado. |
 | 7 | Buscar y actualizar materias | Se desarrollaron `buscar_materia()` y `actualizar_materia()`. | No aplica. | `core/materias.py` | Se protege `codigo_materia` y se validan los campos editables. |
+| 8 | Gestionar periodos académicos | Se desarrollaron registro, listado, búsqueda, activación y validaciones de periodos. | No aplica. | `core/periodos.py` | Al activar un periodo, los demás quedan cerrados. |
 
 ## Conversación o resumen de interacción con IA
 
@@ -30,3 +31,4 @@
 - Se agregó generación automática de códigos de materia.
 - Se completó el registro y listado básico de materias.
 - Se completó la búsqueda y actualización de materias.
+- Se completó la gestión básica de periodos académicos.

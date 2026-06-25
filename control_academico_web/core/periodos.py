@@ -44,35 +44,153 @@ def guardar_periodos(periodos):
 
 
 def registrar_periodo(codigo_periodo, anio, nombre, estado):
-    """Registra un periodo académico. Pendiente de completar."""
-    pass
+    """Registra un periodo académico con validaciones básicas."""
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    nombre = (nombre or "").strip()
+    estado = (estado or "").strip().lower()
+
+    if not codigo_periodo:
+        return {
+            "resultado": False,
+            "mensaje": "El código del periodo no puede estar vacío.",
+            "datos": None,
+        }
+
+    if periodo_existe(codigo_periodo):
+        return {
+            "resultado": False,
+            "mensaje": "El código del periodo ya está registrado.",
+            "datos": None,
+        }
+
+    try:
+        anio_entero = int(anio)
+    except (ValueError, TypeError):
+        return {
+            "resultado": False,
+            "mensaje": "El año debe ser numérico.",
+            "datos": None,
+        }
+
+    if not nombre:
+        return {
+            "resultado": False,
+            "mensaje": "El nombre del periodo no puede estar vacío.",
+            "datos": None,
+        }
+
+    if not validar_estado_periodo(estado):
+        return {
+            "resultado": False,
+            "mensaje": "El estado debe ser activo o cerrado.",
+            "datos": None,
+        }
+
+    periodos = cargar_periodos()
+
+    if estado == "activo":
+        for periodo in periodos:
+            periodo["estado"] = "cerrado"
+
+    periodo = {
+        "codigo_periodo": codigo_periodo,
+        "anio": anio_entero,
+        "nombre": nombre,
+        "estado": estado,
+    }
+
+    periodos.append(periodo)
+    guardar_periodos(periodos)
+
+    return {
+        "resultado": True,
+        "mensaje": "Periodo registrado correctamente.",
+        "datos": periodo,
+    }
 
 
 def listar_periodos():
-    """Lista los periodos registrados. Pendiente de completar."""
+    """Devuelve todos los periodos registrados."""
     return cargar_periodos()
 
 
 def buscar_periodo(codigo_periodo):
-    """Busca un periodo por código. Pendiente de completar."""
-    pass
+    """Busca un periodo por su código."""
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+
+    for periodo in cargar_periodos():
+        if periodo.get("codigo_periodo") == codigo_periodo:
+            return {
+                "resultado": True,
+                "mensaje": "Periodo encontrado.",
+                "datos": periodo,
+            }
+
+    return {
+        "resultado": False,
+        "mensaje": "No existe un periodo con ese código.",
+        "datos": None,
+    }
 
 
 def obtener_periodo_activo():
-    """Obtiene el periodo activo. Pendiente de completar."""
-    pass
+    """Devuelve el periodo que se encuentra activo."""
+    for periodo in cargar_periodos():
+        if periodo.get("estado") == "activo":
+            return {
+                "resultado": True,
+                "mensaje": "Periodo activo encontrado.",
+                "datos": periodo,
+            }
+
+    return {
+        "resultado": False,
+        "mensaje": "No hay un periodo activo registrado.",
+        "datos": None,
+    }
 
 
 def cambiar_periodo_activo(codigo_periodo):
-    """Cambia el periodo activo. Pendiente de completar."""
-    pass
+    """Marca un periodo como activo y cierra los demás."""
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+    periodos = cargar_periodos()
+    periodo_encontrado = None
+
+    for periodo in periodos:
+        if periodo.get("codigo_periodo") == codigo_periodo:
+            periodo_encontrado = periodo
+            periodo["estado"] = "activo"
+        else:
+            periodo["estado"] = "cerrado"
+
+    if not periodo_encontrado:
+        return {
+            "resultado": False,
+            "mensaje": "No existe un periodo con ese código.",
+            "datos": None,
+        }
+
+    guardar_periodos(periodos)
+
+    return {
+        "resultado": True,
+        "mensaje": "Periodo activo actualizado correctamente.",
+        "datos": periodo_encontrado,
+    }
 
 
 def validar_estado_periodo(estado):
-    """Valida el estado de un periodo. Pendiente de completar."""
-    pass
+    """Valida que el estado del periodo sea activo o cerrado."""
+    estado = (estado or "").strip().lower()
+    return estado in ["activo", "cerrado"]
 
 
 def periodo_existe(codigo_periodo):
-    """Verifica si un periodo existe. Pendiente de completar."""
-    pass
+    """Devuelve True cuando existe un periodo con el código indicado."""
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+
+    for periodo in cargar_periodos():
+        if periodo.get("codigo_periodo") == codigo_periodo:
+            return True
+
+    return False

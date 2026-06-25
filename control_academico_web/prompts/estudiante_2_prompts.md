@@ -468,3 +468,76 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 8 - Gestionar periodos académicos
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** desarrollar las funciones principales de periodos académicos  
+
+```text
+Continúa con el módulo materias y periodos.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+
+Desarrolla en core/periodos.py estas funciones:
+
+- validar_estado_periodo(estado)
+- periodo_existe(codigo_periodo)
+- registrar_periodo(codigo_periodo, anio, nombre, estado)
+- listar_periodos()
+- buscar_periodo(codigo_periodo)
+- obtener_periodo_activo()
+- cambiar_periodo_activo(codigo_periodo)
+
+Reglas:
+
+validar_estado_periodo(estado):
+- debe aceptar solo activo o cerrado
+- debe convertir el texto a minúsculas
+
+periodo_existe(codigo_periodo):
+- debe leer data/periodos.json
+- debe devolver True si existe
+- debe devolver False si no existe
+
+registrar_periodo(codigo_periodo, anio, nombre, estado):
+- codigo_periodo será por ejemplo 2026-I o 2026-II
+- anio debe ser numérico
+- nombre no debe estar vacío
+- estado solo puede ser activo o cerrado
+- si se registra un periodo como activo, los demás periodos deben quedar como cerrado
+- no debe permitir códigos de periodo repetidos
+
+listar_periodos():
+- debe devolver todos los periodos registrados
+
+buscar_periodo(codigo_periodo):
+- debe devolver el periodo si existe o un mensaje si no existe
+
+obtener_periodo_activo():
+- debe devolver el periodo que tenga estado activo
+- si no hay periodo activo, debe devolver un mensaje claro
+
+cambiar_periodo_activo(codigo_periodo):
+- debe marcar el periodo indicado como activo
+- debe cerrar los demás periodos
+
+No uses clases.
+No modifiques otros módulos.
+Mantén el código simple.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- qué funciones se desarrollaron
+- cómo se controla que solo exista un periodo activo
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
