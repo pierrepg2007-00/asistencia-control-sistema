@@ -42,3 +42,11 @@
 - `buscar_estudiante(valor)` permite buscar por código o DNI.
 - La búsqueda devuelve un mensaje claro si encuentra o no encuentra resultados.
 - Archivo modificado: `core/estudiantes.py`.
+
+## Actualización de estudiantes
+
+- Se desarrolló `actualizar_estudiante(codigo, nuevos_datos)`.
+- La función permite modificar `nombres`, `apellidos`, `correo` y `estado`.
+- La función protege `codigo` y `dni`, por lo que no los modifica.
+- Se validan campos vacíos, correo y estado antes de guardar.
+- Archivo modificado: `core/estudiantes.py`.

@@ -174,8 +174,69 @@ def buscar_estudiante(valor):
 
 
 def actualizar_estudiante(codigo, nuevos_datos):
-    """Actualiza los datos de un estudiante. Pendiente de completar."""
-    pass
+    """Actualiza datos permitidos de un estudiante."""
+    codigo = (codigo or "").strip().upper()
+    nuevos_datos = nuevos_datos or {}
+    estudiantes = cargar_estudiantes()
+
+    for estudiante in estudiantes:
+        if estudiante.get("codigo") == codigo:
+            nombres = nuevos_datos.get("nombres", estudiante.get("nombres", ""))
+            apellidos = nuevos_datos.get("apellidos", estudiante.get("apellidos", ""))
+            correo = nuevos_datos.get("correo", estudiante.get("correo", ""))
+            estado = nuevos_datos.get("estado", estudiante.get("estado", ""))
+
+            nombres = (nombres or "").strip()
+            apellidos = (apellidos or "").strip()
+            correo = (correo or "").strip()
+            estado = (estado or "").strip().lower()
+
+            if not nombres:
+                return {
+                    "resultado": False,
+                    "mensaje": "Los nombres no pueden quedar vacíos.",
+                    "datos": None,
+                }
+
+            if not apellidos:
+                return {
+                    "resultado": False,
+                    "mensaje": "Los apellidos no pueden quedar vacíos.",
+                    "datos": None,
+                }
+
+            if not validar_correo(correo):
+                return {
+                    "resultado": False,
+                    "mensaje": "El correo no tiene un formato válido.",
+                    "datos": None,
+                }
+
+            if estado not in ["activo", "inactivo"]:
+                return {
+                    "resultado": False,
+                    "mensaje": "El estado debe ser activo o inactivo.",
+                    "datos": None,
+                }
+
+            estudiante["nombres"] = nombres
+            estudiante["apellidos"] = apellidos
+            estudiante["correo"] = correo
+            estudiante["estado"] = estado
+
+            guardar_estudiantes(estudiantes)
+
+            return {
+                "resultado": True,
+                "mensaje": "Estudiante actualizado correctamente.",
+                "datos": estudiante,
+            }
+
+    return {
+        "resultado": False,
+        "mensaje": "No existe un estudiante con ese código.",
+        "datos": None,
+    }
 
 
 def validar_dni(dni):

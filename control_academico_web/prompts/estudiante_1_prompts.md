@@ -372,3 +372,62 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 9 - Actualizar datos de estudiantes
+
+**Estudiante asociado:** Integrante 1  
+**Módulo trabajado:** Estudiantes  
+**Objetivo:** desarrollar la actualización segura de datos permitidos de estudiantes  
+
+```text
+Continúa con el módulo estudiantes.
+
+Este trabajo corresponde al Integrante 1.
+Módulo principal: Estudiantes.
+
+Desarrolla la función actualizar_estudiante(codigo, nuevos_datos) en core/estudiantes.py.
+
+La función debe:
+
+- buscar al estudiante por su código
+- permitir actualizar solo:
+  - nombres
+  - apellidos
+  - correo
+  - estado
+
+No debe permitir modificar:
+- codigo
+- dni
+
+Validaciones:
+
+- el estudiante debe existir
+- nombres y apellidos no deben quedar vacíos
+- el correo debe tener formato básico
+- el estado solo puede ser activo o inactivo
+
+Después de actualizar, debe guardar los cambios en data/estudiantes.json.
+
+La función debe devolver:
+- resultado
+- mensaje
+- estudiante actualizado, si corresponde
+
+No desarrolles otros módulos.
+Mantén el código simple y fácil de defender.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_1_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_1_evidencias_resultado.md
+
+Indicando:
+- qué función se desarrolló
+- qué campos permite modificar
+- qué campos protege
+- qué archivo fue modificado
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
