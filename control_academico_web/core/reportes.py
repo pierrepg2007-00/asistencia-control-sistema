@@ -385,4 +385,58 @@ def reporte_estudiantes_en_riesgo():
 
 def exportar_reporte_txt(nombre_reporte, datos):
     """Genera un archivo de texto con el reporte en la carpeta reportes_generados."""
-    return {"resultado": False, "mensaje": "Funcion pendiente de desarrollo."}
+    from datetime import datetime
+
+    nombre_reporte = (nombre_reporte or "reporte").strip()
+    os.makedirs(CARPETA_REPORTES, exist_ok=True)
+
+    ahora = datetime.now()
+    fecha_generacion = ahora.strftime("%Y-%m-%d %H:%M:%S")
+    nombre_archivo = "{}_{}.txt".format(
+        nombre_reporte.replace(" ", "_"),
+        ahora.strftime("%Y%m%d_%H%M%S"),
+    )
+    ruta_archivo = os.path.join(CARPETA_REPORTES, nombre_archivo)
+
+    try:
+        with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+            archivo.write("=" * 60 + "\n")
+            archivo.write("  REPORTE: {}\n".format(nombre_reporte.upper()))
+            archivo.write("  Fecha de generacion: {}\n".format(fecha_generacion))
+            archivo.write("=" * 60 + "\n\n")
+
+            if not datos:
+                archivo.write("No se encontraron registros para este reporte.\n")
+            elif isinstance(datos, dict) and "detalle" in datos:
+                archivo.write("Total de estudiantes: {}\n".format(datos.get("total_estudiantes", 0)))
+                archivo.write("Aprobados: {}\n".format(datos.get("aprobados", 0)))
+                archivo.write("Desaprobados: {}\n".format(datos.get("desaprobados", 0)))
+                archivo.write("Promedio general: {}\n\n".format(datos.get("promedio_general", 0)))
+                archivo.write("-" * 60 + "\n")
+                archivo.write("DETALLE:\n\n")
+                for item in datos.get("detalle", []):
+                    for clave, valor in item.items():
+                        archivo.write("  {}: {}\n".format(clave, valor))
+                    archivo.write("-" * 40 + "\n")
+            elif isinstance(datos, list):
+                for item in datos:
+                    for clave, valor in item.items():
+                        archivo.write("  {}: {}\n".format(clave, valor))
+                    archivo.write("-" * 40 + "\n")
+            else:
+                archivo.write(str(datos) + "\n")
+
+            archivo.write("\n" + "=" * 60 + "\n")
+            archivo.write("  FIN DEL REPORTE\n")
+            archivo.write("=" * 60 + "\n")
+
+        return {
+            "resultado": True,
+            "mensaje": "Reporte exportado correctamente.",
+            "ruta": ruta_archivo,
+        }
+    except OSError as error:
+        return {
+            "resultado": False,
+            "mensaje": "Error al exportar el reporte: {}".format(error),
+        }

@@ -295,3 +295,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 11 registrado - reportar estudiantes en riesgo]
 ```
+
+
+### Prompt 12 - Exportar reportes en texto
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Reportes
+**Objetivo:** Implementar exportar_reporte_txt() para generar archivos .txt
+
+```text
+[Prompt 12 registrado - exportar reportes en texto]
+```

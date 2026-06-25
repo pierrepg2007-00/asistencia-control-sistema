@@ -20,6 +20,7 @@
 | 9 | Reportar notas por materia | Se implementó reporte_notas_por_materia() con cálculos estadísticos | Ninguno | core/reportes.py | Calcula aprobados, desaprobados y promedio general |
 | 10 | Reportar asistencia por materia | Se implementó reporte_asistencia_por_materia() con agrupación y porcentaje | Ninguno | core/reportes.py | Cuenta asistencias, faltas y porcentaje por estudiante |
 | 11 | Reportar estudiantes en riesgo | Se implementó reporte_estudiantes_en_riesgo() con cruce de notas y asistencia | Ninguno | core/reportes.py | Identifica nota baja (<11) y asistencia (<70%) |
+| 12 | Exportar reportes en texto | Se implementó exportar_reporte_txt() con formato de archivo | Ninguno | core/reportes.py | Genera .txt en reportes_generados/ con fecha y datos |
 
 ## Conversación o resumen de interacción con IA
 
@@ -108,3 +109,11 @@
 - Criterio baja asistencia: porcentaje de asistencia menor a 70%.
 - Si cumple ambos, marca "nota baja y baja asistencia".
 - Enriquece con nombres de estudiante y materia.
+
+### Actividad 12: Exportar reportes en texto
+
+- Se implementó exportar_reporte_txt() que recibe nombre_reporte y datos.
+- Crea la carpeta reportes_generados/ si no existe.
+- Genera archivo .txt con título, fecha de generación y datos formateados.
+- Maneja dict con detalle, listas y otros tipos de datos.
+- Devuelve resultado, mensaje y ruta del archivo generado.
