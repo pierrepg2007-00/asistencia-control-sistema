@@ -375,3 +375,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 19 registrado - agregar estilos generales]
 ```
+
+
+### Prompt 20 - Documentar pruebas de matriculas reportes e integracion
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Reportes / Integración / Matrículas
+**Objetivo:** Crear casos de prueba para matrículas, reportes e integración
+
+```text
+[Prompt 20 registrado - documentar pruebas]
+```
