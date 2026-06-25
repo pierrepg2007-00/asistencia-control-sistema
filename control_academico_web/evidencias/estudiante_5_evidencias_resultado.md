@@ -13,6 +13,7 @@
 | 2 | Crear base de matriculas y reportes | Se crearon 7 archivos base con funciones borrador | Ninguno | data/matriculas.json, core/matriculas.py, core/reportes.py, web/matriculas.html, web/reportes.html, static/matriculas.js, static/reportes.js | Archivos base listos para desarrollar funciones completas |
 | 3 | Agregar lectura y guardado de matriculas | Se implementaron cargar_matriculas() y guardar_matriculas() con manejo robusto de archivos | Ninguno | core/matriculas.py | Funciones listas siguiendo el patrón de estudiantes.py |
 | 4 | Agregar validaciones de matriculas | Se implementaron 4 validaciones consultando JSON de otros módulos | Ninguno | core/matriculas.py | Validaciones listas: estudiante, materia, periodo y duplicados |
+| 5 | Registrar matriculas con validaciones | Se implementó registrar_matricula() con todas las validaciones y guardado | Ninguno | core/matriculas.py | Función completa con estado inicial "activa" |
 
 ## Conversación o resumen de interacción con IA
 
@@ -49,3 +50,12 @@
 - Se implementó matricula_existe(): verifica si ya existe una matrícula con los mismos datos.
 - Todas las funciones consultan directamente los archivos JSON sin modificar los módulos de otros integrantes.
 - Las funciones devuelven diccionarios con resultado y mensaje claro.
+
+### Actividad 5: Registrar matriculas con validaciones
+
+- Se implementó registrar_matricula() con validación de campos vacíos.
+- Llama a validar_estudiante_para_matricula, validar_materia_para_matricula y validar_periodo_para_matricula.
+- Verifica duplicados con matricula_existe().
+- Asigna estado inicial "activa".
+- Guarda en data/matriculas.json con la estructura requerida.
+- Devuelve diccionario con resultado, mensaje y datos de la matrícula registrada.

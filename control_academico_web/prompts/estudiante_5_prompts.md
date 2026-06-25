@@ -225,3 +225,13 @@ Finalmente revisa los cambios y deja todo listo para commit.
 ```text
 [Prompt 4 registrado - validaciones de matriculas]
 ```
+
+
+### Prompt 5 - Registrar matriculas con validaciones
+**Estudiante asociado:** Integrante 5
+**Módulo trabajado:** Matrículas
+**Objetivo:** Implementar registrar_matricula() con todas las validaciones
+
+```text
+[Prompt 5 registrado - registrar matriculas]
+```

@@ -154,7 +154,51 @@ def matricula_existe(codigo_estudiante, codigo_materia, codigo_periodo):
 
 def registrar_matricula(codigo_estudiante, codigo_materia, codigo_periodo):
     """Registra una nueva matricula con validaciones."""
-    return {"resultado": False, "mensaje": "Funcion pendiente de desarrollo."}
+    codigo_estudiante = (codigo_estudiante or "").strip().upper()
+    codigo_materia = (codigo_materia or "").strip().upper()
+    codigo_periodo = (codigo_periodo or "").strip().upper()
+
+    if not codigo_estudiante:
+        return {"resultado": False, "mensaje": "El codigo del estudiante no puede estar vacio."}
+
+    if not codigo_materia:
+        return {"resultado": False, "mensaje": "El codigo de la materia no puede estar vacio."}
+
+    if not codigo_periodo:
+        return {"resultado": False, "mensaje": "El codigo del periodo no puede estar vacio."}
+
+    validacion_estudiante = validar_estudiante_para_matricula(codigo_estudiante)
+    if not validacion_estudiante["resultado"]:
+        return validacion_estudiante
+
+    validacion_materia = validar_materia_para_matricula(codigo_materia)
+    if not validacion_materia["resultado"]:
+        return validacion_materia
+
+    validacion_periodo = validar_periodo_para_matricula(codigo_periodo)
+    if not validacion_periodo["resultado"]:
+        return validacion_periodo
+
+    if matricula_existe(codigo_estudiante, codigo_materia, codigo_periodo):
+        return {"resultado": False, "mensaje": "La matricula ya existe para este estudiante, materia y periodo."}
+
+    matriculas = cargar_matriculas()
+
+    matricula = {
+        "codigo_estudiante": codigo_estudiante,
+        "codigo_materia": codigo_materia,
+        "codigo_periodo": codigo_periodo,
+        "estado": "activa",
+    }
+
+    matriculas.append(matricula)
+    guardar_matriculas(matriculas)
+
+    return {
+        "resultado": True,
+        "mensaje": "Matricula registrada correctamente.",
+        "datos": matricula,
+    }
 
 
 def listar_matriculas():
