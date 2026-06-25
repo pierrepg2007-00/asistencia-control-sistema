@@ -69,15 +69,30 @@ def actualizar_materia(codigo_materia, nuevos_datos):
 
 
 def validar_ciclo(ciclo):
-    """Valida el ciclo de una materia. Pendiente de completar."""
-    pass
+    """Valida que el ciclo sea un entero mayor que cero."""
+    if ciclo is None or ciclo == "":
+        return False
+
+    try:
+        ciclo_entero = int(ciclo)
+    except ValueError:
+        return False
+
+    return ciclo_entero > 0
 
 
 def validar_estado_materia(estado):
-    """Valida el estado de una materia. Pendiente de completar."""
-    pass
+    """Valida que el estado de la materia sea activo o inactivo."""
+    estado = (estado or "").strip().lower()
+    return estado in ["activo", "inactivo"]
 
 
 def materia_existe(codigo_materia):
-    """Verifica si una materia existe. Pendiente de completar."""
-    pass
+    """Devuelve True cuando existe una materia con el código indicado."""
+    codigo_materia = (codigo_materia or "").strip().upper()
+
+    for materia in cargar_materias():
+        if materia.get("codigo_materia") == codigo_materia:
+            return True
+
+    return False

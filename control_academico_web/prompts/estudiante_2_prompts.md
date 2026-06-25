@@ -241,3 +241,55 @@ Indicando:
 
 Finalmente revisa los cambios y deja todo listo para commit.
 ```
+
+### Prompt 4 - Agregar validaciones de materias
+
+**Estudiante asociado:** Integrante 2  
+**Módulo trabajado:** Materias y periodos  
+**Objetivo:** implementar validaciones básicas del módulo materias  
+
+```text
+Continúa con el módulo materias y periodos.
+
+Este trabajo corresponde al Integrante 2.
+Módulo principal: Materias y periodos.
+
+Desarrolla en core/materias.py las funciones de validación:
+
+- validar_ciclo(ciclo)
+- validar_estado_materia(estado)
+- materia_existe(codigo_materia)
+
+Reglas:
+
+validar_ciclo(ciclo):
+- debe verificar que el ciclo no esté vacío
+- debe verificar que sea un número entero
+- debe verificar que sea mayor que cero
+
+validar_estado_materia(estado):
+- debe aceptar solo activo o inactivo
+- debe convertir el texto a minúsculas para evitar errores por mayúsculas
+
+materia_existe(codigo_materia):
+- debe leer data/materias.json
+- debe devolver True si el código de materia existe
+- debe devolver False si no existe
+
+Mantén el código simple y fácil de explicar.
+No uses clases.
+No modifiques otros módulos.
+
+Al terminar, guarda este prompt completo en:
+prompts/estudiante_2_prompts.md
+
+Luego actualiza:
+evidencias/estudiante_2_evidencias_resultado.md
+
+Indicando:
+- qué validaciones se implementaron
+- qué archivo fue modificado
+- qué pruebas se deberían hacer después
+
+Finalmente revisa los cambios y deja todo listo para commit.
+```
